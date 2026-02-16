@@ -1,0 +1,113 @@
+import type { Config } from 'tailwindcss';
+import containerQueries from '@tailwindcss/container-queries';
+import { theme } from './src/shared/theme';
+
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        background: {
+          deep: theme.colors.background.deepNavy,
+          navy: theme.colors.background.navy,
+          surface: theme.colors.background.surface,
+          abyss: theme.colors.background.abyss,
+        },
+        accent: {
+          cyan: theme.colors.accent.cyan,
+          'cyan-soft': theme.colors.accent.cyanSoft,
+          teal: theme.colors.accent.teal,
+          violet: theme.colors.accent.violet,
+          amber: theme.colors.accent.amber,
+          gold: theme.colors.accent.gold,
+          blue: theme.colors.accent.blue,
+          red: theme.colors.accent.red,
+        },
+        engine: {
+          dashboard: theme.colors.engine.dashboard,
+          protect: theme.colors.engine.protect,
+          grow: theme.colors.engine.grow,
+          execute: theme.colors.engine.execute,
+          govern: theme.colors.engine.govern,
+        },
+        glass: {
+          DEFAULT: theme.colors.glass.bg,
+          strong: theme.colors.glass.bgStrong,
+          soft: theme.colors.glass.bgSoft,
+          subtle: theme.colors.glass.bgSubtle,
+        },
+      },
+      fontFamily: {
+        header: theme.typography.fontHeader.split(',').map((f) => f.trim()),
+        ui: theme.typography.fontUi.split(',').map((f) => f.trim()),
+        mono: theme.typography.fontMono.split(',').map((f) => f.trim()),
+      },
+      fontSize: {
+        display: theme.typography.scale.display,
+        h1: theme.typography.scale.h1,
+        h2: theme.typography.scale.h2,
+        h3: theme.typography.scale.h3,
+        'body-lg': theme.typography.scale.bodyLg,
+        body: theme.typography.scale.body,
+        'body-sm': theme.typography.scale.bodySm,
+        caption: theme.typography.scale.caption,
+        label: theme.typography.scale.label,
+        small: theme.typography.scale.small,
+        badge: theme.typography.scale.badge,
+      },
+      borderRadius: {
+        lg: theme.radius.lg,
+        md: theme.radius.md,
+        sm: theme.radius.sm,
+      },
+      spacing: {
+        1: theme.spacing.space1,
+        2: theme.spacing.space2,
+        3: theme.spacing.space3,
+        4: theme.spacing.space4,
+        5: theme.spacing.space5,
+        6: theme.spacing.space6,
+        8: theme.spacing.space8,
+        10: theme.spacing.space10,
+        12: theme.spacing.space12,
+        14: theme.spacing.space14,
+        16: theme.spacing.space16,
+        20: theme.spacing.space20,
+        24: theme.spacing.space24,
+      },
+      maxWidth: {
+        container: theme.layout.containerMax,
+        content: theme.layout.contentMax,
+      },
+      backdropBlur: {
+        glass: '44px',
+        'glass-mobile': '20px',
+      },
+      transitionDuration: {
+        fast: theme.motion.duration.fast,
+        base: theme.motion.duration.base,
+        slow: theme.motion.duration.slow,
+      },
+      transitionTimingFunction: {
+        standard: theme.motion.easing.standard,
+        emphasized: theme.motion.easing.emphasized,
+      },
+      zIndex: {
+        base: theme.zIndex.base.toString(),
+        'card-overlay': theme.zIndex.cardOverlay.toString(),
+        'sticky-nav': theme.zIndex.stickyNav.toString(),
+        'bottom-nav': theme.zIndex.bottomNav.toString(),
+        overlay: theme.zIndex.overlay.toString(),
+        modal: theme.zIndex.modal.toString(),
+        drawer: theme.zIndex.drawer.toString(),
+        dropdown: theme.zIndex.dropdown.toString(),
+        'mobile-backdrop': theme.zIndex.mobileBackdrop.toString(),
+        'mobile-nav': theme.zIndex.mobileNav.toString(),
+        toast: theme.zIndex.toast.toString(),
+        'skip-link': theme.zIndex.skipLink.toString(),
+      },
+    },
+  },
+  plugins: [containerQueries],
+} satisfies Config;

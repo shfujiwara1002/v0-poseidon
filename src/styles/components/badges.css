@@ -1,0 +1,119 @@
+/* ── SECTION HEADERS ── */
+.section-header h2 {
+  margin: 12px 0 var(--space-2-5);
+  font-size: var(--font-size-h2);
+  font-family: var(--font-display);
+}
+
+.section-header p {
+  margin: 0 0 var(--space-4-5);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.section-tag {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 166, 255, 0.35);
+  color: var(--accent-blue);
+  font-size: var(--font-size-small);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+/* ── CHIPS & BADGES ── */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.chip {
+  padding: var(--space-2) var(--space-3-5);
+  border-radius: 999px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+  transition: background var(--motion-duration-fast) var(--motion-easing-standard),
+              border-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chip:focus-visible,
+.audit-chip:focus-visible,
+.tag:focus-visible,
+.auth-link:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.audit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px var(--space-3);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  color: var(--muted);
+  min-height: var(--touch-min);
+}
+
+.audit-chip::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-teal);
+  box-shadow: var(--neon-teal-mobile);
+}
+
+.audit-chip-verified {
+  border-color: rgba(20,184,166,0.35);
+  background: rgba(20,184,166,0.06);
+  color: var(--accent-teal);
+}
+
+.audit-chip-verified::before {
+  background: var(--accent-teal);
+  box-shadow: var(--neon-teal-sharper);
+}
+
+.warning-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2-5) 16px;
+  border-radius: 8px;
+  background: var(--warning-bg);
+  border: var(--warning-border);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--warning-text);
+  text-shadow: var(--warning-shadow);
+  box-shadow: var(--warning-box);
+}
+
+.compliance-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-family: var(--font-mono);
+  background: var(--badge-bg);
+  border: var(--badge-border);
+  border-radius: 7px;
+  color: var(--badge-text);
+  letter-spacing: var(--tracking-wide);
+  text-shadow: var(--badge-shadow);
+  box-shadow: var(--badge-box);
+}

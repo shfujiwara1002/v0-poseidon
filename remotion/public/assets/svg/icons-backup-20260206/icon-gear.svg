@@ -1,0 +1,29 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient fill for gear depth -->
+    <linearGradient id="gear-soft-fill" x1="11" y1="7" x2="11" y2="23" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(245,158,11,0.08)"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.04)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Soft background fill -->
+  <circle cx="11" cy="13" r="7" fill="url(#gear-soft-fill)"/>
+
+  <!-- LAYER 1: Primary gear body (rounded for soft feel) -->
+  <circle cx="11" cy="13" r="5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Gear teeth (8 radial lines, soft rounded caps) -->
+  <path d="M11 8 L11 6.5 M14.5 9.5 L15.5 8.5 M16 13 L17.5 13 M14.5 16.5 L15.5 17.5 M11 18 L11 19.5 M7.5 16.5 L6.5 17.5 M6 13 L4.5 13 M7.5 9.5 L6.5 8.5"
+        stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- LAYER 2: Secondary gear (smaller, upper right) -->
+  <circle cx="18" cy="5" r="2.5" stroke="#14B8A6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M18 2.5 L18 3.5 M19.5 3.5 L18.8 4 M20 5 L19 5 M19.5 6.5 L18.8 6 M18 7.5 L18 6.5 M16.5 6.5 L17.2 6 M16 5 L17 5 M16.5 3.5 L17.2 4"
+        stroke="#14B8A6" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- LAYER 3: Central focal point (NO Gaussian blur) -->
+  <circle cx="11" cy="13" r="1.5" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="18" cy="5" r="0.8" fill="#14B8A6" opacity="0.8"/>
+</svg>

@@ -1,0 +1,109 @@
+/* ── OVERLAY / MODAL / DRAWER ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: end center;
+  z-index: var(--z-overlay);
+  animation: overlay-fade var(--motion-duration-enter) var(--motion-easing-decelerate) both;
+}
+
+.overlay-exit {
+  animation: overlay-fade var(--motion-duration-exit) var(--motion-easing-standard) reverse forwards;
+}
+
+/* Mobile: Bottom sheet. Desktop: Centered modal */
+.modal {
+  width: 100%;
+  max-width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop-mobile);
+  animation: modal-slide-up var(--motion-duration-enter) var(--motion-easing-standard) both;
+}
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 auto 12px;
+}
+
+.modal-exit {
+  animation: modal-slide-down var(--motion-duration-exit) var(--motion-easing-standard) forwards;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--glass-bg);
+  border-left: 1px solid var(--glass-border);
+  padding: 20px;
+  box-shadow: var(--glass-shadow);
+  z-index: var(--z-drawer);
+}
+
+.drawer-enter { animation: drawer-slide-in var(--motion-duration-enter) var(--motion-easing-standard) both; }
+.drawer-exit { animation: drawer-slide-out var(--motion-duration-exit) var(--motion-easing-standard) forwards; }
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-overlay);
+  animation: overlay-fade var(--motion-duration-enter) var(--motion-easing-decelerate) both;
+}
+
+/* ── TOOLTIP ── */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px var(--space-2-5);
+  border-radius: 8px;
+  background: rgba(6, 10, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s var(--motion-easing-standard) 0.3s,
+              transform 0.2s var(--motion-easing-standard) 0.3s;
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip:focus-within .tooltip-content {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── DROPDOWN ── */
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  animation: dropdown-enter var(--motion-duration-enter) var(--motion-easing-standard) both;
+  transform-origin: top right;
+}
+
+.dropdown-panel-exit {
+  animation: dropdown-exit var(--motion-duration-exit) var(--motion-easing-standard) forwards;
+}

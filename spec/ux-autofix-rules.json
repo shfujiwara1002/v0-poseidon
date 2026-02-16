@@ -1,0 +1,34 @@
+{
+  "rules": [
+    {
+      "id": "css-spacing-tokenization",
+      "severity": "safe",
+      "targets": ["src/styles/**/*.css"],
+      "description": "Replace hardcoded spacing values in layout properties with spacing tokens."
+    },
+    {
+      "id": "css-letter-spacing-tokenization",
+      "severity": "safe",
+      "targets": ["src/styles/**/*.css"],
+      "description": "Replace hardcoded letter-spacing values with tracking tokens."
+    },
+    {
+      "id": "known-icon-button-aria",
+      "severity": "guarded",
+      "targets": ["src/components/**/*.tsx", "src/pages/**/*.tsx"],
+      "description": "Apply aria-label only to known icon-only controls."
+    },
+    {
+      "id": "engine-core-nav-cta-demotion",
+      "severity": "safe",
+      "targets": ["src/components/AppNav.tsx"],
+      "description": "Demote extra CTA variants in engine/core navigation to keep one clear CTA."
+    },
+    {
+      "id": "decorative-motion-guard",
+      "severity": "manual",
+      "targets": ["src/styles/components/**/*.css", "src/styles/pages/**/*.css"],
+      "description": "Flag decorative animation without reduced-motion guard."
+    }
+  ]
+}

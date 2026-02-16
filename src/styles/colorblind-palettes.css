@@ -1,0 +1,223 @@
+/* ── Poseidon.AI Colorblind-Safe Palettes ── */
+
+/**
+ * Color Vision Deficiency Support
+ *
+ * These palettes are scientifically designed for users with color blindness.
+ * They replace color-dependent distinctions with luminance and alternative hues.
+ *
+ * Activate via: document.documentElement.setAttribute('data-colorblind-mode', 'deuteranopia')
+ */
+
+/* ──────────────────────────────────────────────────────────────── */
+/* DEUTERANOPIA MODE (Red-Green, ~1% of males, 0.4% of females)    */
+/* ──────────────────────────────────────────────────────────────── */
+
+/**
+ * Deuteranopia Rationale:
+ * - Green (~555nm) and red (~650nm) become indistinguishable
+ * - Solution: Replace green with blue (lacks in deuteranopia vision)
+ * - Replace red with orange-yellow for better luminance contrast
+ * - Purple and amber remain effective discriminators
+ *
+ * Palette changes:
+ * - Teal (#14B8A6 green-blue) → #2196F3 (pure blue)
+ * - Red (#EF4444) → #FF9800 (orange, better luminance)
+ * - Cyan shift for better contrast with blue
+ */
+
+[data-colorblind-mode="deuteranopia"] {
+  --accent-cyan: #03A9F4;
+  --accent-teal: #2196F3;
+  --accent-violet: #9C27B0;
+  --accent-amber: #FFC107;
+  --accent-red: #FF9800;
+  --accent-blue: #1976D2;
+  --accent-gold: #FFB300;
+
+  /* Engine themes for deuteranopia */
+  --engine-protect: #2196F3;
+  --engine-grow: #9C27B0;
+  --engine-execute: #FFC107;
+  --engine-govern: #1976D2;
+
+  /* Semantic colors */
+  --text-gradient-teal: linear-gradient(90deg, #4dd0e1 0%, #00acc1 100%);
+  --text-gradient-blue: linear-gradient(90deg, #64b5f6 0%, #2196f3 100%);
+  --text-gradient-amber: linear-gradient(90deg, #ffe082 0%, #ffc107 100%);
+
+  /* Neon effects adjusted for deuteranopia */
+  --neon-teal: 0 0 2px rgba(33, 150, 243, 1), 0 0 6px rgba(33, 150, 243, 1), 0 0 15px rgba(33, 150, 243, 0.8), 0 0 30px rgba(33, 150, 243, 0.6), 0 0 50px rgba(33, 150, 243, 0.4), 0 0 80px rgba(33, 150, 243, 0.2);
+  --neon-teal-mobile: 0 0 4px rgba(33, 150, 243, 0.8), 0 0 12px rgba(33, 150, 243, 0.5), 0 0 24px rgba(33, 150, 243, 0.2);
+  --neon-teal-sharper: 0 0 1px rgba(33, 150, 243, 1), 0 0 3px rgba(33, 150, 243, 1), 0 0 8px rgba(33, 150, 243, 0.9), 0 0 16px rgba(33, 150, 243, 0.5), 0 0 28px rgba(33, 150, 243, 0.2);
+  --neon-teal-deep: 0 0 2px rgba(33, 150, 243, 1), 0 0 6px rgba(33, 150, 243, 1), 0 0 15px rgba(33, 150, 243, 0.95), 0 0 30px rgba(33, 150, 243, 0.8), 0 0 50px rgba(33, 150, 243, 0.6), 0 0 80px rgba(33, 150, 243, 0.4), 0 0 120px rgba(33, 150, 243, 0.2);
+
+  --neon-amber: 0 0 2px rgba(255, 193, 7, 1), 0 0 6px rgba(255, 193, 7, 1), 0 0 15px rgba(255, 193, 7, 0.8), 0 0 30px rgba(255, 193, 7, 0.6), 0 0 50px rgba(255, 193, 7, 0.4), 0 0 80px rgba(255, 193, 7, 0.2);
+  --neon-amber-mobile: 0 0 4px rgba(255, 193, 7, 0.8), 0 0 12px rgba(255, 193, 7, 0.5), 0 0 24px rgba(255, 193, 7, 0.2);
+  --neon-amber-sharper: 0 0 1px rgba(255, 193, 7, 1), 0 0 3px rgba(255, 193, 7, 1), 0 0 8px rgba(255, 193, 7, 0.9), 0 0 16px rgba(255, 193, 7, 0.5), 0 0 28px rgba(255, 193, 7, 0.2);
+  --neon-amber-deep: 0 0 2px rgba(255, 193, 7, 1), 0 0 6px rgba(255, 193, 7, 1), 0 0 15px rgba(255, 193, 7, 0.95), 0 0 30px rgba(255, 193, 7, 0.8), 0 0 50px rgba(255, 193, 7, 0.6), 0 0 80px rgba(255, 193, 7, 0.4), 0 0 120px rgba(255, 193, 7, 0.2);
+
+  --neon-red: 0 0 2px rgba(255, 152, 0, 1), 0 0 6px rgba(255, 152, 0, 1), 0 0 15px rgba(255, 152, 0, 0.8), 0 0 30px rgba(255, 152, 0, 0.6), 0 0 50px rgba(255, 152, 0, 0.4), 0 0 80px rgba(255, 152, 0, 0.2);
+  --neon-red-mobile: 0 0 4px rgba(255, 152, 0, 0.8), 0 0 12px rgba(255, 152, 0, 0.5), 0 0 24px rgba(255, 152, 0, 0.2);
+  --neon-red-sharper: 0 0 1px rgba(255, 152, 0, 1), 0 0 3px rgba(255, 152, 0, 1), 0 0 8px rgba(255, 152, 0, 0.9), 0 0 16px rgba(255, 152, 0, 0.5), 0 0 28px rgba(255, 152, 0, 0.2);
+  --neon-red-deep: 0 0 2px rgba(255, 152, 0, 1), 0 0 6px rgba(255, 152, 0, 1), 0 0 15px rgba(255, 152, 0, 0.95), 0 0 30px rgba(255, 152, 0, 0.8), 0 0 50px rgba(255, 152, 0, 0.6), 0 0 80px rgba(255, 152, 0, 0.4), 0 0 120px rgba(255, 152, 0, 0.2);
+
+  /* Icon glows */
+  --icon-glow-teal: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(33, 150, 243, 0.55)) drop-shadow(0 0 28px rgba(33, 150, 243, 0.4));
+  --icon-glow-amber: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(255, 193, 7, 0.55)) drop-shadow(0 0 28px rgba(255, 193, 7, 0.4));
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* PROTANOPIA MODE (Red-Green, ~1% of males, 0.01% of females)     */
+/* ──────────────────────────────────────────────────────────────── */
+
+/**
+ * Protanopia Rationale:
+ * - Red (~650nm) light cones missing entirely
+ * - Affected: reds appear dark, greens appear yellow-gray
+ * - Solution: Replace red with blue (perceived as bright), green with blue
+ * - Use high-luminance yellows and oranges for alerts
+ * - Purple becomes primary warm accent
+ *
+ * Palette changes:
+ * - Teal → #1E88E5 (slightly darker blue)
+ * - Red → #FFB300 (gold, higher luminance)
+ * - Cyan shift for visual clarity
+ */
+
+[data-colorblind-mode="protanopia"] {
+  --accent-cyan: #29B6F6;
+  --accent-teal: #1E88E5;
+  --accent-violet: #8E24AA;
+  --accent-amber: #FDD835;
+  --accent-red: #FFB300;
+  --accent-blue: #1565C0;
+  --accent-gold: #FFD54F;
+
+  /* Engine themes for protanopia */
+  --engine-protect: #1E88E5;
+  --engine-grow: #8E24AA;
+  --engine-execute: #FDD835;
+  --engine-govern: #1565C0;
+
+  /* Semantic colors */
+  --text-gradient-teal: linear-gradient(90deg, #4fc3f7 0%, #0288d1 100%);
+  --text-gradient-blue: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
+  --text-gradient-amber: linear-gradient(90deg, #ffe082 0%, #fdd835 100%);
+
+  /* Neon effects adjusted for protanopia */
+  --neon-teal: 0 0 2px rgba(30, 136, 229, 1), 0 0 6px rgba(30, 136, 229, 1), 0 0 15px rgba(30, 136, 229, 0.8), 0 0 30px rgba(30, 136, 229, 0.6), 0 0 50px rgba(30, 136, 229, 0.4), 0 0 80px rgba(30, 136, 229, 0.2);
+  --neon-teal-mobile: 0 0 4px rgba(30, 136, 229, 0.8), 0 0 12px rgba(30, 136, 229, 0.5), 0 0 24px rgba(30, 136, 229, 0.2);
+  --neon-teal-sharper: 0 0 1px rgba(30, 136, 229, 1), 0 0 3px rgba(30, 136, 229, 1), 0 0 8px rgba(30, 136, 229, 0.9), 0 0 16px rgba(30, 136, 229, 0.5), 0 0 28px rgba(30, 136, 229, 0.2);
+  --neon-teal-deep: 0 0 2px rgba(30, 136, 229, 1), 0 0 6px rgba(30, 136, 229, 1), 0 0 15px rgba(30, 136, 229, 0.95), 0 0 30px rgba(30, 136, 229, 0.8), 0 0 50px rgba(30, 136, 229, 0.6), 0 0 80px rgba(30, 136, 229, 0.4), 0 0 120px rgba(30, 136, 229, 0.2);
+
+  --neon-amber: 0 0 2px rgba(253, 216, 53, 1), 0 0 6px rgba(253, 216, 53, 1), 0 0 15px rgba(253, 216, 53, 0.8), 0 0 30px rgba(253, 216, 53, 0.6), 0 0 50px rgba(253, 216, 53, 0.4), 0 0 80px rgba(253, 216, 53, 0.2);
+  --neon-amber-mobile: 0 0 4px rgba(253, 216, 53, 0.8), 0 0 12px rgba(253, 216, 53, 0.5), 0 0 24px rgba(253, 216, 53, 0.2);
+  --neon-amber-sharper: 0 0 1px rgba(253, 216, 53, 1), 0 0 3px rgba(253, 216, 53, 1), 0 0 8px rgba(253, 216, 53, 0.9), 0 0 16px rgba(253, 216, 53, 0.5), 0 0 28px rgba(253, 216, 53, 0.2);
+  --neon-amber-deep: 0 0 2px rgba(253, 216, 53, 1), 0 0 6px rgba(253, 216, 53, 1), 0 0 15px rgba(253, 216, 53, 0.95), 0 0 30px rgba(253, 216, 53, 0.8), 0 0 50px rgba(253, 216, 53, 0.6), 0 0 80px rgba(253, 216, 53, 0.4), 0 0 120px rgba(253, 216, 53, 0.2);
+
+  --neon-red: 0 0 2px rgba(255, 179, 0, 1), 0 0 6px rgba(255, 179, 0, 1), 0 0 15px rgba(255, 179, 0, 0.8), 0 0 30px rgba(255, 179, 0, 0.6), 0 0 50px rgba(255, 179, 0, 0.4), 0 0 80px rgba(255, 179, 0, 0.2);
+  --neon-red-mobile: 0 0 4px rgba(255, 179, 0, 0.8), 0 0 12px rgba(255, 179, 0, 0.5), 0 0 24px rgba(255, 179, 0, 0.2);
+  --neon-red-sharper: 0 0 1px rgba(255, 179, 0, 1), 0 0 3px rgba(255, 179, 0, 1), 0 0 8px rgba(255, 179, 0, 0.9), 0 0 16px rgba(255, 179, 0, 0.5), 0 0 28px rgba(255, 179, 0, 0.2);
+  --neon-red-deep: 0 0 2px rgba(255, 179, 0, 1), 0 0 6px rgba(255, 179, 0, 1), 0 0 15px rgba(255, 179, 0, 0.95), 0 0 30px rgba(255, 179, 0, 0.8), 0 0 50px rgba(255, 179, 0, 0.6), 0 0 80px rgba(255, 179, 0, 0.4), 0 0 120px rgba(255, 179, 0, 0.2);
+
+  /* Icon glows */
+  --icon-glow-teal: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(30, 136, 229, 0.55)) drop-shadow(0 0 28px rgba(30, 136, 229, 0.4));
+  --icon-glow-amber: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(253, 216, 53, 0.55)) drop-shadow(0 0 28px rgba(253, 216, 53, 0.4));
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* TRITANOPIA MODE (Blue-Yellow, ~0.001% of population)             */
+/* ──────────────────────────────────────────────────────────────── */
+
+/**
+ * Tritanopia Rationale:
+ * - Blue-yellow color confusion (rare, affects ~1 in 10,000)
+ * - Affected: blues appear pinkish, yellows appear pink
+ * - Solution: Replace blue with pink/magenta, yellow with red-orange
+ * - Maintain high luminance contrast for critical information
+ * - Green and red remain well-distinguished
+ *
+ * Palette changes:
+ * - Cyan (#00F0FF blue) → #EC407A (pink)
+ * - Teal → #E91E63 (pink-red)
+ * - Amber (#F59E0B yellow) → #FF5722 (deep orange)
+ * - Violet → #E040FB (bright magenta)
+ */
+
+[data-colorblind-mode="tritanopia"] {
+  --accent-cyan: #EC407A;
+  --accent-teal: #E91E63;
+  --accent-violet: #E040FB;
+  --accent-amber: #FF5722;
+  --accent-red: #F44336;
+  --accent-blue: #E91E63;
+  --accent-gold: #FF6F00;
+
+  /* Engine themes for tritanopia */
+  --engine-protect: #E91E63;
+  --engine-grow: #E040FB;
+  --engine-execute: #FF5722;
+  --engine-govern: #F44336;
+
+  /* Semantic colors */
+  --text-gradient-teal: linear-gradient(90deg, #f06292 0%, #e91e63 100%);
+  --text-gradient-blue: linear-gradient(90deg, #f06292 0%, #d81b60 100%);
+  --text-gradient-amber: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+
+  /* Neon effects adjusted for tritanopia */
+  --neon-teal: 0 0 2px rgba(233, 30, 99, 1), 0 0 6px rgba(233, 30, 99, 1), 0 0 15px rgba(233, 30, 99, 0.8), 0 0 30px rgba(233, 30, 99, 0.6), 0 0 50px rgba(233, 30, 99, 0.4), 0 0 80px rgba(233, 30, 99, 0.2);
+  --neon-teal-mobile: 0 0 4px rgba(233, 30, 99, 0.8), 0 0 12px rgba(233, 30, 99, 0.5), 0 0 24px rgba(233, 30, 99, 0.2);
+  --neon-teal-sharper: 0 0 1px rgba(233, 30, 99, 1), 0 0 3px rgba(233, 30, 99, 1), 0 0 8px rgba(233, 30, 99, 0.9), 0 0 16px rgba(233, 30, 99, 0.5), 0 0 28px rgba(233, 30, 99, 0.2);
+  --neon-teal-deep: 0 0 2px rgba(233, 30, 99, 1), 0 0 6px rgba(233, 30, 99, 1), 0 0 15px rgba(233, 30, 99, 0.95), 0 0 30px rgba(233, 30, 99, 0.8), 0 0 50px rgba(233, 30, 99, 0.6), 0 0 80px rgba(233, 30, 99, 0.4), 0 0 120px rgba(233, 30, 99, 0.2);
+
+  --neon-cyan: 0 0 2px rgba(236, 64, 122, 1), 0 0 6px rgba(236, 64, 122, 1), 0 0 15px rgba(236, 64, 122, 0.8), 0 0 30px rgba(236, 64, 122, 0.6), 0 0 50px rgba(236, 64, 122, 0.4), 0 0 80px rgba(236, 64, 122, 0.2);
+  --neon-cyan-mobile: 0 0 4px rgba(236, 64, 122, 0.8), 0 0 12px rgba(236, 64, 122, 0.5), 0 0 24px rgba(236, 64, 122, 0.2);
+  --neon-cyan-sharper: 0 0 1px rgba(236, 64, 122, 1), 0 0 3px rgba(236, 64, 122, 1), 0 0 8px rgba(236, 64, 122, 0.9), 0 0 16px rgba(236, 64, 122, 0.5), 0 0 28px rgba(236, 64, 122, 0.2);
+  --neon-cyan-deep: 0 0 2px rgba(236, 64, 122, 1), 0 0 6px rgba(236, 64, 122, 1), 0 0 15px rgba(236, 64, 122, 0.95), 0 0 30px rgba(236, 64, 122, 0.8), 0 0 50px rgba(236, 64, 122, 0.6), 0 0 80px rgba(236, 64, 122, 0.4), 0 0 120px rgba(236, 64, 122, 0.2);
+
+  --neon-amber: 0 0 2px rgba(255, 87, 34, 1), 0 0 6px rgba(255, 87, 34, 1), 0 0 15px rgba(255, 87, 34, 0.8), 0 0 30px rgba(255, 87, 34, 0.6), 0 0 50px rgba(255, 87, 34, 0.4), 0 0 80px rgba(255, 87, 34, 0.2);
+  --neon-amber-mobile: 0 0 4px rgba(255, 87, 34, 0.8), 0 0 12px rgba(255, 87, 34, 0.5), 0 0 24px rgba(255, 87, 34, 0.2);
+  --neon-amber-sharper: 0 0 1px rgba(255, 87, 34, 1), 0 0 3px rgba(255, 87, 34, 1), 0 0 8px rgba(255, 87, 34, 0.9), 0 0 16px rgba(255, 87, 34, 0.5), 0 0 28px rgba(255, 87, 34, 0.2);
+  --neon-amber-deep: 0 0 2px rgba(255, 87, 34, 1), 0 0 6px rgba(255, 87, 34, 1), 0 0 15px rgba(255, 87, 34, 0.95), 0 0 30px rgba(255, 87, 34, 0.8), 0 0 50px rgba(255, 87, 34, 0.6), 0 0 80px rgba(255, 87, 34, 0.4), 0 0 120px rgba(255, 87, 34, 0.2);
+
+  /* Icon glows */
+  --icon-glow-teal: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(233, 30, 99, 0.55)) drop-shadow(0 0 28px rgba(233, 30, 99, 0.4));
+  --icon-glow-amber: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 14px rgba(255, 87, 34, 0.55)) drop-shadow(0 0 28px rgba(255, 87, 34, 0.4));
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Chart Data Color Variables (all modes)                            */
+/* ──────────────────────────────────────────────────────────────── */
+
+/* Default (no colorblind mode) */
+:root {
+  --chart-positive: #22C55E;
+  --chart-negative: #EF4444;
+  --chart-neutral: #8B5CF6;
+  --chart-alert: #EAB308;
+}
+
+/* Deuteranopia */
+[data-colorblind-mode="deuteranopia"] {
+  --chart-positive: #2196F3;
+  --chart-negative: #FF9800;
+  --chart-neutral: #9C27B0;
+  --chart-alert: #FFC107;
+}
+
+/* Protanopia */
+[data-colorblind-mode="protanopia"] {
+  --chart-positive: #1E88E5;
+  --chart-negative: #FFB300;
+  --chart-neutral: #8E24AA;
+  --chart-alert: #FDD835;
+}
+
+/* Tritanopia */
+[data-colorblind-mode="tritanopia"] {
+  --chart-positive: #E91E63;
+  --chart-negative: #F44336;
+  --chart-neutral: #E040FB;
+  --chart-alert: #FF5722;
+}

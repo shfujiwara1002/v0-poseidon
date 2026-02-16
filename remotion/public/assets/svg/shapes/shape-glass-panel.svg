@@ -1,0 +1,51 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glass-grad-bg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(255,255,255,0.08)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.02)"/>
+    </linearGradient>
+    <linearGradient id="glass-grad-border" x1="12" y1="0" x2="12" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(255,255,255,0.4)"/>
+      <stop offset="0.5" stop-color="rgba(255,255,255,0.1)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.3)"/>
+    </linearGradient>
+    <filter id="glass-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Panel Zones -->
+  <!-- Header -->
+  <path d="M2.5 4C2.5 3.17 3.17 2.5 4 2.5H20C20.83 2.5 21.5 3.17 21.5 4V8H2.5V4Z" fill="white" fill-opacity="0.05"/>
+  <!-- Body -->
+  <rect x="2.5" y="8" width="19" height="12" fill="url(#glass-grad-bg)"/>
+  <!-- Footer -->
+  <path d="M2.5 20H21.5V20C21.5 20.83 20.83 21.5 20 21.5H4C3.17 21.5 2.5 20.83 2.5 20V20Z" fill="white" fill-opacity="0.03"/>
+
+  <!-- Frost Texture (Dots) -->
+  <pattern id="frost-pattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="0.4" fill="white" fill-opacity="0.1"/>
+  </pattern>
+  <rect x="2.5" y="2.5" width="19" height="19" rx="1.5" fill="url(#frost-pattern)"/>
+
+  <!-- LAYER 1: Border & Highlights -->
+  <rect x="2.5" y="2.5" width="19" height="19" rx="1.5" stroke="url(#glass-grad-border)" stroke-width="0.8"/>
+  
+  <!-- Top Highlight Line -->
+  <line x1="4" y1="2.5" x2="20" y2="2.5" stroke="white" stroke-width="1" stroke-opacity="0.6" filter="url(#glass-glow)"/>
+  <!-- Bottom Highlight Line -->
+  <line x1="4" y1="21.5" x2="20" y2="21.5" stroke="white" stroke-width="0.6" stroke-opacity="0.3"/>
+
+  <!-- LAYER 2: Corner Accents -->
+  <circle cx="2.5" cy="2.5" r="1.5" fill="white" fill-opacity="0.4"/>
+  <circle cx="21.5" cy="2.5" r="1.5" fill="white" fill-opacity="0.4"/>
+  <circle cx="2.5" cy="21.5" r="1.5" fill="white" fill-opacity="0.4"/>
+  <circle cx="21.5" cy="21.5" r="1.5" fill="white" fill-opacity="0.4"/>
+
+  <!-- LAYER 3: Interactive Glow (Simulated) -->
+  <circle cx="18" cy="6" r="3" fill="#00F0FF" fill-opacity="0.1" filter="url(#glass-glow)"/>
+</svg>

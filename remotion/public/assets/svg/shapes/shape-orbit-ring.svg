@@ -1,0 +1,55 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="orbit-ring-grad-fill" cx="12" cy="12" r="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="orbit-ring-grad-stroke" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.2)"/>
+    </linearGradient>
+    <filter id="orbit-ring-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Radial Fill -->
+  <circle cx="12" cy="12" r="10" fill="url(#orbit-ring-grad-fill)"/>
+
+  <!-- LAYER 1: Rings -->
+  <!-- Outer Faint Ring -->
+  <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="0.3" opacity="0.4"/>
+  
+  <!-- Dashed Middle Ring (Gradient) -->
+  <circle cx="12" cy="12" r="8" stroke="url(#orbit-ring-grad-stroke)" stroke-width="0.6" stroke-dasharray="3 2" transform="rotate(45 12 12)"/>
+
+  <!-- Inner Solid Ring -->
+  <circle cx="12" cy="12" r="5" stroke="#14B8A6" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Hexagonal Wireframe (Inside inner ring) -->
+  <path d="M12 8L15.5 10V14L12 16L8.5 14V10L12 8Z" stroke="#00F0FF" stroke-width="0.4" opacity="0.4"/>
+
+  <!-- LAYER 2: Satellites & Trails -->
+  <!-- 8 Cardinal/Ordinal Dots -->
+  <rect x="11.5" y="1.5" width="1" height="1" fill="#00F0FF"/> <!-- N -->
+  <rect x="11.5" y="21.5" width="1" height="1" fill="#00F0FF"/> <!-- S -->
+  <rect x="1.5" y="11.5" width="1" height="1" fill="#00F0FF"/> <!-- W -->
+  <rect x="21.5" y="11.5" width="1" height="1" fill="#00F0FF"/> <!-- E -->
+  
+  <circle cx="5" cy="5" r="0.5" fill="#8B5CF6"/> <!-- NW -->
+  <circle cx="19" cy="5" r="0.5" fill="#8B5CF6"/> <!-- NE -->
+  <circle cx="19" cy="19" r="0.5" fill="#8B5CF6"/> <!-- SE -->
+  <circle cx="5" cy="19" r="0.5" fill="#8B5CF6"/> <!-- SW -->
+
+  <!-- Micro Satellite Trails -->
+  <path d="M12 4 A8 8 0 0 1 14 4.5" stroke="#00F0FF" stroke-width="0.4" opacity="0.3"/>
+  <path d="M20 12 A8 8 0 0 1 19.5 14" stroke="#00F0FF" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="12" cy="12" r="2" fill="#00F0FF" filter="url(#orbit-ring-glow)" opacity="0.4"/>
+  <circle cx="12" cy="2" r="0.8" fill="white" filter="url(#orbit-ring-glow)"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="band-grad-multi" x1="50" y1="200" x2="550" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EF4444"/> <!-- Red/Low -->
+      <stop offset="0.5" stop-color="#F59E0B"/> <!-- Amber/Med -->
+      <stop offset="1" stop-color="#14B8A6"/> <!-- Teal/High -->
+    </linearGradient>
+    <filter id="band-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Spectrum Arc/Line -->
+  <path d="M50 250 C150 250 200 150 300 150 C400 150 450 250 550 250" stroke="url(#band-grad-multi)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+  <!-- Loops -->
+  <!-- Low Confidence Loop (Red) -->
+  <ellipse cx="100" cy="250" rx="30" ry="80" stroke="#EF4444" stroke-width="2" fill="#EF4444" fill-opacity="0.1"/>
+  <text x="100" y="350" text-anchor="middle" fill="#EF4444" font-family="monospace" font-size="14">UNCERTAIN</text>
+
+  <!-- High Confidence Loop (Teal) -->
+  <ellipse cx="500" cy="250" rx="10" ry="20" stroke="#14B8A6" stroke-width="3" fill="#14B8A6" fill-opacity="0.2" filter="url(#band-glow)"/>
+  <text x="500" y="300" text-anchor="middle" fill="#14B8A6" font-family="monospace" font-size="14">PRECISE</text>
+
+  <!-- Indicator Needle/Dot -->
+  <circle cx="500" cy="250" r="5" fill="#white"/>
+  <line x1="500" y1="250" x2="500" y2="200" stroke="#14B8A6" stroke-width="2" stroke-dasharray="2 2"/>
+
+  <!-- Background Grid Measure -->
+  <line x1="50" y1="200" x2="550" y2="200" stroke="white" stroke-width="1" opacity="0.1"/>
+  <line x1="300" y1="100" x2="300" y2="350" stroke="white" stroke-width="1" stroke-dasharray="4 4" opacity="0.1"/>
+
+</svg>

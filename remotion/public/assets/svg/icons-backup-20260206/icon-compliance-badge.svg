@@ -1,0 +1,19 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- HYPER-MINIMAL: Ultra-thin strokes, NO gradients, NO filters, ≤5 elements -->
+
+  <!-- Hexagon badge -->
+  <path d="M12 2L20.66 7V17L12 22L3.34 17V7L12 2Z"
+        stroke="#F59E0B" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Checkmark (compliance verified) -->
+  <path d="M8 12L10.5 14.5L16 9"
+        stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Inner hexagon (dashed, subtle depth) -->
+  <path d="M12 4L18.9 8V16L12 20L5.1 16V8L12 4Z"
+        stroke="#F59E0B" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.5"/>
+
+  <!-- Shield icon at top (trust indicator) -->
+  <path d="M12 2.5L10.5 3.5V5C10.5 6.5 12 7.5 12 7.5C12 7.5 13.5 6.5 13.5 5V3.5L12 2.5Z"
+        stroke="#F59E0B" stroke-width="0.6" fill="#F59E0B" opacity="0.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

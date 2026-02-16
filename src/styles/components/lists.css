@@ -1,0 +1,154 @@
+/* ── SIGNAL ROW ── */
+.signal-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signal-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  padding: var(--space-2-5) 12px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: var(--touch-min);
+  transition: background var(--motion-duration-fast) ease,
+              transform var(--motion-duration-fast) ease;
+}
+
+.signal-row:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateX(2px);
+}
+
+.signal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.signal-label {
+  flex: 1;
+  font-size: var(--font-size-label);
+  color: var(--text);
+}
+
+.signal-value {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+/* ── NEXT BEST ACTIONS (NBA) ── */
+.nba-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nba-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2-5);
+  padding: var(--space-2-5) 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.2s, background 0.2s;
+  min-height: var(--touch-min);
+}
+
+.nba-item:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nba-rank {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(21, 225, 194, 0.12);
+  border: 1px solid rgba(21, 225, 194, 0.25);
+  color: var(--accent-teal);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.nba-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.nba-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-label);
+}
+
+.nba-title svg { flex-shrink: 0; }
+
+.nba-value {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  font-feature-settings: 'tnum' 1;
+  white-space: nowrap;
+}
+
+.nba-meta {
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  margin-top: 3px;
+}
+
+/* ── DRIVER CARDS (Protect) ── */
+.driver-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.driver-card {
+  padding: var(--space-2-5) 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.driver-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+}
+
+.driver-card-label { font-weight: 600; }
+
+.driver-card-score {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  font-feature-settings: 'tnum' 1;
+}
+
+.driver-card-def {
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.4;
+}
+

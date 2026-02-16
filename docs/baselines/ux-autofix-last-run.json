@@ -1,0 +1,63 @@
+{
+  "mode": "safe",
+  "changedCount": 0,
+  "failedCount": 0,
+  "changedFiles": [],
+  "skippedRules": [
+    "known-icon-button-aria",
+    "decorative-motion-guard"
+  ],
+  "warnings": [
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/animations.css",
+      "message": "glow-pulse appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/animations.css",
+      "message": "bloom-pulse appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/animations.css",
+      "message": "particle-float appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/animations.css",
+      "message": "wave-drift appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/animations.css",
+      "message": "circuit-pulse appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/effects.css",
+      "message": "particle-float appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/effects.css",
+      "message": "circuit-pulse appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/responsive.css",
+      "message": "bloom-pulse appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/responsive.css",
+      "message": "liquid-drift appears without prefers-reduced-motion guard in file scope"
+    },
+    {
+      "rule": "decorative-motion-guard",
+      "file": "src/styles/components/responsive.css",
+      "message": "wave-drift appears without prefers-reduced-motion guard in file scope"
+    }
+  ],
+  "timestamp": "2026-02-15T07:36:36.047Z"
+}

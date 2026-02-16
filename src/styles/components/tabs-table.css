@@ -1,0 +1,81 @@
+/* ── TABS ── */
+.tabs {
+  display: grid;
+  gap: 12px;
+}
+
+.tab-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tab-list::-webkit-scrollbar { display: none; }
+
+.tab {
+  padding: 8px var(--space-3-5);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+  transition: left var(--motion-duration-base) var(--motion-easing-emphasized),
+              right var(--motion-duration-base) var(--motion-easing-emphasized);
+}
+
+.tab[aria-selected="true"]::after,
+.tab.active::after {
+  left: 8px;
+  right: 8px;
+}
+
+.tab:focus-visible { outline: none; box-shadow: var(--state-focus-ring); }
+.tab.active { color: var(--text); border-color: rgba(255, 255, 255, 0.28); }
+
+/* ── TABLE ── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table td { color: var(--text); }
+
+.table th {
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  font-size: var(--font-size-small);
+}
+
+.table-row-highlight {
+  background: rgba(255, 255, 255, 0.03);
+}
+

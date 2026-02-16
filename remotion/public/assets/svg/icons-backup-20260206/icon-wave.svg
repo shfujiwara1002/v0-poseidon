@@ -1,0 +1,29 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient fill for wave volume -->
+    <linearGradient id="wave-soft-fill" x1="12" y1="8" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.08)"/>
+      <stop offset="0.5" stop-color="rgba(139,92,246,0.05)"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.03)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Soft volume fill (tactile depth) -->
+  <path d="M2 12 C5 12 7 8 10 8 C13 8 15 18 18 18 C20 18 21 16 22 15 V20 H2 V12 Z"
+        fill="url(#wave-soft-fill)"/>
+
+  <!-- LAYER 1: Primary waves (smooth curves, rounded caps) -->
+  <path d="M2 12 C5 12 7 8 10 8 C13 8 15 16 18 16 C20 16 21 14 22 13.5"
+        stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M2 13 C5 13 7 9.5 10 9.5 C13 9.5 15 17 18 17 C20 17 21 15.5 22 15"
+        stroke="#8B5CF6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+  <!-- LAYER 2: Trend arrow (upward momentum) -->
+  <path d="M19 6 L22 6 L22 9"
+        stroke="#00F0FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 3: Focal highlights (solid colors, NO filter) -->
+  <circle cx="10" cy="8" r="1" fill="#00F0FF" opacity="0.8"/>
+  <circle cx="18" cy="16" r="0.8" fill="#00F0FF" opacity="0.8"/>
+</svg>

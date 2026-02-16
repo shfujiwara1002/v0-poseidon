@@ -1,0 +1,42 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- HYPER-MINIMAL: Ultra-thin strokes, NO gradients, NO filters -->
+
+  <!-- Timeline (horizontal line) -->
+  <line x1="2" y1="18" x2="22" y2="18"
+        stroke="#14B8A6" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Timeline nodes -->
+  <circle cx="5" cy="18" r="2.2" stroke="#00F0FF" stroke-width="1" fill="#020410"/>
+  <circle cx="12" cy="18" r="2.2" stroke="#14B8A6" stroke-width="1" fill="#020410"/>
+  <circle cx="19" cy="18" r="2.2" stroke="#8B5CF6" stroke-width="1" fill="#020410"/>
+
+  <!-- Inner node fills (solid) -->
+  <circle cx="5" cy="18" r="1" fill="#00F0FF" opacity="0.8"/>
+  <circle cx="12" cy="18" r="1" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="19" cy="18" r="1" fill="#8B5CF6" opacity="0.8"/>
+
+  <!-- Chain links (between nodes) -->
+  <path d="M8 18C8 17.5 8.5 17 9 17H10C10.5 17 11 17.5 11 18"
+        stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M14 18C14 17.5 14.5 17 15 17H16C16.5 17 17 17.5 17 18"
+        stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Stems (vertical dashed lines) -->
+  <line x1="5" y1="18" x2="5" y2="10"
+        stroke="#00F0FF" stroke-width="0.6" stroke-dasharray="1 1" stroke-linecap="round"/>
+  <line x1="12" y1="18" x2="12" y2="8"
+        stroke="#14B8A6" stroke-width="0.6" stroke-dasharray="1 1" stroke-linecap="round"/>
+  <line x1="19" y1="18" x2="19" y2="6"
+        stroke="#8B5CF6" stroke-width="0.6" stroke-dasharray="1 1" stroke-linecap="round"/>
+
+  <!-- Data icons at stem tops -->
+  <!-- Hash symbol (left) -->
+  <path d="M3 13H7 M3 11H7 M4 14L6 10 M5 14L7 10"
+        stroke="#00F0FF" stroke-width="0.4" opacity="0.6" stroke-linecap="round"/>
+
+  <!-- Lock icon (right) -->
+  <rect x="18" y="4" width="2" height="2"
+        stroke="#8B5CF6" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.5 4V3C18.5 2.7 18.7 2.5 19 2.5C19.3 2.5 19.5 2.7 19.5 3V4"
+        stroke="#8B5CF6" stroke-width="0.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,94 @@
+/* ── STEP INDICATOR BAR (Onboarding) ── */
+.step-indicator-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  padding: var(--space-2-5) 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0.5;
+  transition: opacity 0.2s, border-color 0.2s;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.step-indicator--done { opacity: 0.8; border-color: rgba(21, 225, 194, 0.2); }
+.step-indicator--active { opacity: 1; border-color: rgba(88, 166, 255, 0.3); background: rgba(88, 166, 255, 0.06); }
+
+.step-indicator-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.step-indicator--done .step-indicator-num {
+  background: rgba(21, 225, 194, 0.15);
+  border-color: rgba(21, 225, 194, 0.3);
+  color: var(--accent-teal);
+}
+
+.step-indicator--active .step-indicator-num {
+  background: rgba(88, 166, 255, 0.15);
+  border-color: rgba(88, 166, 255, 0.3);
+  color: var(--accent-blue);
+}
+
+.step-indicator-label {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+/* ── ONBOARDING FORM ── */
+.onboarding-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3-5);
+}
+
+.onboarding-form-desc {
+  color: var(--muted);
+  font-size: var(--font-size-label);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── SETTINGS IMPACT PREVIEW ── */
+.setting-impact {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 8px var(--space-2-5);
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
+  color: var(--muted);
+  line-height: 1.5;
+  letter-spacing: var(--tracking-wide);
+  margin-top: -4px;
+}
+
+.setting-impact svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-blue);
+}
+

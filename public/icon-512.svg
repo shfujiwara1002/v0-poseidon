@@ -1,0 +1,47 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0B1221"/>
+
+  <!-- Outer circle glow -->
+  <defs>
+    <filter id="glow-512" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <radialGradient id="trident-gradient-512" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#40E8F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00F0FF;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Decorative rings -->
+  <circle cx="256" cy="256" r="234" fill="none" stroke="#00F0FF" stroke-width="2" opacity="0.3"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#00F0FF" stroke-width="2" opacity="0.2"/>
+
+  <!-- Trident/Wave icon group -->
+  <g filter="url(#glow-512)">
+    <!-- Center vertical line (trident shaft) -->
+    <line x1="256" y1="100" x2="256" y2="350" stroke="#00F0FF" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Left prong -->
+    <path d="M 256 180 Q 180 220 160 290" stroke="#00F0FF" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="160" cy="290" r="10" fill="#00F0FF"/>
+
+    <!-- Right prong -->
+    <path d="M 256 180 Q 332 220 352 290" stroke="#00F0FF" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="352" cy="290" r="10" fill="#00F0FF"/>
+
+    <!-- Bottom wave accent -->
+    <path d="M 180 320 Q 256 360 332 320" stroke="#40E8F0" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Accent corner dots -->
+  <circle cx="40" cy="40" r="5" fill="#00F0FF" opacity="0.6"/>
+  <circle cx="472" cy="40" r="5" fill="#00F0FF" opacity="0.6"/>
+  <circle cx="40" cy="472" r="5" fill="#00F0FF" opacity="0.6"/>
+  <circle cx="472" cy="472" r="5" fill="#00F0FF" opacity="0.6"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="biasaudit-grad-primary" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#00F0FF"/>
+    </linearGradient>
+    <linearGradient id="biasaudit-grad-fill" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(20,184,166,0.18)"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.10)"/>
+    </linearGradient>
+    <filter id="biasaudit-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Layer 0: Scale beam (horizontal bar) -->
+  <line x1="8" y1="18" x2="40" y2="18" stroke="url(#biasaudit-grad-primary)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Layer 1: Central pillar -->
+  <line x1="24" y1="18" x2="24" y2="40" stroke="url(#biasaudit-grad-primary)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Layer 2: Base -->
+  <path d="M16 40h16" stroke="url(#biasaudit-grad-primary)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Layer 3: Left pan -->
+  <path d="M8 18l-2 10h12l-2-10" stroke="url(#biasaudit-grad-primary)" stroke-width="2" stroke-linejoin="round" fill="url(#biasaudit-grad-fill)"/>
+  <!-- Layer 4: Right pan -->
+  <path d="M32 18l-2 10h12l-2-10" stroke="url(#biasaudit-grad-primary)" stroke-width="2" stroke-linejoin="round" fill="url(#biasaudit-grad-fill)"/>
+  <!-- Layer 5: Checkmark inside right pan (fairness verified) -->
+  <path d="M35 22l2 2 4-4" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Layer 6: Balance fulcrum triangle -->
+  <path d="M21 14l3-4 3 4z" fill="url(#biasaudit-grad-fill)" stroke="url(#biasaudit-grad-primary)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Layer 7: Glow dots -->
+  <circle cx="24" cy="12" r="1.5" fill="#14B8A6" filter="url(#biasaudit-glow)"/>
+  <circle cx="12" cy="24" r="1.5" fill="#00F0FF" filter="url(#biasaudit-glow)"/>
+  <circle cx="36" cy="24" r="1.5" fill="#00F0FF" filter="url(#biasaudit-glow)"/>
+</svg>

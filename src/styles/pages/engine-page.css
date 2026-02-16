@@ -1,0 +1,521 @@
+/* ══════════════════════════════════════════════════════
+   ENGINE PAGE — Command Center Layout
+   Reusable grid for Protect / Grow / Execute / Govern / Settings
+   ══════════════════════════════════════════════════════ */
+.engine-command {
+  width: min(1440px, calc(100% - 48px));
+  margin: 24px auto 40px;
+  display: grid;
+  gap: var(--hero-body-gap);
+  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-areas:
+    "nav    nav"
+    "hero   hero"
+    "main   side"
+    "footer footer";
+}
+
+.engine-command--full-width {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "nav"
+    "hero"
+    "main"
+    "footer";
+}
+
+/* ── Engine Pulse Hero ── */
+.engine-pulse {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--glass-border-page-strong);
+  background:
+    radial-gradient(120% 180% at 100% 0%, rgba(var(--accent-soft-rgb), 0.24), transparent 62%),
+    linear-gradient(180deg, rgba(10, 23, 45, 0.9), rgba(8, 17, 33, 0.96));
+  padding: var(--space-5-5);
+  display: grid;
+  gap: var(--hero-body-gap);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+/* Engine-specific hero accent: subtle but immediately identifiable */
+.engine-page--protect .engine-pulse {
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in srgb, var(--engine-protect) 8%, transparent), transparent 62%),
+    linear-gradient(180deg, rgba(10, 23, 45, 0.9), rgba(8, 17, 33, 0.96));
+}
+
+.engine-page--grow .engine-pulse {
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in srgb, var(--engine-grow) 8%, transparent), transparent 62%),
+    linear-gradient(180deg, rgba(10, 23, 45, 0.9), rgba(8, 17, 33, 0.96));
+}
+
+.engine-page--execute .engine-pulse {
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in srgb, var(--engine-execute) 8%, transparent), transparent 62%),
+    linear-gradient(180deg, rgba(10, 23, 45, 0.9), rgba(8, 17, 33, 0.96));
+}
+
+.engine-page--govern .engine-pulse {
+  background:
+    radial-gradient(120% 180% at 100% 0%, color-mix(in srgb, var(--state-primary) 8%, transparent), transparent 62%),
+    linear-gradient(180deg, rgba(10, 23, 45, 0.9), rgba(8, 17, 33, 0.96));
+}
+
+.engine-pulse-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.engine-pulse-kpis {
+  display: grid;
+  gap: var(--space-2-5);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@supports (container-type: inline-size) {
+  .engine-pulse-kpis,
+  .dashboard-pulse-kpis {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 639px) {
+    .engine-pulse-kpis,
+    .dashboard-pulse-kpis {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @container (min-width: 640px) {
+    .engine-pulse-kpis.kpi-layout--1-2,
+    .dashboard-pulse-kpis.kpi-layout--1-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .engine-pulse-kpis.kpi-layout--3,
+    .dashboard-pulse-kpis.kpi-layout--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .engine-pulse-kpis.kpi-layout--4,
+    .dashboard-pulse-kpis.kpi-layout--4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .engine-pulse-kpis.kpi-layout--5,
+    .dashboard-pulse-kpis.kpi-layout--5 {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .engine-pulse-kpis.kpi-layout--6,
+    .dashboard-pulse-kpis.kpi-layout--6 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.engine-pulse-kpis.kpi-layout--0 {
+  display: none;
+}
+
+.engine-pulse-kpis.kpi-layout--1-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.engine-pulse-kpis.kpi-layout--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.engine-pulse-kpis.kpi-layout--4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.engine-pulse-kpis.kpi-layout--5 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.engine-pulse-kpis.kpi-layout--5 > *:nth-child(-n + 3) {
+  grid-column: span 2;
+}
+
+.engine-pulse-kpis.kpi-layout--5 > *:nth-child(n + 4) {
+  grid-column: span 3;
+}
+
+.engine-pulse-kpis.kpi-layout--6 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ── Engine Main/Side columns ── */
+.engine-main-col {
+  display: grid;
+  gap: var(--space-3-5);
+  align-content: start;
+}
+
+.engine-side-col {
+  display: grid;
+  gap: var(--space-3-5);
+  align-content: start;
+}
+
+/* ── Engine page card — matches dashboard-main-card / dashboard-side-card ── */
+.engine-card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--glass-border-page);
+  background:
+    radial-gradient(120% 170% at 100% 0%, rgba(var(--accent-soft-rgb), 0.2), transparent 66%),
+    linear-gradient(180deg, rgba(10, 22, 43, 0.91), rgba(8, 16, 31, 0.97));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 14px 30px rgba(5, 9, 21, 0.34);
+  padding: 16px;
+  display: grid;
+  gap: var(--card-gap-internal);
+}
+
+/* engine-section: transparent layout wrapper for sections whose children
+   already use GlassCard — avoids double-card nesting visual artefact */
+.engine-section {
+  display: grid;
+  gap: var(--card-gap-internal);
+}
+
+.engine-card header,
+.engine-section header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.engine-card header strong,
+.engine-section header strong {
+  font-size: var(--font-size-ui-16-8);
+}
+
+/* ── Engine list items ── */
+.engine-item-list {
+  display: grid;
+  gap: var(--space-2-5);
+}
+
+/* ── Responsive: Command Center ── */
+@media (max-width: 1080px) {
+  .dashboard-command {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "hero"
+      "strip"
+      "main"
+      "side"
+      "footer";
+  }
+
+  .engine-command {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "hero"
+      "main"
+      "side"
+      "footer";
+  }
+
+  .dashboard-pulse,
+  .engine-pulse {
+    grid-template-columns: 1fr;
+  }
+
+  .engine-health-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard-command,
+  .engine-command {
+    width: calc(100% - 24px);
+    margin: 12px auto 24px;
+    gap: 12px;
+  }
+
+  .dashboard-pulse,
+  .engine-pulse {
+    padding: var(--space-3-5);
+  }
+
+  .dashboard-main-card,
+  .dashboard-side-card,
+  .engine-card {
+    padding: var(--space-3-5);
+  }
+
+  .dashboard-pulse-kpis,
+  .engine-pulse-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .engine-health-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-side-actions {
+    flex-direction: column;
+  }
+}
+
+/* ── Mission enforcement utility classes ── */
+.entry-nav--grid {
+  grid-area: nav;
+}
+
+.entry-chip-row--compact {
+  margin-top: 8px;
+}
+
+.command-grid-hero {
+  grid-area: hero;
+}
+
+.command-grid-strip {
+  grid-area: strip;
+}
+
+.command-grid-main {
+  grid-area: main;
+}
+
+.command-grid-side {
+  grid-area: side;
+}
+
+.command-grid-side-hidden {
+  grid-area: side;
+  display: none;
+}
+
+.command-grid-footer {
+  grid-area: footer;
+}
+
+.contract-widget-shadow {
+  display: none;
+}
+
+.govern-footer-spacer {
+  flex: 1;
+}
+
+/* ═══ Engine Scene Polish — MIT Presentation ═══ */
+
+.engine-pulse { padding: 28px var(--space-5-5); }
+
+.engine-card {
+  transition: border-color var(--motion-duration-fast) ease,
+              transform var(--motion-duration-fast) ease;
+}
+.engine-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(155, 195, 238, 0.18);
+}
+
+.engine-main-col, .engine-side-col { gap: var(--space-4-5); }
+
+.engine-card header strong,
+.engine-section header strong { font-size: var(--font-size-ui-17-6); }
+
+.engine-page--protect .engine-card:hover { border-color: color-mix(in srgb, var(--engine-protect) 18%, transparent); }
+.engine-page--grow .engine-card:hover { border-color: color-mix(in srgb, var(--engine-grow) 18%, transparent); }
+.engine-page--execute .engine-card:hover { border-color: color-mix(in srgb, var(--engine-execute) 18%, transparent); }
+.engine-page--govern .engine-card:hover { border-color: color-mix(in srgb, var(--state-primary) 18%, transparent); }
+
+.dashboard-pulse { padding: 28px var(--space-5-5); }
+.dashboard-main-col, .dashboard-side-col { gap: var(--space-4-5); }
+
+.engine-command--full-width .engine-card { max-width: 820px; }
+
+/* ═══ Phase 2: Hero Differentiation ═══ */
+
+/* Headline hierarchy: every engine hero gets premium type */
+.engine-pulse-copy h1,
+.dashboard-pulse-copy h1 {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Command hero (Dashboard): emphasize authority */
+[data-hero-variant="command"] .entry-kicker {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgba(161, 189, 222, 0.72);
+}
+
+/* Focused hero (Protect/Grow): status bar signature */
+.hero-focused-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--context-accent) 6%, rgba(12, 27, 52, 0.8));
+  border: 1px solid color-mix(in srgb, var(--context-accent) 16%, rgba(143, 186, 231, 0.18));
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: rgba(220, 233, 248, 0.9);
+  width: fit-content;
+}
+
+.hero-focused-status-engine {
+  font-weight: 600;
+  color: var(--context-accent);
+}
+
+.hero-focused-status-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(143, 186, 231, 0.24);
+  flex-shrink: 0;
+}
+
+.hero-focused-status-mode {
+  color: rgba(181, 205, 234, 0.7);
+}
+
+/* Engine-tinted status bars */
+.engine-page--protect .hero-focused-status-bar {
+  background: color-mix(in srgb, var(--engine-protect) 6%, rgba(12, 27, 52, 0.8));
+  border-color: color-mix(in srgb, var(--engine-protect) 18%, rgba(143, 186, 231, 0.18));
+}
+
+.engine-page--grow .hero-focused-status-bar {
+  background: color-mix(in srgb, var(--engine-grow) 6%, rgba(12, 27, 52, 0.8));
+  border-color: color-mix(in srgb, var(--engine-grow) 18%, rgba(143, 186, 231, 0.18));
+}
+
+/* Analytical hero (Execute, Govern): data confidence */
+.hero-analytical-summary {
+  border-color: rgba(143, 186, 231, 0.28);
+  background: rgba(12, 27, 52, 0.72);
+}
+
+.hero-analytical-table {
+  gap: 10px;
+}
+
+.hero-analytical-table div {
+  background: rgba(10, 23, 45, 0.66);
+  border-color: rgba(143, 186, 231, 0.22);
+}
+
+/* Execute-specific analytical accent */
+.engine-page--execute .hero-analytical-summary {
+  border-color: color-mix(in srgb, var(--engine-execute) 20%, rgba(143, 186, 231, 0.22));
+}
+
+.engine-page--execute .hero-analytical-table div {
+  border-color: color-mix(in srgb, var(--engine-execute) 12%, rgba(143, 186, 231, 0.18));
+}
+
+/* Govern-specific analytical accent */
+.engine-page--govern .hero-analytical-summary {
+  border-color: color-mix(in srgb, var(--state-primary) 20%, rgba(143, 186, 231, 0.22));
+}
+
+.engine-page--govern .hero-analytical-table div {
+  border-color: color-mix(in srgb, var(--state-primary) 12%, rgba(143, 186, 231, 0.18));
+}
+
+/* Editorial hero (Settings): calm, utilitarian */
+.hero-editorial-kicker {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.hero-editorial-subline {
+  color: rgba(181, 205, 234, 0.72);
+}
+
+.hero-editorial-action {
+  border-radius: 12px;
+}
+
+/* ═══ Phase 3: Engine Color Semantics ═══ */
+
+/* Subtle engine accent on hero kicker */
+.engine-page--protect .entry-kicker { color: color-mix(in srgb, var(--engine-protect) 60%, rgba(161, 189, 222, 0.72)); }
+.engine-page--execute .entry-kicker { color: color-mix(in srgb, var(--engine-execute) 50%, rgba(161, 189, 222, 0.72)); }
+.engine-page--govern .entry-kicker { color: color-mix(in srgb, var(--state-primary) 50%, rgba(161, 189, 222, 0.72)); }
+
+/* Engine-tinted section header icons */
+.engine-page--protect .mission-section-header-icon { color: var(--engine-protect); }
+.engine-page--execute .mission-section-header-icon { color: var(--engine-execute); }
+.engine-page--govern .mission-section-header-icon { color: var(--state-primary); }
+
+/* Per-engine hero border accent */
+.engine-page--protect .engine-pulse { border-color: color-mix(in srgb, var(--engine-protect) 14%, rgba(163, 203, 244, 0.26)); }
+.engine-page--execute .engine-pulse { border-color: color-mix(in srgb, var(--engine-execute) 14%, rgba(163, 203, 244, 0.26)); }
+.engine-page--govern .engine-pulse { border-color: color-mix(in srgb, var(--state-primary) 14%, rgba(163, 203, 244, 0.26)); }
+
+/* ═══ Phase 4: Whitespace Rhythm + Micro-Motion ═══ */
+
+/* Hero-to-body breathing */
+.command-grid-hero { margin-bottom: 4px; }
+
+/* Proof line polish */
+.proof-line {
+  transition: opacity var(--motion-duration-base) ease;
+}
+
+/* Section header breathing */
+.mission-section-header { gap: 6px; }
+.mission-section-header-title strong {
+  font-size: var(--font-size-ui-15-2);
+  letter-spacing: 0.04em;
+}
+
+/* List items: subtle entrance ready */
+.engine-item-list > * {
+  transition: opacity var(--motion-duration-enter) var(--motion-easing-standard),
+              transform var(--motion-duration-enter) var(--motion-easing-standard);
+}
+
+/* CTA action bar: pill shape upgrade */
+.dashboard-pulse-action {
+  border-radius: 12px;
+  transition: border-color var(--motion-duration-fast) ease;
+}
+
+/* Engine health strip cells: micro-lift */
+.engine-health-cell {
+  transition: border-color var(--motion-duration-fast) ease,
+              background var(--motion-duration-fast) ease,
+              transform var(--motion-duration-fast) ease;
+}
+.engine-health-cell:hover { transform: translateY(-1px); }
+
+/* Alerts hub items: interaction polish */
+.alerts-hub-item {
+  transition: border-color var(--motion-duration-fast) ease,
+              transform var(--motion-duration-fast) ease;
+}
+.alerts-hub-item:hover { transform: translateY(-1px); }
+
+/* Responsive: tighten hero type on mobile */
+@media (max-width: 760px) {
+  .engine-pulse-copy h1,
+  .dashboard-pulse-copy h1 {
+    font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+  }
+
+  .hero-analytical-table {
+    grid-template-columns: 1fr;
+  }
+
+  .command-grid-hero { margin-bottom: 0; }
+}

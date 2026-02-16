@@ -1,0 +1,51 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pulse-grad-stroke" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="pulse-grad-fill" x1="12" y1="4" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.06)"/>
+      <stop offset="1" stop-color="transparent"/>
+    </linearGradient>
+    <filter id="pulse-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Baseline Fill -->
+  <path d="M2 20H22V12L19 12L17.5 15L15 6L12.5 16L11 12H2V20Z" fill="url(#pulse-grad-fill)"/>
+
+  <!-- LAYER 1: Waveform -->
+  <path d="M2 13H10L12.5 17L15 4L17.5 16L19 13H22" stroke="url(#pulse-grad-stroke)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Baseline extension -->
+  <line x1="2" y1="13" x2="5" y2="13" stroke="#00F0FF" stroke-width="0.6" stroke-opacity="0.3"/>
+  <line x1="20" y1="13" x2="22" y2="13" stroke="#14B8A6" stroke-width="0.6" stroke-opacity="0.3"/>
+
+  <!-- LAYER 2: Context Elements -->
+  <!-- Heart Rate Box -->
+  <rect x="11" y="2" width="8" height="16" rx="1" stroke="#00F0FF" stroke-width="0.5" stroke-dasharray="2 2" stroke-opacity="0.3"/>
+  
+  <!-- BPM Readout lines -->
+  <line x1="22" y1="6" x2="24" y2="6" stroke="white" stroke-width="0.4" opacity="0.6"/>
+  <line x1="22" y1="7" x2="23.5" y2="7" stroke="white" stroke-width="0.4" opacity="0.4"/>
+  
+  <!-- Grid -->
+  <line x1="0" y1="8" x2="24" y2="8" stroke="white" stroke-width="0.3" opacity="0.08"/>
+  <line x1="0" y1="18" x2="24" y2="18" stroke="white" stroke-width="0.3" opacity="0.08"/>
+  <line x1="8" y1="0" x2="8" y2="24" stroke="white" stroke-width="0.3" opacity="0.08"/>
+  <line x1="16" y1="0" x2="16" y2="24" stroke="white" stroke-width="0.3" opacity="0.08"/>
+
+  <!-- LAYER 3: Highlights -->
+  <!-- Apex -->
+  <circle cx="15" cy="4" r="1.2" fill="#00F0FF" filter="url(#pulse-glow)"/>
+  <!-- Secondary Pulse Peak -->
+  <circle cx="12.5" cy="17" r="0.8" fill="#14B8A6" filter="url(#pulse-glow)"/>
+  <!-- Start Dot -->
+  <circle cx="2" cy="13" r="0.6" fill="#00F0FF" filter="url(#pulse-glow)"/>
+</svg>

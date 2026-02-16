@@ -1,0 +1,51 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="signal-grad-arc" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="rgba(20,184,166,0.4)"/>
+    </linearGradient>
+    <radialGradient id="signal-grad-radial" cx="4" cy="20" r="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.1)"/>
+      <stop offset="1" stop-color="transparent"/>
+    </radialGradient>
+    <filter id="signal-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Background -->
+  <circle cx="4" cy="20" r="16" fill="url(#signal-grad-radial)"/>
+
+  <!-- LAYER 1: Arcs -->
+  <!-- Arc 1 -->
+  <path d="M4 14 A6 6 0 0 1 10 20" stroke="url(#signal-grad-arc)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Arc 2 -->
+  <path d="M4 10 A10 10 0 0 1 14 20" stroke="url(#signal-grad-arc)" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <!-- Arc 3 -->
+  <path d="M4 6 A14 14 0 0 1 18 20" stroke="url(#signal-grad-arc)" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <!-- Arc 4 -->
+  <path d="M4 2 A18 18 0 0 1 22 20" stroke="url(#signal-grad-arc)" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- LAYER 2: Antenna & Particles -->
+  <!-- Antenna Base -->
+  <path d="M4 23V20 L6 20" stroke="#00F0FF" stroke-width="0.8"/>
+  <circle cx="4" cy="20" r="1" fill="#00F0FF"/>
+  
+  <!-- Particles on arcs -->
+  <circle cx="8" cy="15.8" r="0.6" fill="#14B8A6"/>
+  <circle cx="13" cy="12.9" r="0.6" fill="#14B8A6"/>
+  <circle cx="19" cy="9.4" r="0.6" fill="#14B8A6"/>
+  
+  <!-- Interference Line -->
+  <path d="M2 12C4 11 6 13 8 12C10 11 12 13 14 12C16 11 18 13 20 12" stroke="white" stroke-width="0.4" stroke-opacity="0.15" stroke-dasharray="1 1"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="4" cy="20" r="1.5" fill="#00F0FF" filter="url(#signal-glow)"/>
+  
+  <circle cx="8" cy="15.8" r="0.8" fill="#00F0FF" filter="url(#signal-glow)"/>
+  <circle cx="13" cy="12.9" r="0.8" fill="#14B8A6" filter="url(#signal-glow)"/>
+</svg>

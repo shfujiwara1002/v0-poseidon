@@ -1,0 +1,24 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient fill (Soft 3D tactile depth) -->
+    <linearGradient id="shield-soft-fill" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.1)"/>
+      <stop offset="1" stop-color="rgba(20,184,166,0.03)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Soft background fill (tactile depth) -->
+  <path d="M12 2 L4 6 V11 C4 16.5 7.5 21 12 22 C16.5 21 20 16.5 20 11 V6 L12 2 Z"
+        fill="url(#shield-soft-fill)"/>
+
+  <!-- LAYER 1: Primary outline (rounded caps for softness) -->
+  <path d="M12 2 L4 6 V11 C4 16.5 7.5 21 12 22 C16.5 21 20 16.5 20 11 V6 L12 2 Z"
+        stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 2: Inner shield (dashed, subtle depth) -->
+  <path d="M12 4.5 L6 7.5 V11 C6 15 9 18.5 12 19.5 C15 18.5 18 15 18 11 V7.5 L12 4.5 Z"
+        stroke="#14B8A6" stroke-width="0.8" stroke-dasharray="2 2" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 3: Central focal point (solid color, NO Gaussian blur filter) -->
+  <circle cx="12" cy="11" r="1" fill="#00F0FF" opacity="0.8"/>
+</svg>

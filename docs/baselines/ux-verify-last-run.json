@@ -1,0 +1,71 @@
+{
+  "ok": false,
+  "timestamp": "2026-02-15T21:01:13.993Z",
+  "total": 9,
+  "failed": 1,
+  "results": [
+    {
+      "cmd": "npm run test:run",
+      "ok": false,
+      "status": 1,
+      "stdout": "m\u001b[2m)\u001b[22m\u001b[33m 995\u001b[2mms\u001b[22m\u001b[39m\n     \u001b[33m\u001b[2m✓\u001b[22m\u001b[39m starts with approve button disabled \u001b[33m 714\u001b[2mms\u001b[22m\u001b[39m\n \u001b[31m❯\u001b[39m src/design-system/__tests__/design-system-enforcement.test.ts \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m | \u001b[22m\u001b[31m1 failed\u001b[39m\u001b[2m)\u001b[22m\u001b[33m 3219792\u001b[2mms\u001b[22m\u001b[39m\n     \u001b[32m✓\u001b[39m defines replacements for legacy/forbidden registry entries\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m\n     \u001b[32m✓\u001b[39m does not keep compat components in the active registry\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m\n\u001b[31m     \u001b[31m×\u001b[31m passes strict design-system gate for reachable pages and app surfaces\u001b[39m\u001b[33m 3219789\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/components/__tests__/PageShellSemantics.test.tsx \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 98\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/pages/__tests__/visual-system-all-pages.test.tsx \u001b[2m(\u001b[22m\u001b[2m19 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 735\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/components/__tests__/GovernContractSet.test.tsx \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 45\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/components/__tests__/DashboardInsightsPanel.test.tsx \u001b[2m(\u001b[22m\u001b[2m2 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 77\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/components/__tests__/GlassCard.test.tsx \u001b[2m(\u001b[22m\u001b[2m7 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 48\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/components/__tests__/PageShellKPIGrid.test.tsx \u001b[2m(\u001b[22m\u001b[2m3 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 94\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/contracts/__tests__/screen-contracts.test.tsx \u001b[2m(\u001b[22m\u001b[2m20 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 1217\u001b[2mms\u001b[22m\u001b[39m\n \u001b[32m✓\u001b[39m src/contracts/__tests__/screen-contracts-v4.test.tsx \u001b[2m(\u001b[22m\u001b[2m87 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[33m 1368\u001b[2mms\u001b[22m\u001b[39m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m14 passed\u001b[39m\u001b[22m\u001b[90m (16)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[31m2 failed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[1m\u001b[32m189 passed\u001b[39m\u001b[22m\u001b[90m (191)\u001b[39m\n\u001b[2m   Start at \u001b[22m 15:07:04\n\u001b[2m   Duration \u001b[22m 3225.89s\u001b[2m (transform 6443.79s, setup 3.39s, import 28972.01s, tests 6444.55s, environment 32.16s)\u001b[22m",
+      "stderr": "warnings ...` to show where the warning was created)\n\n\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Tests 2 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m src/components/__tests__/Button.test.tsx\u001b[2m > \u001b[22mButton\u001b[2m > \u001b[22mshows loading spinner when loading\n\u001b[31m\u001b[1mError\u001b[22m: Test timed out in 5000ms.\nIf this is a long-running test, pass a timeout value as the last argument or configure it globally with \"testTimeout\".\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m src/components/__tests__/Button.test.tsx:\u001b[2m35:3\u001b[22m\u001b[39m\n    \u001b[90m 33| \u001b[39m  })\u001b[33m;\u001b[39m\n    \u001b[90m 34| \u001b[39m\n    \u001b[90m 35| \u001b[39m  \u001b[34mit\u001b[39m(\u001b[32m'shows loading spinner when loading'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n    \u001b[90m   | \u001b[39m  \u001b[31m^\u001b[39m\n    \u001b[90m 36| \u001b[39m    \u001b[34mrender\u001b[39m(\u001b[33m<\u001b[39m\u001b[33mButton\u001b[39m \u001b[33mloading\u001b[39m\u001b[33m>\u001b[39mLoading\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mButton\u001b[39m\u001b[33m>\u001b[39m)\u001b[33m;\u001b[39m\n    \u001b[90m 37| \u001b[39m    \u001b[35mconst\u001b[39m spinner \u001b[33m=\u001b[39m screen\u001b[33m.\u001b[39m\u001b[34mgetByLabelText\u001b[39m(\u001b[32m'Loading'\u001b[39m)\u001b[33m;\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯\u001b[22m\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m src/design-system/__tests__/design-system-enforcement.test.ts\u001b[2m > \u001b[22mdesign system enforcement\u001b[2m > \u001b[22mpasses strict design-system gate for reachable pages and app surfaces\n\u001b[31m\u001b[1mError\u001b[22m: Test timed out in 5000ms.\nIf this is a long-running test, pass a timeout value as the last argument or configure it globally with \"testTimeout\".\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m src/design-system/__tests__/design-system-enforcement.test.ts:\u001b[2m30:3\u001b[22m\u001b[39m\n    \u001b[90m 28| \u001b[39m  })\u001b[33m;\u001b[39m\n    \u001b[90m 29| \u001b[39m\n    \u001b[90m 30| \u001b[39m  it('passes strict design-system gate for reachable pages and app sur…\n    \u001b[90m   | \u001b[39m  \u001b[31m^\u001b[39m\n    \u001b[90m 31| \u001b[39m    \u001b[35mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[34mspawnSync\u001b[39m(\u001b[32m'npm'\u001b[39m\u001b[33m,\u001b[39m [\u001b[32m'run'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'check:design-system'\u001b[39m]\u001b[33m,\u001b[39m {\n    \u001b[90m 32| \u001b[39m      cwd\u001b[33m:\u001b[39m prototypeRoot\u001b[33m,\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯\u001b[22m\u001b[39m"
+    },
+    {
+      "cmd": "npm run check:design-system",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:design-system\n> npm run check:design-system:strict\n\n\n> poseidon-prototype@0.1.0 check:design-system:strict\n> node scripts/check-design-system-usage.mjs --strict && node scripts/check-design-token-hygiene.mjs --strict\n\n[design-system] reachable files: 132\n[design-system] reachable pages: 42\n[design-system] reachable components: 59\n[design-system] usage checks passed.\n[token-hygiene] scanned 4697 lines across 11 page CSS files\n[token-hygiene] checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run check:motion-policy",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:motion-policy\n> node scripts/check-motion-policy.mjs\n\nMotion policy checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run check:a11y-structure",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:a11y-structure\n> node scripts/check-a11y-structure.mjs\n\nA11y structure checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run check:cta-hierarchy",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:cta-hierarchy\n> node scripts/check-cta-hierarchy.mjs\n\nCTA hierarchy checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run check:contrast-budget",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:contrast-budget\n> node scripts/check-contrast-budget.mjs\n\nContrast budget checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run build",
+      "ok": true,
+      "status": 0,
+      "stdout": "p:  1.92 kB\ndist/assets/ExecuteApproval-CYrDedxJ.js         5.09 kB │ gzip:  2.22 kB\ndist/assets/GovernAuditDetail-3F8kPHo0.js       5.49 kB │ gzip:  2.11 kB\ndist/assets/InsightsFeed-xF30rkfu.js            5.63 kB │ gzip:  2.23 kB\ndist/assets/GrowRecommendations-xFlq82Y8.js     5.72 kB │ gzip:  2.36 kB\ndist/assets/Landing-CP50a0uc.js                 5.75 kB │ gzip:  2.06 kB\ndist/assets/Signup-qPxVyKHR.js                  5.85 kB │ gzip:  2.29 kB\ndist/assets/AlertsHub-DwJtpuMz.js               6.02 kB │ gzip:  2.52 kB\ndist/assets/vendor-icons-DuanoRQr.js            6.22 kB │ gzip:  2.28 kB\ndist/assets/Onboarding-C_rZQPau.js              6.23 kB │ gzip:  2.32 kB\ndist/assets/ProtectAlertDetail-DQPaXhEi.js      6.34 kB │ gzip:  2.55 kB\ndist/assets/GovernPolicy-d6sErEml.js            6.54 kB │ gzip:  2.38 kB\ndist/assets/Settings-CPBVpGdF.js                6.86 kB │ gzip:  2.57 kB\ndist/assets/GovernAuditLedger-BjhgOItM.js       6.92 kB │ gzip:  2.44 kB\ndist/assets/GovernOversight-BMl2pQez.js         7.41 kB │ gzip:  2.77 kB\ndist/assets/Govern-BI18u3dg.js                  7.54 kB │ gzip:  2.77 kB\ndist/assets/Grow-Ds58PZsS.js                    7.68 kB │ gzip:  3.13 kB\ndist/assets/SettingsRights-CAjQTumu.js          7.69 kB │ gzip:  2.87 kB\ndist/assets/GrowScenarios-Dx8aCG1N.js           8.09 kB │ gzip:  3.12 kB\ndist/assets/CommandPalette-DXf-pWNV.js          8.09 kB │ gzip:  2.56 kB\ndist/assets/Execute-CI_2rf81.js                14.79 kB │ gzip:  5.22 kB\ndist/assets/Dashboard-DXwGso-X.js              17.33 kB │ gzip:  6.39 kB\ndist/assets/Protect-D_r2LIcw.js                21.91 kB │ gzip:  7.22 kB\ndist/assets/vendor-runtime-CoYMLXb4.js         29.05 kB │ gzip:  9.21 kB\ndist/assets/AIChatbot-CXsYMqIE.js              31.29 kB │ gzip:  9.68 kB\ndist/assets/index-BU0xMuFL.js                 118.23 kB │ gzip: 26.94 kB\ndist/assets/vendor-motion-IuvlYKeM.js         121.67 kB │ gzip: 38.84 kB\ndist/assets/vendor-react-DlnVF1cg.js          140.53 kB │ gzip: 44.96 kB\n✓ built in 11.88s",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run check:bundle-budget",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 check:bundle-budget\n> node scripts/check-bundle-budget.mjs\n\n{\n  \"css\": {\n    \"raw\": 177653,\n    \"gzip\": 30976\n  },\n  \"indexJs\": {\n    \"file\": \"index-BU0xMuFL.js\",\n    \"raw\": 118258,\n    \"gzip\": 26863\n  },\n  \"budgets\": {\n    \"cssRawMax\": 195000,\n    \"cssGzipMax\": 34000,\n    \"indexJsRawMax\": 130000,\n    \"indexJsGzipMax\": 45000\n  }\n}\n\nBundle budget checks passed.",
+      "stderr": ""
+    },
+    {
+      "cmd": "npm run verify:pwa",
+      "ok": true,
+      "status": 0,
+      "stdout": "> poseidon-prototype@0.1.0 verify:pwa\n> node scripts/verify-pwa.mjs\n\nPWA verification passed.",
+      "stderr": ""
+    }
+  ]
+}

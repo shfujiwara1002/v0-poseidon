@@ -1,0 +1,38 @@
+/* ── LAYOUT PRIMITIVES ── */
+.container {
+  width: min(100%, var(--container-max));
+  margin: 0 auto;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+/* Mobile: single column. Desktop: auto-fit grid */
+.auto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+}
+
+/* Mobile: single column. Desktop: sidebar */
+.sidebar-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+}
+

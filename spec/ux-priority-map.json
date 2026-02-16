@@ -1,0 +1,31 @@
+{
+  "criteriaWeights": {
+    "first5s": 3,
+    "oneCta": 3,
+    "heroDiff": 2,
+    "navConfidence": 3,
+    "calm": 2,
+    "performance": 3,
+    "trust": 1,
+    "copy": 1,
+    "state": 2,
+    "a11y": 2,
+    "reliability": 3,
+    "memorable": 1
+  },
+  "severityWeights": {
+    "P0": 3,
+    "P1": 2,
+    "P2": 1
+  },
+  "demoImpactWeights": {
+    "high": 3,
+    "medium": 2,
+    "low": 1
+  },
+  "effortCost": {
+    "S": 1,
+    "M": 2,
+    "L": 3
+  }
+}

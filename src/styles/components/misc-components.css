@@ -1,0 +1,191 @@
+/* ── NOTIFICATION RECENCY ── */
+.notification-recency {
+  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
+  color: var(--muted-2);
+  margin-left: 4px;
+}
+
+/* ── AUDIT TIMELINE ── */
+.audit-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 12px;
+  border-left: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+.audit-timeline-item {
+  display: flex;
+  gap: 12px;
+  padding: var(--space-2-5) 0;
+  position: relative;
+}
+
+.audit-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  margin-left: -var(--space-4-5);
+  margin-top: 2px;
+}
+
+.audit-timeline-dot--teal { background: rgba(21, 225, 194, 0.3); border-color: rgba(21, 225, 194, 0.5); }
+.audit-timeline-dot--blue { background: rgba(59, 130, 246, 0.3); border-color: rgba(59, 130, 246, 0.5); }
+.audit-timeline-dot--amber { background: rgba(245, 158, 11, 0.3); border-color: rgba(245, 158, 11, 0.5); }
+
+.audit-timeline-content { flex: 1; }
+
+.audit-timeline-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+}
+
+.audit-timeline-meta {
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.audit-timeline-time {
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  margin-top: 4px;
+}
+
+/* ── CROSS-MODULE CONTEXT BAR ── */
+.context-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 8px;
+}
+
+.context-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+  min-height: var(--touch-min);
+}
+
+.context-bar-item:last-child { border-right: none; }
+.context-bar-item:hover { background: rgba(255, 255, 255, 0.04); color: var(--text); }
+.context-bar-item--active { color: var(--text); font-weight: 600; background: rgba(255, 255, 255, 0.04); }
+
+.context-bar-hint {
+  font-size: var(--font-size-small);
+  color: var(--muted-2);
+  margin-left: auto;
+  font-family: var(--font-mono);
+  padding-right: 12px;
+  display: none;
+}
+
+/* ── FACTOR LIST (Explainability) ── */
+.factor-list {
+  display: grid;
+  gap: 12px;
+}
+
+.factor-row {
+  display: grid;
+  gap: 6px;
+}
+
+.factor-label {
+  font-size: 16px;
+  color: var(--muted-2);
+}
+
+.factor-track {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.factor-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, rgba(21, 225, 194, 0.4), rgba(21, 225, 194, 0.8));
+  border-radius: inherit;
+}
+
+/* ── COMPARISON TABLE ── */
+.comparison-table {
+  display: grid;
+  gap: 12px;
+}
+
+.comparison-header,
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  align-items: center;
+  text-align: left;
+}
+
+.comparison-header {
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-wider);
+  color: var(--muted-2);
+}
+
+.comparison-highlight {
+  color: var(--accent-cyan);
+}
+
+.comparison-body {
+  display: grid;
+  gap: 8px;
+}
+
+.comparison-row {
+  padding: 12px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.comparison-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Card-based mobile labels */
+.comparison-row span:first-child { font-weight: 600; }
+.comparison-row span:nth-child(2)::before { content: "Poseidon: "; font-size: var(--font-size-small); opacity: 0.6; }
+.comparison-row span:nth-child(3)::before { content: "Traditional: "; font-size: var(--font-size-small); opacity: 0.6; }
+
+.comparison-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+

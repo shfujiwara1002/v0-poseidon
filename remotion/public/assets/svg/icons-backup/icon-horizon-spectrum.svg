@@ -1,0 +1,54 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="horizon-grad-1" x1="2" y1="18" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.2)"/>
+    </linearGradient>
+    <linearGradient id="horizon-grad-2" x1="4" y1="14" x2="20" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="rgba(139,92,246,0.2)"/>
+    </linearGradient>
+    <linearGradient id="horizon-grad-3" x1="6" y1="10" x2="18" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.2)"/>
+    </linearGradient>
+    <filter id="horizon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Background Fills -->
+  <rect x="2" y="17" width="20" height="2" rx="1" fill="url(#horizon-grad-1)" fill-opacity="0.3"/>
+  <rect x="4" y="13" width="16" height="2" rx="1" fill="url(#horizon-grad-2)" fill-opacity="0.3"/>
+  <rect x="6" y="9" width="12" height="2" rx="1" fill="url(#horizon-grad-3)" fill-opacity="0.3"/>
+
+  <!-- LAYER 1: Gradient Strokes -->
+  <!-- Bottom Bar (Cyan) -->
+  <rect x="2" y="17" width="20" height="2" rx="1" stroke="url(#horizon-grad-1)" stroke-width="1.2"/>
+  <!-- Middle Bar (Violet) -->
+  <rect x="4" y="13" width="16" height="2" rx="1" stroke="url(#horizon-grad-2)" stroke-width="1"/>
+  <!-- Top Bar (Amber) -->
+  <rect x="6" y="9" width="12" height="2" rx="1" stroke="url(#horizon-grad-3)" stroke-width="0.8"/>
+
+  <!-- LAYER 2: Details -->
+  <!-- Connectors -->
+  <line x1="12" y1="17" x2="12" y2="15" stroke="#00F0FF" stroke-width="0.5"/>
+  <line x1="12" y1="13" x2="12" y2="11" stroke="#8B5CF6" stroke-width="0.5"/>
+  
+  <!-- Upward Arrow -->
+  <path d="M12 9V5 M10.5 6.5L12 5L13.5 6.5" stroke="#F59E0B" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Scan Line -->
+  <line x1="4" y1="18" x2="20" y2="18" stroke="#00F0FF" stroke-width="0.5" stroke-dasharray="2 3" stroke-opacity="0.6"/>
+  
+  <!-- LAYER 3: Glows -->
+  <circle cx="12" cy="18" r="1.5" fill="#00F0FF" filter="url(#horizon-glow)"/>
+  <circle cx="12" cy="5" r="0.8" fill="#F59E0B" filter="url(#horizon-glow)"/>
+  
+  <circle cx="6" cy="14" r="0.5" fill="#8B5CF6" filter="url(#horizon-glow)"/>
+  <circle cx="18" cy="14" r="0.5" fill="#8B5CF6" filter="url(#horizon-glow)"/>
+</svg>

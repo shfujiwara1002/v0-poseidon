@@ -1,0 +1,107 @@
+name: UX Quality
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  ux-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Build for visual capture
+        run: npm run build
+
+      - name: UX verify
+        run: npm run ux:verify
+
+      - name: Start preview server
+        run: npx vite preview --port 4173 &
+        env:
+          CI: true
+
+      - name: Wait for preview server
+        run: npx wait-on http://127.0.0.1:4173 --timeout 15000 || sleep 5
+
+      - name: UX scan (strict — Playwright required)
+        run: npm run ux:scan:strict
+
+      - name: Enforce P0 threshold
+        run: |
+          node -e "const fs=require('fs');const p='docs/baselines/ux-audit-latest.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));const p0=(d.issues||[]).filter(i=>i.severity==='P0'&&i.status!=='done');if(p0.length){console.error('P0 issues found:',p0.length);process.exit(1)}console.log('No open P0 issues')"
+
+      - name: Upload UX artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux-pr-artifacts
+          path: |
+            docs/baselines/ux-audit-latest.json
+            docs/baselines/ux-visual-capture-last-run.json
+            docs/baselines/ux-visual-diff-last-run.json
+            docs/baselines/ux-dom-heuristics-last-run.json
+            docs/baselines/screenshots/latest
+
+  ux-nightly:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium (best-effort)
+        run: npx playwright install chromium --with-deps || true
+
+      - name: Build
+        run: npm run build || true
+
+      - name: Start preview server
+        run: npx vite preview --port 4173 &
+        env:
+          CI: true
+
+      - name: Wait for preview server
+        run: npx wait-on http://127.0.0.1:4173 --timeout 15000 || sleep 5
+
+      - name: UX scan (non-blocking)
+        run: npm run ux:scan || true
+
+      - name: UX report (non-blocking)
+        run: npm run ux:report || true
+
+      - name: Upload nightly UX artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux-nightly-artifacts
+          path: |
+            docs/baselines/ux-audit-latest.json
+            docs/baselines/ux-audit-latest.md
+            docs/baselines/ux-visual-capture-last-run.json
+            docs/baselines/ux-visual-diff-last-run.json
+            docs/baselines/ux-dom-heuristics-last-run.json
+            docs/baselines/screenshots/latest

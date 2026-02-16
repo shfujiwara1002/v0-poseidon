@@ -1,0 +1,92 @@
+/* ── Poseidon Design System v2 — Effect Preset System ──
+ * 5 switchable visual themes via CSS custom properties.
+ * Toggle with: document.documentElement.dataset.effectPreset = 'neon'
+ * Generated from: design-system/tokens/effect-presets.tokens.json
+ */
+
+/* ── Default: neon (Poseidon signature style) ── */
+:root {
+  --ds-surface-bg: oklch(0.18 0.02 250 / 0.6);
+  --ds-surface-border: oklch(1 0 0 / 0.08);
+  --ds-surface-blur: 12px;
+  --ds-glow-opacity: 0.12;
+  --ds-glow-spread: 20px;
+  --ds-animation-entry: fadeUp;
+  --ds-glass-inset: inset 0 1px 0 0 oklch(1 0 0 / 0.2), inset 0 -1px 0 0 oklch(1 0 0 / 0.08);
+  --ds-backdrop-filter: blur(12px) saturate(1.55) brightness(1.08);
+  --ds-border-radius-surface: var(--radius-md);
+  --ds-surface-shadow: 0 4px 16px oklch(0 0 0 / 0.2);
+}
+
+/* ── minimal — Clean professional ── */
+[data-effect-preset="minimal"] {
+  --ds-surface-bg: oklch(0.18 0.02 250);
+  --ds-surface-border: oklch(1 0 0 / 0.12);
+  --ds-surface-blur: 0px;
+  --ds-glow-opacity: 0;
+  --ds-glow-spread: 0px;
+  --ds-animation-entry: fade;
+  --ds-glass-inset: none;
+  --ds-backdrop-filter: none;
+  --ds-surface-shadow: 0 2px 8px oklch(0 0 0 / 0.15);
+}
+
+/* ── glass — iOS-inspired ── */
+[data-effect-preset="glass"] {
+  --ds-surface-bg: oklch(0.18 0.02 250 / 0.4);
+  --ds-surface-border: oklch(1 0 0 / 0.06);
+  --ds-surface-blur: 16px;
+  --ds-glow-opacity: 0;
+  --ds-glow-spread: 0px;
+  --ds-animation-entry: fadeUp;
+  --ds-glass-inset: inset 0 1px 0 0 oklch(1 0 0 / 0.15);
+  --ds-backdrop-filter: blur(16px) saturate(1.4);
+  --ds-surface-shadow: 0 8px 32px oklch(0 0 0 / 0.25);
+}
+
+/* ── neon — Poseidon signature (default, explicit) ── */
+[data-effect-preset="neon"] {
+  --ds-surface-bg: oklch(0.18 0.02 250 / 0.6);
+  --ds-surface-border: oklch(1 0 0 / 0.08);
+  --ds-surface-blur: 12px;
+  --ds-glow-opacity: 0.12;
+  --ds-glow-spread: 20px;
+  --ds-animation-entry: fadeUp;
+  --ds-glass-inset: inset 0 1px 0 0 oklch(1 0 0 / 0.2), inset 0 -1px 0 0 oklch(1 0 0 / 0.08);
+  --ds-backdrop-filter: blur(12px) saturate(1.55) brightness(1.08);
+  --ds-surface-shadow: 0 4px 16px oklch(0 0 0 / 0.2);
+}
+
+/* ── aurora — Maximum visual impact ── */
+[data-effect-preset="aurora"] {
+  --ds-surface-bg: oklch(0.18 0.02 250 / 0.5);
+  --ds-surface-border: oklch(1 0 0 / 0.10);
+  --ds-surface-blur: 20px;
+  --ds-glow-opacity: 0.18;
+  --ds-glow-spread: 30px;
+  --ds-animation-entry: stagger;
+  --ds-glass-inset: inset 0 1px 0 0 oklch(1 0 0 / 0.25), inset 0 0 20px oklch(1 0 0 / 0.06);
+  --ds-backdrop-filter: blur(20px) saturate(1.6) brightness(1.1);
+  --ds-surface-shadow: 0 8px 40px oklch(0 0 0 / 0.3);
+}
+
+/* ── terminal — Bloomberg-style dense ── */
+[data-effect-preset="terminal"] {
+  --ds-surface-bg: oklch(0.12 0.01 260);
+  --ds-surface-border: oklch(1 0 0 / 0.15);
+  --ds-surface-blur: 0px;
+  --ds-glow-opacity: 0;
+  --ds-glow-spread: 0px;
+  --ds-animation-entry: none;
+  --ds-glass-inset: none;
+  --ds-backdrop-filter: none;
+  --ds-border-radius-surface: 4px;
+  --ds-surface-shadow: 0 1px 3px oklch(0 0 0 / 0.3);
+}
+
+/* ── Glow utility per engine color ── */
+.ds-glow-protect { box-shadow: 0 0 var(--ds-glow-spread) oklch(0.70 0.18 155 / var(--ds-glow-opacity)); }
+.ds-glow-grow    { box-shadow: 0 0 var(--ds-glow-spread) oklch(0.58 0.22 285 / var(--ds-glow-opacity)); }
+.ds-glow-execute { box-shadow: 0 0 var(--ds-glow-spread) oklch(0.80 0.16 95 / var(--ds-glow-opacity)); }
+.ds-glow-govern  { box-shadow: 0 0 var(--ds-glow-spread) oklch(0.62 0.18 250 / var(--ds-glow-opacity)); }
+.ds-glow-cyan    { box-shadow: 0 0 var(--ds-glow-spread) oklch(0.85 0.18 195 / var(--ds-glow-opacity)); }

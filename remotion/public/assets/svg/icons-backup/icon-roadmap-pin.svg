@@ -1,0 +1,53 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pin-grad-stroke" x1="12" y1="2" x2="12" y2="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#EAB308"/>
+    </linearGradient>
+    <radialGradient id="pin-grad-fill" cx="12" cy="7" r="5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(245,158,11,0.18)"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0)"/>
+    </radialGradient>
+    <filter id="pin-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Pin Fill -->
+  <path d="M12 2C9.2 2 7 4.2 7 7C7 10.5 12 16 12 16C12 16 17 10.5 17 7C17 4.2 14.8 2 12 2Z" fill="url(#pin-grad-fill)"/>
+
+  <!-- LAYER 1: Outline -->
+  <path d="M12 2C9.2 2 7 4.2 7 7C7 10.5 12 16 12 16C12 16 17 10.5 17 7C17 4.2 14.8 2 12 2Z" stroke="url(#pin-grad-stroke)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="12" cy="7" r="2" stroke="#F59E0B" stroke-width="1"/>
+
+  <!-- Dashed Path -->
+  <line x1="12" y1="16" x2="12" y2="22" stroke="#F59E0B" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+  <!-- LAYER 2: Milestones -->
+  <!-- Base -->
+  <line x1="10" y1="22" x2="14" y2="22" stroke="#EAB308" stroke-width="0.6"/>
+  
+  <!-- Dots -->
+  <circle cx="12" cy="18" r="0.6" fill="#F59E0B"/>
+  <circle cx="12" cy="20" r="0.6" fill="#F59E0B"/>
+  <circle cx="12" cy="22" r="0.6" fill="#F59E0B"/>
+  
+  <!-- Flag atop Pin -->
+  <path d="M12 2L12 0 M12 0L14 1L12 2" stroke="#F59E0B" stroke-width="0.5"/>
+
+  <!-- Chevrons -->
+  <path d="M10 18L10.5 18.5L10 19" stroke="#EAB308" stroke-width="0.4" opacity="0.5"/>
+  <path d="M14 18L13.5 18.5L14 19" stroke="#EAB308" stroke-width="0.4" opacity="0.5"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="12" cy="7" r="1.5" fill="#F59E0B" filter="url(#pin-glow)" opacity="0.6"/>
+  <circle cx="12" cy="18" r="0.8" fill="#F59E0B" filter="url(#pin-glow)"/>
+  <circle cx="12" cy="20" r="0.6" fill="#EAB308" filter="url(#pin-glow)"/>
+  <circle cx="12" cy="22" r="0.4" fill="#EAB308" filter="url(#pin-glow)"/>
+</svg>

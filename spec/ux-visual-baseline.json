@@ -1,0 +1,25 @@
+{
+  "routes": ["/", "/dashboard", "/protect", "/execute", "/govern", "/settings"],
+  "viewports": [
+    { "name": "mobile", "width": 375, "height": 812 },
+    { "name": "tablet", "width": 768, "height": 1024 },
+    { "name": "desktop", "width": 1024, "height": 768 },
+    { "name": "wide", "width": 1440, "height": 900 }
+  ],
+  "diffThresholds": {
+    "warn": 0.03,
+    "error": 0.08
+  },
+  "ignoreSelectors": [
+    ".dashboard-signal-point",
+    ".mission-chatbot-dot",
+    ".boot-splash__core",
+    "[data-live-clock]"
+  ],
+  "baseUrl": "http://127.0.0.1:4173",
+  "strictCI": {
+    "requirePlaywright": true,
+    "failOnVisualError": true,
+    "failOnMissingBaseline": true
+  }
+}

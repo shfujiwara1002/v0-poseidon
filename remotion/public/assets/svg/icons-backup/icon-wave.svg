@@ -1,0 +1,58 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wave-grad-1" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.2)"/>
+    </linearGradient>
+    <linearGradient id="wave-grad-2" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="rgba(139,92,246,0.2)"/>
+    </linearGradient>
+    <linearGradient id="wave-grad-3" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.2)"/>
+    </linearGradient>
+    <linearGradient id="wave-grad-fill" x1="12" y1="8" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.06)"/>
+      <stop offset="0.5" stop-color="rgba(139,92,246,0.05)"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.04)"/>
+    </linearGradient>
+    <filter id="wave-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Volume Fill -->
+  <path d="M2 12C5 12 7 8 10 8C13 8 15 18 18 18C20 18 21 16 22 15V20H2V12Z" fill="url(#wave-grad-fill)"/>
+
+  <!-- LAYER 1: Multiple Waves -->
+  <!-- Wave 3 (Amber, back) -->
+  <path d="M2 14C5 14 7 11 10 11C13 11 15 18 18 18C20 18 21 17 22 16.5" stroke="url(#wave-grad-3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  
+  <!-- Wave 2 (Violet, mid) -->
+  <path d="M2 13C5 13 7 9.5 10 9.5C13 9.5 15 17 18 17C20 17 21 15.5 22 15" stroke="url(#wave-grad-2)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  
+  <!-- Wave 1 (Cyan, front) -->
+  <path d="M2 12C5 12 7 8 10 8C13 8 15 16 18 16C20 16 21 14 22 13.5" stroke="url(#wave-grad-1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 2: Details -->
+  <!-- Trend Arrow -->
+  <path d="M19 6L22 6L22 9" stroke="#00F0FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="16" y1="12" x2="22" y2="6" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="1 2"/>
+  
+  <!-- Forecast Zone -->
+  <rect x="16" y="4" width="6" height="18" fill="url(#wave-grad-1)" fill-opacity="0.03"/>
+  <line x1="16" y1="4" x2="16" y2="22" stroke="#8B5CF6" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.5"/>
+
+  <!-- LAYER 3: Highlights -->
+  <circle cx="10" cy="8" r="1.5" fill="#00F0FF" filter="url(#wave-glow)"/>
+  <circle cx="18" cy="16" r="1" fill="#00F0FF" filter="url(#wave-glow)"/>
+  <circle cx="10" cy="9.5" r="0.8" fill="#8B5CF6" filter="url(#wave-glow)"/>
+  <circle cx="10" cy="11" r="0.6" fill="#F59E0B" filter="url(#wave-glow)"/>
+  
+  <circle cx="22" cy="6" r="0.8" fill="#00F0FF" filter="url(#wave-glow)"/>
+</svg>

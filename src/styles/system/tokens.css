@@ -1,0 +1,374 @@
+/* ── Poseidon.AI v2 — Mobile-First Design Tokens ── */
+:root {
+  /* ── Fonts ── */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Noto Sans JP', ui-monospace, monospace;
+
+  /* ── Colors — Background ── */
+  --bg: #0B1221;
+  --bg-deep: #020410;
+  --bg-surface: #1E293B;
+
+  /* ── Colors — Glass ── */
+  --glass-bg: rgba(8,12,24,0.62);
+  --glass-bg-strong: rgba(8,12,24,0.72);
+  --glass-bg-soft: rgba(10,16,28,0.6);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-border-strong: rgba(255,255,255,0.16);
+
+  /* ── Glass — Page-level blue-tinted (engine/mission cards) ── */
+  --glass-border-page: rgba(155, 195, 238, 0.24);
+  --glass-border-page-strong: rgba(163, 203, 244, 0.26);
+  --glass-bg-card-inner: rgba(12, 27, 52, 0.72);
+  --glass-bg-card-section: rgba(11, 24, 45, 0.68);
+
+  --glass-shadow: 0 24px 70px rgba(0,0,0,0.62), 0 0 28px rgba(0,240,255,0.12);
+  --glass-inset: inset 0 1px 0 0 rgba(255,255,255,0.26), inset 0 -1px 0 0 rgba(255,255,255,0.1), inset 0 0 20px rgba(255,255,255,0.06);
+  --glass-edge: inset 0 0 0 1px rgba(255,255,255,0.18), inset 0 -16px 30px rgba(0,0,0,0.35);
+  --glass-backdrop: blur(44px) saturate(1.55) brightness(1.08);
+  --glass-backdrop-mobile: blur(20px) saturate(1.3) brightness(1.05);
+
+  /* ── Colors — Text ── */
+  --text: #f8fafc;
+  --muted: rgba(255,255,255,0.72);
+  --muted-2: rgba(255,255,255,0.62);
+  --text-on-accent: #04141a;
+
+  /* ── Colors — Accents ── */
+  --accent-cyan: #00F0FF;
+  --accent-teal: #14B8A6;
+  --accent-violet: #8B5CF6;
+  --accent-amber: #F59E0B;
+  --accent-blue: #3B82F6;
+  --accent-red: #EF4444;
+  --accent-gold: #EAB308;
+  --accent-teal-bg: rgba(21, 225, 194, 0.12);
+  --accent-teal-border: rgba(21, 225, 194, 0.25);
+
+  /* ── State-First Semantics (mission-control baseline) ── */
+  --state-healthy: #14B8A6;
+  --state-active: #00F0FF;
+  --state-primary: #3B82F6;
+  --state-warning: #F59E0B;
+  --state-critical: #EF4444;
+  --state-healthy-rgb: 20, 184, 166;
+  --state-active-rgb: 0, 240, 255;
+  --state-primary-rgb: 59, 130, 246;
+  --state-warning-rgb: 245, 158, 11;
+  --state-critical-rgb: 239, 68, 68;
+
+  /* ── Colors — Engine Themes ── */
+  --engine-dashboard: #00F0FF;
+  --engine-protect: #22C55E;
+  --engine-grow: #8B5CF6;
+  --engine-execute: #EAB308;
+  --engine-govern: #3B82F6;
+
+  /* ── Neon — Mobile (3 layers, lighter GPU load) ── */
+  --neon-cyan-mobile: 0 0 4px rgba(0,240,255,0.8), 0 0 12px rgba(0,240,255,0.5), 0 0 24px rgba(0,240,255,0.2);
+  --neon-teal-mobile: 0 0 4px rgba(20,184,166,0.8), 0 0 12px rgba(20,184,166,0.5), 0 0 24px rgba(20,184,166,0.2);
+  --neon-violet-mobile: 0 0 4px rgba(139,92,246,0.8), 0 0 12px rgba(139,92,246,0.5), 0 0 24px rgba(139,92,246,0.2);
+  --neon-amber-mobile: 0 0 4px rgba(245,158,11,0.8), 0 0 12px rgba(245,158,11,0.5), 0 0 24px rgba(245,158,11,0.2);
+  --neon-blue-mobile: 0 0 4px rgba(59,130,246,0.8), 0 0 12px rgba(59,130,246,0.5), 0 0 24px rgba(59,130,246,0.2);
+  --neon-red-mobile: 0 0 4px rgba(239,68,68,0.8), 0 0 12px rgba(239,68,68,0.5), 0 0 24px rgba(239,68,68,0.2);
+
+  /* ── Neon — Desktop (6 layers, full effect) ── */
+  --neon-cyan: 0 0 2px rgba(0,240,255,1), 0 0 6px rgba(0,240,255,1), 0 0 15px rgba(0,240,255,0.8), 0 0 30px rgba(0,240,255,0.6), 0 0 50px rgba(0,240,255,0.4), 0 0 80px rgba(0,240,255,0.2);
+  --neon-teal: 0 0 2px rgba(20,184,166,1), 0 0 6px rgba(20,184,166,1), 0 0 15px rgba(20,184,166,0.8), 0 0 30px rgba(20,184,166,0.6), 0 0 50px rgba(20,184,166,0.4), 0 0 80px rgba(20,184,166,0.2);
+  --neon-violet: 0 0 2px rgba(139,92,246,1), 0 0 6px rgba(139,92,246,1), 0 0 15px rgba(139,92,246,0.8), 0 0 30px rgba(139,92,246,0.6), 0 0 50px rgba(139,92,246,0.4), 0 0 80px rgba(139,92,246,0.2);
+  --neon-amber: 0 0 2px rgba(245,158,11,1), 0 0 6px rgba(245,158,11,1), 0 0 15px rgba(245,158,11,0.8), 0 0 30px rgba(245,158,11,0.6), 0 0 50px rgba(245,158,11,0.4), 0 0 80px rgba(245,158,11,0.2);
+  --neon-blue: 0 0 2px rgba(59,130,246,1), 0 0 6px rgba(59,130,246,1), 0 0 15px rgba(59,130,246,0.8), 0 0 30px rgba(59,130,246,0.6), 0 0 50px rgba(59,130,246,0.4), 0 0 80px rgba(59,130,246,0.2);
+  --neon-red: 0 0 2px rgba(239,68,68,1), 0 0 6px rgba(239,68,68,1), 0 0 15px rgba(239,68,68,0.8), 0 0 30px rgba(239,68,68,0.6), 0 0 50px rgba(239,68,68,0.4), 0 0 80px rgba(239,68,68,0.2);
+  --neon-cyan-deep: 0 0 2px rgba(0,240,255,1), 0 0 6px rgba(0,240,255,1), 0 0 15px rgba(0,240,255,0.95), 0 0 30px rgba(0,240,255,0.8), 0 0 50px rgba(0,240,255,0.6), 0 0 80px rgba(0,240,255,0.4), 0 0 120px rgba(0,240,255,0.2);
+  --neon-teal-deep: 0 0 2px rgba(20,184,166,1), 0 0 6px rgba(20,184,166,1), 0 0 15px rgba(20,184,166,0.95), 0 0 30px rgba(20,184,166,0.8), 0 0 50px rgba(20,184,166,0.6), 0 0 80px rgba(20,184,166,0.4), 0 0 120px rgba(20,184,166,0.2);
+  --neon-violet-deep: 0 0 2px rgba(139,92,246,1), 0 0 6px rgba(139,92,246,1), 0 0 15px rgba(139,92,246,0.95), 0 0 30px rgba(139,92,246,0.8), 0 0 50px rgba(139,92,246,0.6), 0 0 80px rgba(139,92,246,0.4), 0 0 120px rgba(139,92,246,0.2);
+  --neon-amber-deep: 0 0 2px rgba(245,158,11,1), 0 0 6px rgba(245,158,11,1), 0 0 15px rgba(245,158,11,0.95), 0 0 30px rgba(245,158,11,0.8), 0 0 50px rgba(245,158,11,0.6), 0 0 80px rgba(245,158,11,0.4), 0 0 120px rgba(245,158,11,0.2);
+  --neon-blue-deep: 0 0 2px rgba(59,130,246,1), 0 0 6px rgba(59,130,246,1), 0 0 15px rgba(59,130,246,0.95), 0 0 30px rgba(59,130,246,0.8), 0 0 50px rgba(59,130,246,0.6), 0 0 80px rgba(59,130,246,0.4), 0 0 120px rgba(59,130,246,0.2);
+  --neon-red-deep: 0 0 2px rgba(239,68,68,1), 0 0 6px rgba(239,68,68,1), 0 0 15px rgba(239,68,68,0.95), 0 0 30px rgba(239,68,68,0.8), 0 0 50px rgba(239,68,68,0.6), 0 0 80px rgba(239,68,68,0.4), 0 0 120px rgba(239,68,68,0.2);
+  --neon-cyan-sharper: 0 0 1px rgba(0,240,255,1), 0 0 3px rgba(0,240,255,1), 0 0 8px rgba(0,240,255,0.9), 0 0 16px rgba(0,240,255,0.5), 0 0 28px rgba(0,240,255,0.2);
+  --neon-teal-sharper: 0 0 1px rgba(20,184,166,1), 0 0 3px rgba(20,184,166,1), 0 0 8px rgba(20,184,166,0.9), 0 0 16px rgba(20,184,166,0.5), 0 0 28px rgba(20,184,166,0.2);
+  --neon-violet-sharper: 0 0 1px rgba(139,92,246,1), 0 0 3px rgba(139,92,246,1), 0 0 8px rgba(139,92,246,0.9), 0 0 16px rgba(139,92,246,0.5), 0 0 28px rgba(139,92,246,0.2);
+  --neon-amber-sharper: 0 0 1px rgba(245,158,11,1), 0 0 3px rgba(245,158,11,1), 0 0 8px rgba(245,158,11,0.9), 0 0 16px rgba(245,158,11,0.5), 0 0 28px rgba(245,158,11,0.2);
+  --neon-blue-sharper: 0 0 1px rgba(59,130,246,1), 0 0 3px rgba(59,130,246,1), 0 0 8px rgba(59,130,246,0.9), 0 0 16px rgba(59,130,246,0.5), 0 0 28px rgba(59,130,246,0.2);
+  --neon-red-sharper: 0 0 1px rgba(239,68,68,1), 0 0 3px rgba(239,68,68,1), 0 0 8px rgba(239,68,68,0.9), 0 0 16px rgba(239,68,68,0.5), 0 0 28px rgba(239,68,68,0.2);
+
+  /* ── Icon Glow ── */
+  --icon-glow-default: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(0,240,255,0.45)) drop-shadow(0 0 28px rgba(0,240,255,0.35));
+  --icon-glow-teal: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(20,184,166,0.55)) drop-shadow(0 0 28px rgba(20,184,166,0.4));
+  --icon-glow-amber: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(245,158,11,0.55)) drop-shadow(0 0 28px rgba(245,158,11,0.4));
+  --icon-glow-violet: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(139,92,246,0.55)) drop-shadow(0 0 28px rgba(139,92,246,0.4));
+  --icon-glow-blue: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(59,130,246,0.55)) drop-shadow(0 0 28px rgba(59,130,246,0.4));
+  --icon-glow-red: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 0 14px rgba(239,68,68,0.55)) drop-shadow(0 0 28px rgba(239,68,68,0.4));
+
+  /* ── Text Gradients ── */
+  --text-gradient-cyan: linear-gradient(90deg, #bffcff 0%, #00f0ff 100%);
+  --text-gradient-teal: linear-gradient(90deg, #5eead4 0%, #15e1c2 100%);
+  --text-gradient-violet: linear-gradient(90deg, #d7b7ff 0%, #8b5cf6 100%);
+  --text-gradient-amber: linear-gradient(90deg, #ffe0a1 0%, #f59e0b 100%);
+  --text-gradient-blue: linear-gradient(90deg, #b8d6ff 0%, #58a6ff 100%);
+  --text-shadow-neon: 0 0 12px rgba(255,255,255,0.4);
+
+  /* ── Badge & Warning ── */
+  --badge-bg: rgba(0,240,255,0.12);
+  --badge-border: 1px solid rgba(0,240,255,0.6);
+  --badge-text: #e6fbff;
+  --badge-shadow: 0 0 8px rgba(0,240,255,0.4);
+  --badge-box: 0 0 12px rgba(0,240,255,0.55), 0 0 28px rgba(0,240,255,0.45), 0 0 52px rgba(0,240,255,0.3), inset 0 0 14px rgba(0,240,255,0.22);
+  --warning-bg: rgba(239,68,68,0.15);
+  --warning-border: 1px solid rgba(239,68,68,0.4);
+  --warning-text: #ff6b6b;
+  --warning-shadow: 0 0 10px rgba(239,68,68,0.6);
+  --warning-box: 0 0 12px rgba(239,68,68,0.5), 0 0 24px rgba(239,68,68,0.35), inset 0 0 10px rgba(239,68,68,0.2);
+
+  /* ── Border Radius ── */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-card: 18px;
+  --radius-inner: 10px;
+
+  /* ── Interactive States ── */
+  --state-hover-bg: rgba(255,255,255,0.06);
+  --state-active-bg: rgba(255,255,255,0.12);
+  --state-focus-ring: 0 0 0 2px rgba(0,240,255,0.6);
+  --state-disabled-text: rgba(255,255,255,0.4);
+  --state-error-border: rgba(239,68,68,0.6);
+  --state-success-border: rgba(21,225,194,0.6);
+  --state-loading-bg: rgba(255,255,255,0.04);
+
+  /* ── Motion ── */
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 200ms;
+  --motion-duration-slow: 320ms;
+  --motion-duration-micro: 80ms;
+  --motion-duration-enter: 180ms;
+  --motion-duration-exit: 140ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+
+  /* ── Breakpoints (mobile-first: min-width) ── */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  /* ── Layout ── */
+  --container-max: 1600px;
+  --content-max: 1240px;
+  --grid-gap: 24px;
+  --section-gap: 24px;
+  --card-padding: 12px;
+  --hero-body-gap: 20px;
+  --card-gap-internal: 14px;
+  --touch-min: 44px;
+  --nav-bottom-height: 56px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* ── Spacing (mobile-first page padding) ── */
+  --page-padding: 16px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-2-5: 10px;
+  --space-3: 12px;
+  --space-3-5: 14px;
+  --space-4: 16px;
+  --space-4-5: 18px;
+  --space-5: 20px;
+  --space-5-5: 22px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+
+  /* ── Typography — Mobile-First Scale ── */
+  --font-size-display: clamp(1.75rem, 5vw, 3.8rem);
+  --font-size-h1: clamp(1.5rem, 4vw, 2.5rem);
+  --font-size-h2: clamp(1.25rem, 3vw, 2rem);
+  --font-size-h3: clamp(1.1rem, 2.5vw, 1.5rem);
+  --font-size-body-lg: clamp(1.0625rem, 1.2vw + 0.75rem, 1.3125rem);
+  --font-size-body: clamp(0.9375rem, 1vw + 0.75rem, 1.1875rem);
+  --font-size-body-sm: 16px;
+  --font-size-caption: 15px;
+  --font-size-label: 14px;
+  --font-size-small: 13px;
+  --font-size-badge: 13px;
+  --font-size-ui-11: 11px;
+  --font-size-ui-11-5: 11.5px;
+  --font-size-ui-11-8: 11.8px;
+  --font-size-ui-12: 12px;
+  --font-size-ui-12-8: 12.8px;
+  --font-size-ui-13-8: 13.8px;
+  --font-size-ui-14-4: 14.4px;
+  --font-size-ui-15-2: 15.2px;
+  --font-size-ui-16: 16px;
+  --font-size-ui-16-8: 16.8px;
+  --font-size-ui-17-6: 17.6px;
+  --font-size-ui-20: 20px;
+  --font-size-ui-20-8: 20.8px;
+  --font-size-ui-21-6: 21.6px;
+  --font-size-ui-22-4: 22.4px;
+  --font-size-ui-25-6: 25.6px;
+  --line-height-tight: 1.1;
+  --line-height-body: 1.5;
+  --line-height-relaxed: 1.65;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.16em;
+
+  /* ── Z-index Scale ── */
+  --z-base: 0;
+  --z-card-overlay: 2;
+  --z-sticky-nav: 100;
+  --z-bottom-nav: 150;
+  --z-overlay: 200;
+  --z-modal: 210;
+  --z-drawer: 220;
+  --z-dropdown: 230;
+  --z-mobile-backdrop: 240;
+  --z-mobile-nav: 250;
+  --z-toast: 500;
+  --z-skip-link: 10000;
+  --z-command-palette: 600;
+  --z-celebration: 700;
+  --z-agent-control: 450;
+}
+
+/* ── Accessibility Utilities ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ── Touch Target Utility ── */
+.touch-target {
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Focus Visible ── */
+:focus-visible {
+  outline: 3px solid var(--accent-violet);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent-violet);
+  outline-offset: 2px;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-skip-link);
+  padding: 12px 24px;
+  background: var(--accent-cyan);
+  color: var(--bg-deep);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ── Responsive Layout Tokens ── */
+@media (min-width: 640px) {
+  :root {
+    --page-padding: 20px;
+    --section-gap: 32px;
+    --card-padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-padding: 24px;
+    --section-gap: 40px;
+    --card-padding: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-padding: 32px;
+  }
+}
+
+/* ── Container Query Setup ── */
+@supports (container-type: inline-size) {
+  .engine-card,
+  .poseidon-grid,
+  [data-slot="primary_feed"],
+  [data-slot="decision_rail"],
+  [data-slot="rail"] {
+    container-type: inline-size;
+  }
+}
+
+/* Container breakpoint utilities */
+@container (min-width: 320px) {
+  .cq\:visible-xs { display: block; }
+}
+@container (min-width: 640px) {
+  .cq\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (min-width: 800px) {
+  .cq\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@container (min-width: 1024px) {
+  .cq\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

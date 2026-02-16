@@ -1,0 +1,153 @@
+{
+  "baselineDate": "2026-02-15",
+  "strict": false,
+  "demoFlow": [
+    "/",
+    "/dashboard",
+    "/protect",
+    "/execute",
+    "/govern",
+    "/settings"
+  ],
+  "scores": [
+    {
+      "criteria": "first5s",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "oneCta",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "heroDiff",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "navConfidence",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "calm",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "performance",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "trust",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "copy",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "state",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "a11y",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "reliability",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    },
+    {
+      "criteria": "memorable",
+      "score": 5,
+      "note": "All gates passed. Verify visually for narrative quality."
+    }
+  ],
+  "issues": [],
+  "meta": {
+    "checks": [
+      {
+        "script": "check:design-system",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:design-system\n> npm run check:design-system:strict\n\n\n> poseidon-prototype@0.1.0 check:design-system:strict\n> node scripts/check-design-system-usage.mjs --strict && node scripts/check-design-token-hygiene.mjs --strict\n\n[design-system] reachable files: 132\n[design-system] reachable pages: 42\n[design-system] reachable components: 59\n[design-system] usage checks passed.\n[token-hygiene] scanned 4173 lines across 11 page CSS files\n[token-hygiene] checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "check:motion-policy",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:motion-policy\n> node scripts/check-motion-policy.mjs\n\nMotion policy checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "check:a11y-structure",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:a11y-structure\n> node scripts/check-a11y-structure.mjs\n\nA11y structure checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "check:cta-hierarchy",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:cta-hierarchy\n> node scripts/check-cta-hierarchy.mjs\n\nCTA hierarchy checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "check:contrast-budget",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:contrast-budget\n> node scripts/check-contrast-budget.mjs\n\nContrast budget checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "check:bundle-budget",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 check:bundle-budget\n> node scripts/check-bundle-budget.mjs\n\n{\n  \"css\": {\n    \"raw\": 164798,\n    \"gzip\": 29340\n  },\n  \"indexJs\": {\n    \"file\": \"index-B5JVX-iw.js\",\n    \"raw\": 117934,\n    \"gzip\": 26720\n  },\n  \"budgets\": {\n    \"cssRawMax\": 175000,\n    \"cssGzipMax\": 32000,\n    \"indexJsRawMax\": 130000,\n    \"indexJsGzipMax\": 45000\n  }\n}\n\nBundle budget checks passed.",
+        "stderr": ""
+      },
+      {
+        "script": "verify:pwa",
+        "ok": true,
+        "status": 0,
+        "stdout": "> poseidon-prototype@0.1.0 verify:pwa\n> node scripts/verify-pwa.mjs\n\nPWA verification passed.",
+        "stderr": ""
+      }
+    ],
+    "visualCapture": {
+      "ok": true,
+      "skipped": true,
+      "reason": "playwright-not-installed",
+      "captures": []
+    },
+    "visualDiff": {
+      "ok": true,
+      "skipped": true,
+      "reason": "no-latest-captures",
+      "diffs": []
+    },
+    "domHeuristics": {
+      "ok": true,
+      "skipped": true,
+      "reason": "playwright-not-installed",
+      "checks": []
+    }
+  },
+  "summary": {
+    "overallScore": 5,
+    "openIssues": 0,
+    "verifyOk": true,
+    "verifyFailedChecks": 0,
+    "generatedAt": "2026-02-15T13:05:52.384Z"
+  }
+}

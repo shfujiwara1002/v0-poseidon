@@ -1,0 +1,58 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="eng-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Central Hub -->
+  <circle cx="300" cy="200" r="40" stroke="white" stroke-width="2" stroke-dasharray="10 5" opacity="0.2"/>
+  <circle cx="300" cy="200" r="15" fill="#020410" stroke="#8B5CF6" stroke-width="2"/>
+  <circle cx="300" cy="200" r="5" fill="#white" filter="url(#eng-glow)"/>
+
+  <!-- Connecting Arms -->
+  <line x1="300" y1="200" x2="300" y2="80" stroke="#14B8A6" stroke-width="2"/> <!-- Top (Protect) -->
+  <line x1="300" y1="200" x2="300" y2="320" stroke="#8B5CF6" stroke-width="2"/> <!-- Bottom (Grow) -->
+  <line x1="300" y1="200" x2="150" y2="200" stroke="#F59E0B" stroke-width="2"/> <!-- Left (Execute) -->
+  <line x1="300" y1="200" x2="450" y2="200" stroke="#3B82F6" stroke-width="2"/> <!-- Right (Govern) -->
+
+  <!-- Engine Modules -->
+  
+  <!-- Top: Protect (Shield) -->
+  <g transform="translate(270, 40)">
+    <circle cx="30" cy="30" r="30" fill="#020410" stroke="#14B8A6" stroke-width="2"/>
+    <path d="M30 15L20 20V30C20 40 25 45 30 48C35 45 40 40 40 30V20L30 15Z" fill="#14B8A6" fill-opacity="0.2" stroke="#14B8A6" stroke-width="1.5"/>
+    <text x="30" y="75" text-anchor="middle" fill="#14B8A6" font-family="monospace" font-size="12">PROTECT</text>
+  </g>
+
+  <!-- Bottom: Grow (Wave/Brain) -->
+  <g transform="translate(270, 300)">
+    <circle cx="30" cy="30" r="30" fill="#020410" stroke="#8B5CF6" stroke-width="2"/>
+    <path d="M15 35 C20 35 25 25 30 25 C35 25 40 35 45 35" stroke="#8B5CF6" stroke-width="1.5"/>
+    <text x="30" y="75" text-anchor="middle" fill="#8B5CF6" font-family="monospace" font-size="12">GROW</text>
+  </g>
+
+  <!-- Left: Execute (Gear) -->
+  <g transform="translate(110, 170)">
+    <circle cx="30" cy="30" r="30" fill="#020410" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="30" cy="30" r="12" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4 2"/>
+    <text x="30" y="75" text-anchor="middle" fill="#F59E0B" font-family="monospace" font-size="12">EXECUTE</text>
+  </g>
+
+  <!-- Right: Govern (Core) -->
+  <g transform="translate(430, 170)">
+    <circle cx="30" cy="30" r="30" fill="#020410" stroke="#3B82F6" stroke-width="2"/>
+    <rect x="20" y="20" width="20" height="20" stroke="#3B82F6" stroke-width="1.5"/>
+    <text x="30" y="75" text-anchor="middle" fill="#3B82F6" font-family="monospace" font-size="12">GOVERN</text>
+  </g>
+
+  <!-- Flow Particles -->
+  <circle cx="300" cy="140" r="3" fill="#14B8A6" filter="url(#eng-glow)"/>
+  <circle cx="300" cy="260" r="3" fill="#8B5CF6" filter="url(#eng-glow)"/>
+  <circle cx="225" cy="200" r="3" fill="#F59E0B" filter="url(#eng-glow)"/>
+  <circle cx="375" cy="200" r="3" fill="#3B82F6" filter="url(#eng-glow)"/>
+</svg>

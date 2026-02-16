@@ -1,0 +1,33 @@
+{
+  "$description": "Animation and motion design tokens",
+  "motion": {
+    "spring": {
+      "gentle": { "$value": { "stiffness": 120, "damping": 20, "mass": 1 }, "$type": "object", "$description": "Gentle spring for subtle movements" },
+      "snappy": { "$value": { "stiffness": 300, "damping": 30, "mass": 1 }, "$type": "object", "$description": "Snappy spring for responsive interactions" },
+      "bouncy": { "$value": { "stiffness": 400, "damping": 15, "mass": 1 }, "$type": "object", "$description": "Bouncy spring for playful elements" }
+    },
+    "preset": {
+      "fade": {
+        "$value": { "initial": { "opacity": 0 }, "animate": { "opacity": 1 }, "transition": { "duration": 0.25 } },
+        "$type": "object"
+      },
+      "fadeUp": {
+        "$value": { "initial": { "opacity": 0, "y": 12 }, "animate": { "opacity": 1, "y": 0 }, "transition": { "duration": 0.3, "ease": [0.2, 0.8, 0.2, 1] } },
+        "$type": "object"
+      },
+      "fadeScale": {
+        "$value": { "initial": { "opacity": 0, "scale": 0.95 }, "animate": { "opacity": 1, "scale": 1 }, "transition": { "duration": 0.25, "ease": [0.2, 0.8, 0.2, 1] } },
+        "$type": "object"
+      },
+      "slideInRight": {
+        "$value": { "initial": { "opacity": 0, "x": 20 }, "animate": { "opacity": 1, "x": 0 }, "transition": { "duration": 0.3, "ease": [0.2, 0.8, 0.2, 1] } },
+        "$type": "object"
+      }
+    },
+    "stagger": {
+      "fast": { "$value": 0.03, "$type": "number", "$description": "30ms between children" },
+      "normal": { "$value": 0.06, "$type": "number", "$description": "60ms between children" },
+      "slow": { "$value": 0.1, "$type": "number", "$description": "100ms between children" }
+    }
+  }
+}

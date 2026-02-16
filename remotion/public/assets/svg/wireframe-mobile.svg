@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <rect width="390" height="844" fill="#0b1220" />
+  <rect x="16" y="16" width="358" height="812" fill="none" stroke="#3b82f6" stroke-width="2" rx="28" />
+  <rect x="32" y="40" width="326" height="64" fill="#111827" stroke="#0ea5e9" stroke-width="2" rx="12" />
+  <text x="48" y="80" fill="#e5e7eb" font-family="Arial" font-size="16">Top Bar</text>
+  <rect x="32" y="120" width="326" height="560" fill="#0b1220" stroke="#38bdf8" stroke-width="2" rx="16" />
+  <text x="48" y="160" fill="#e5e7eb" font-family="Arial" font-size="16">Main Content</text>
+  <rect x="32" y="700" width="326" height="96" fill="#0f172a" stroke="#0ea5e9" stroke-width="2" rx="16" />
+  <text x="48" y="750" fill="#e5e7eb" font-family="Arial" font-size="16">Bottom Nav</text>
+</svg>

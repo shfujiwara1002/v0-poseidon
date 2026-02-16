@@ -1,0 +1,312 @@
+/* ── Evidence / Definition primitives ── */
+.proof-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(181, 205, 234, 0.82);
+  font-family: var(--font-mono);
+  border-left: 2px solid color-mix(in srgb, var(--proof-accent, var(--state-active)) 35%, transparent);
+  padding-left: 8px;
+  margin-top: 4px;
+}
+
+.proof-line-claim {
+  color: rgba(220, 233, 248, 0.95);
+  font-weight: 500;
+}
+
+.proof-line-sep {
+  color: rgba(161, 189, 222, 0.7);
+}
+
+.proof-line-source {
+  color: rgba(141, 169, 202, 0.6);
+  font-size: 11px;
+}
+
+.stat-definition {
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(161, 189, 222, 0.55);
+  margin-top: 2px;
+}
+
+/* ── Unified component shells ── */
+.signal-evidence-card {
+  position: relative;
+  border-left: 3px solid rgba(var(--state-primary-rgb), 0.8);
+}
+
+.signal-evidence-card[data-severity="critical"] {
+  border-left-color: rgba(var(--state-critical-rgb), 0.9);
+}
+
+.signal-evidence-card[data-severity="high"] {
+  border-left-color: rgba(var(--state-warning-rgb), 0.9);
+}
+
+.signal-evidence-card[data-severity="low"] {
+  border-left-color: rgba(var(--state-healthy-rgb), 0.9);
+}
+
+.signal-evidence-card-header {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.signal-evidence-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: rgba(13, 29, 53, 0.8);
+  border: 1px solid rgba(143, 186, 231, 0.25);
+}
+
+.signal-evidence-card-title {
+  display: grid;
+  gap: 2px;
+}
+
+.signal-evidence-card-title strong {
+  color: rgba(220, 233, 248, 0.95);
+  font-size: 14px;
+}
+
+.signal-evidence-card-title span {
+  color: rgba(161, 189, 222, 0.68);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.signal-evidence-card-summary {
+  display: grid;
+  gap: 2px;
+}
+
+.signal-evidence-card-amount {
+  margin: 0;
+  color: rgba(233, 242, 255, 0.96);
+  font-size: 1.2rem;
+  font-family: var(--font-mono);
+}
+
+.signal-evidence-card-merchant,
+.signal-evidence-card-location {
+  margin: 0;
+  color: rgba(181, 205, 234, 0.76);
+  font-size: 12px;
+}
+
+.signal-evidence-card-factors {
+  border-radius: 10px;
+  border: 1px solid rgba(143, 186, 231, 0.2);
+  background: rgba(12, 27, 52, 0.56);
+  padding: var(--space-2-5);
+  display: grid;
+  gap: 10px;
+}
+
+.signal-evidence-card-factors strong {
+  color: rgba(220, 233, 248, 0.95);
+  font-size: 12px;
+}
+
+.signal-evidence-card-factors ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.signal-evidence-card-factors li {
+  display: grid;
+  gap: 2px;
+}
+
+.signal-evidence-card-factors li span {
+  font-size: 12px;
+  color: rgba(220, 233, 248, 0.9);
+}
+
+.signal-evidence-card-factors li em {
+  font-style: normal;
+  font-size: 11px;
+  color: var(--state-primary);
+  font-family: var(--font-mono);
+}
+
+.signal-evidence-card-factors li small {
+  font-size: 11px;
+  color: rgba(161, 189, 222, 0.68);
+}
+
+.signal-evidence-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.signal-evidence-card-meta span {
+  color: rgba(161, 189, 222, 0.62);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.action-queue-card-description {
+  margin: 0;
+  color: rgba(181, 205, 234, 0.82);
+  font-size: 12px;
+}
+
+.action-queue-card-details {
+  display: grid;
+  gap: 2px;
+}
+
+.action-queue-card-details span {
+  color: rgba(161, 189, 222, 0.7);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.action-queue-card-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.action-queue-card-snooze {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.action-queue-card-snooze button {
+  border-radius: 10px;
+  border: 1px solid rgba(143, 186, 231, 0.24);
+  background: rgba(12, 27, 52, 0.68);
+  color: rgba(214, 229, 246, 0.9);
+  min-height: 34px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.audit-log-card-compliance {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.audit-log-card-details {
+  display: grid;
+  gap: 8px;
+}
+
+.audit-log-card-details pre {
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(143, 186, 231, 0.2);
+  background: rgba(9, 18, 34, 0.9);
+  padding: var(--space-2-5);
+  color: rgba(181, 205, 234, 0.82);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  overflow-x: auto;
+}
+
+.audit-log-card-feedback {
+  display: grid;
+  gap: 6px;
+}
+
+.audit-log-card-feedback p {
+  margin: 0;
+  color: rgba(181, 205, 234, 0.8);
+  font-size: 12px;
+}
+
+.scenario-simulator-options {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scenario-simulator-range {
+  display: grid;
+  gap: 6px;
+}
+
+.scenario-simulator-range span {
+  color: rgba(181, 205, 234, 0.84);
+  font-size: 12px;
+}
+
+.scenario-simulator-range input[type="range"] {
+  width: 100%;
+}
+
+.grow-forecast-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.grow-forecast-chart {
+  min-height: 320px;
+}
+
+.savings-goal-progress {
+  border-radius: 999px;
+  height: 8px;
+  background: rgba(143, 186, 231, 0.2);
+  overflow: hidden;
+}
+
+.savings-goal-progress-bar {
+  height: 100%;
+  width: var(--goal-progress, 0%);
+  background: linear-gradient(90deg, var(--state-healthy), var(--state-primary));
+}
+
+.wellness-card-kpis {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wellness-card-tips {
+  display: grid;
+  gap: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--state-warning-rgb), 0.24);
+  background: rgba(12, 27, 52, 0.64);
+  padding: var(--space-2-5);
+}
+
+.wellness-card-tips p {
+  margin: 0;
+  color: rgba(181, 205, 234, 0.82);
+  font-size: 12px;
+}
+
+.wellness-card-updated {
+  margin: 0;
+  color: rgba(141, 169, 202, 0.66);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 1080px) {
+  .mission-metric-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .settings-option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

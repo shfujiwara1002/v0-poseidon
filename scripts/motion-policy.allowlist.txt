@@ -1,0 +1,23 @@
+# Existing legacy motion patterns allowed temporarily.
+# Format: <workspace-relative-file>|<rule>
+# rule: duration | translation | infinite
+
+src/styles/components/button.css|duration
+src/styles/components/button.css|infinite
+
+src/styles/components/feedback.css|duration
+src/styles/components/feedback.css|infinite
+
+src/styles/components/forms.css|translation
+src/styles/components/mobile-nav.css|duration
+
+src/styles/pages/chatbot.css|duration
+src/styles/pages/chatbot.css|infinite
+src/styles/pages/disclosure-sheet.css|duration
+src/styles/pages/mission.css|translation
+
+src/components/LoadingSpinner.css|duration
+src/components/RealtimeIndicator.tsx|duration
+src/components/RealtimeIndicator.tsx|infinite
+src/components/Skeleton.css|duration
+src/components/Toast.css|duration

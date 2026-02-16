@@ -1,0 +1,165 @@
+/* ── PAGINATION ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination .page {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform var(--motion-duration-fast) ease,
+              border-color var(--motion-duration-fast) ease,
+              background var(--motion-duration-fast) ease;
+}
+
+.pagination .page:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.pagination .page:focus-visible {
+  outline: none;
+  box-shadow: var(--state-focus-ring);
+}
+
+.pagination .page.active {
+  color: var(--text);
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.08);
+  transform: scale(1.08);
+}
+
+/* ── ALERT ── */
+.alert {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 15px;
+}
+
+.alert.alert-error {
+  border-color: var(--state-error-border);
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.alert.alert-success {
+  border-color: var(--state-success-border);
+  background: rgba(21, 225, 194, 0.12);
+}
+
+/* ── TOAST ── */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 10, 20, 0.85);
+  box-shadow: var(--glass-shadow);
+  max-width: 100%;
+  font-size: 15px;
+}
+
+.toast-success { border-left: 3px solid var(--accent-teal); background: rgba(20,184,166,0.08); }
+.toast-error { border-left: 3px solid var(--accent-red); background: rgba(239,68,68,0.08); }
+.toast-warning { border-left: 3px solid var(--accent-amber); background: rgba(245,158,11,0.08); }
+.toast-info { border-left: 3px solid var(--accent-blue); background: rgba(59,130,246,0.08); }
+
+.toast-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.toast-success .toast-icon { color: var(--accent-teal); background: rgba(20,184,166,0.15); }
+.toast-error .toast-icon { color: var(--accent-red); background: rgba(239,68,68,0.15); }
+.toast-warning .toast-icon { color: var(--accent-amber); background: rgba(245,158,11,0.15); }
+.toast-info .toast-icon { color: var(--accent-blue); background: rgba(59,130,246,0.15); }
+
+.toast-description {
+  font-size: var(--font-size-label);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.toast-float {
+  position: fixed;
+  bottom: calc(var(--nav-bottom-height) + var(--safe-bottom) + 12px);
+  left: 16px;
+  right: 16px;
+  z-index: var(--z-toast);
+}
+
+.toast-float-enter { animation: toast-enter 0.3s var(--motion-easing-standard) both; }
+.toast-float-exit { animation: toast-exit 0.3s var(--motion-easing-standard) both; }
+
+/* ── PROGRESS BAR ── */
+.progress {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(21, 225, 194, 0.4), rgba(21, 225, 194, 0.8));
+  border-radius: inherit;
+  animation: progress-fill-grow 1s var(--motion-easing-standard) forwards;
+}
+
+.progress.accent-red .progress-fill { background: linear-gradient(90deg, rgba(239,68,68,0.4), rgba(239,68,68,0.8)); }
+.progress.accent-amber .progress-fill { background: linear-gradient(90deg, rgba(245,158,11,0.4), rgba(245,158,11,0.8)); }
+.progress.accent-violet .progress-fill { background: linear-gradient(90deg, rgba(139,92,246,0.4), rgba(139,92,246,0.8)); }
+.progress.accent-blue .progress-fill { background: linear-gradient(90deg, rgba(59,130,246,0.4), rgba(59,130,246,0.8)); }
+.progress.accent-cyan .progress-fill { background: linear-gradient(90deg, rgba(0,240,255,0.4), rgba(0,240,255,0.8)); }
+
+/* ── SKELETON ── */
+.skeleton {
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* ── AVATAR ── */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── TAG ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px var(--space-2-5);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  color: var(--muted);
+  min-height: var(--touch-min);
+}
+

@@ -1,0 +1,199 @@
+/* ── LAYOUT: Top Navigation ── */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky-nav);
+  padding: 12px 0;
+  border-bottom: 1px solid transparent;
+  transition: padding var(--motion-duration-base) var(--motion-easing-standard),
+              background var(--motion-duration-base) var(--motion-easing-standard),
+              backdrop-filter var(--motion-duration-base) var(--motion-easing-standard),
+              box-shadow var(--motion-duration-base) var(--motion-easing-standard),
+              border-color var(--motion-duration-base) var(--motion-easing-standard);
+}
+
+.top-nav--scrolled {
+  padding: 8px 0;
+  background: rgba(8,12,24,0.72);
+  backdrop-filter: var(--glass-backdrop-mobile);
+  border-bottom-color: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(21, 225, 194, 0.9), rgba(88, 166, 255, 0.9));
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #04141a;
+  box-shadow: var(--neon-teal-mobile);
+}
+
+.top-nav--scrolled .logo {
+  width: 28px;
+  height: 28px;
+  transition: all var(--motion-duration-base) var(--motion-easing-standard);
+}
+
+/* Desktop nav links — hidden on mobile, shown on desktop */
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-5-5);
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  color: var(--muted-2);
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: var(--tracking-wide);
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.nav-actions {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── LAYOUT: Bottom Navigation (NEW — mobile primary nav) ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-bottom-height);
+  padding-bottom: var(--safe-bottom);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(8, 12, 24, 0.92);
+  backdrop-filter: var(--glass-backdrop-mobile);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: var(--z-bottom-nav);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  justify-content: center;
+  text-decoration: none;
+  color: var(--muted-2);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  transition: color 0.15s ease;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent-cyan);
+}
+
+.bottom-nav-item svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ── LAYOUT: Engine Tabs (horizontal scroll on mobile) ── */
+.engine-tabs {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.engine-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.engine-tab {
+  padding: 8px var(--space-3-5);
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.engine-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--state-focus-ring);
+}
+
+.engine-tab:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text);
+}
+
+.engine-tab.active {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--neon-cyan-mobile);
+}
+
+/* Bottom nav hover/focus */
+.bottom-nav-item:hover { color: var(--muted); }
+.bottom-nav-item:focus-visible {
+  outline: none;
+  box-shadow: var(--state-focus-ring);
+  border-radius: 8px;
+}
+

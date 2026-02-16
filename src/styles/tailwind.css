@@ -1,0 +1,60 @@
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Poseidon.AI custom base layer */
+@layer base {
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: local('Space Grotesk'), local('SpaceGrotesk');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: local('Inter'), local('Inter Regular');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), local('JetBrainsMono-Regular');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body, 'Inter', 'Noto Sans JP', system-ui, sans-serif);
+    background: #0B1221;
+    color: #f8fafc;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+  }
+}

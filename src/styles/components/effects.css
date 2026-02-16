@@ -1,0 +1,114 @@
+/* ── VIGNETTE + GRAIN ── */
+.vignette-grain {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(120% 120% at 50% 8%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 62%, rgba(0,0,0,0.78) 100%),
+    radial-gradient(140% 140% at 50% 100%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.85) 70%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.035) 0, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: auto, auto, 3px 3px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── FLOATING PARTICLES — hidden on mobile ── */
+.floating-particles {
+  display: none;
+}
+
+.particle {
+  position: absolute;
+  width: var(--size, 3px);
+  height: var(--size, 3px);
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.3);
+  animation: particle-float var(--dur, 0.22s) var(--del, 0s) ease-in-out 200;
+  left: var(--x, 50%);
+  top: var(--y, 80%);
+}
+
+.particle:nth-child(even) { background: rgba(139, 92, 246, 0.25); }
+.particle:nth-child(3n) { background: rgba(21, 225, 194, 0.3); }
+
+/* ── BLOOM / LENS FLARE — hidden on mobile ── */
+.bloom-effect {
+  display: none;
+}
+
+.lens-flare { display: none; }
+
+/* ── CIRCUIT BG ── */
+.circuit-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.circuit-bg path {
+  stroke: var(--accent-cyan);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 8 12;
+}
+
+.circuit-bg .circuit-pulse {
+  stroke-dasharray: 20 180;
+  animation: circuit-pulse 0.22s linear 200;
+  opacity: 0.6;
+}
+
+.circuit-node { fill: rgba(0, 240, 255, 0.4); }
+
+/* ── WAVEFORM BG — hidden on mobile ── */
+.waveform-bg {
+  display: none;
+}
+
+/* ── ICON GLOW ── */
+.icon-glow { filter: var(--icon-glow-default); }
+.icon-glow-teal { filter: var(--icon-glow-teal); }
+.icon-glow-violet { filter: var(--icon-glow-violet); }
+.icon-glow-amber { filter: var(--icon-glow-amber); }
+.icon-glow-blue { filter: var(--icon-glow-blue); }
+.icon-glow-red { filter: var(--icon-glow-red); }
+
+/* ── WEALTH WAVE ANIMATION ── */
+.wealth-wave-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: wealth-draw 0.22s var(--motion-easing-standard) 0.1s forwards;
+}
+
+.wealth-wave-area {
+  opacity: 0;
+  animation: wealth-area-fade 0.22s ease 0.12s forwards;
+}
+
+/* ── WIREFRAME ANIMATION ── */
+.wireframe-block { animation: wireframe-pulse 0.22s ease-in-out 200; }
+.wireframe-block:nth-child(2) { animation-delay: 0.1s; }
+.wireframe-block:nth-child(3) { animation-delay: 0.2s; }
+.wireframe-dot { animation: wireframe-pulse 0.22s ease-in-out 200; }
+.wireframe-bar { animation: wireframe-pulse 0.22s ease-in-out 0.1s 200; }
+
+/* ── SMOOTH SCROLL ── */
+html { scroll-behavior: smooth; }
+
+/* ── Reduced-motion guard — decorative effects ── */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .circuit-bg .circuit-pulse,
+  .wealth-wave-line,
+  .wealth-wave-area,
+  .wireframe-block,
+  .wireframe-dot,
+  .wireframe-bar {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .glow-pulse { animation: none !important; }
+}
+

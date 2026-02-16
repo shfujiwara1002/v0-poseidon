@@ -1,0 +1,60 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="compliance-grad-stroke" x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#EAB308"/>
+    </linearGradient>
+    <linearGradient id="compliance-grad-check" x1="8" y1="12" x2="16" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+     <linearGradient id="compliance-grad-fill" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(245,158,11,0.08)"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.02)"/>
+    </linearGradient>
+    <filter id="compliance-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Fill -->
+  <path d="M12 2L20.66 7V17L12 22L3.34 17V7L12 2Z" fill="url(#compliance-grad-fill)"/>
+
+  <!-- LAYER 1: Outline -->
+  <path d="M12 2L20.66 7V17L12 22L3.34 17V7L12 2Z" stroke="url(#compliance-grad-stroke)" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Inner Dashed Hex -->
+  <path d="M12 4L18.9 8V16L12 20L5.1 16V8L12 4Z" stroke="#F59E0B" stroke-width="0.8" stroke-dasharray="2 2" stroke-opacity="0.6"/>
+
+  <!-- Checkmark -->
+  <path d="M8 12L10.5 14.5L16 9" stroke="url(#compliance-grad-check)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Small Shield at top -->
+  <path d="M12 2.5L10.5 3.5V5C10.5 6.5 12 7.5 12 7.5C12 7.5 13.5 6.5 13.5 5V3.5L12 2.5Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="0.5"/>
+
+  <!-- LAYER 2: Details -->
+  <!-- Vertex Dots -->
+  <circle cx="12" cy="2" r="0.4" fill="#00F0FF"/>
+  <circle cx="20.66" cy="7" r="0.4" fill="#F59E0B"/>
+  <circle cx="20.66" cy="17" r="0.4" fill="#00F0FF"/>
+  <circle cx="12" cy="22" r="0.4" fill="#F59E0B"/>
+  <circle cx="3.34" cy="17" r="0.4" fill="#00F0FF"/>
+  <circle cx="3.34" cy="7" r="0.4" fill="#F59E0B"/>
+
+  <!-- Ribbon Tails -->
+  <path d="M9 19L7 22" stroke="#F59E0B" stroke-width="0.6"/>
+  <path d="M15 19L17 22" stroke="#F59E0B" stroke-width="0.6"/>
+  
+  <!-- Star Ring behind -->
+  <circle cx="12" cy="12" r="9" stroke="white" stroke-width="0.4" stroke-dasharray="1 1" opacity="0.2"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="12" cy="12" r="1.5" fill="#00F0FF" filter="url(#compliance-glow)" opacity="0.4"/>
+  <circle cx="12" cy="4" r="0.6" fill="#F59E0B" filter="url(#compliance-glow)"/>
+  
+  <circle cx="20.66" cy="7" r="0.6" fill="#F59E0B" filter="url(#compliance-glow)"/>
+  <circle cx="3.34" cy="7" r="0.6" fill="#F59E0B" filter="url(#compliance-glow)"/>
+</svg>

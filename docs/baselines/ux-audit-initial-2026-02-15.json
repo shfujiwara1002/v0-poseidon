@@ -1,0 +1,142 @@
+{
+  "baselineDate": "2026-02-15",
+  "demoFlow": [
+    "/",
+    "/dashboard",
+    "/protect",
+    "/execute",
+    "/govern",
+    "/settings"
+  ],
+  "scores": [
+    {
+      "criteria": "first5s",
+      "score": 4.6,
+      "note": "Boot fallback and entry hero clearly communicate product value."
+    },
+    {
+      "criteria": "oneCta",
+      "score": 4.5,
+      "note": "Core and engine nav suppress primary CTA by default."
+    },
+    {
+      "criteria": "heroDiff",
+      "score": 4.6,
+      "note": "Hero variant structure is differentiated (focused header, analytical table)."
+    },
+    {
+      "criteria": "navConfidence",
+      "score": 4.8,
+      "note": "Back button, breadcrumb and loading progress are implemented."
+    },
+    {
+      "criteria": "calm",
+      "score": 4.6,
+      "note": "Motion policy checks pass and reduced-motion safeguards exist."
+    },
+    {
+      "criteria": "performance",
+      "score": 4.5,
+      "note": "Bundle budget and route splitting are in place; font delivery still needs hardening."
+    },
+    {
+      "criteria": "trust",
+      "score": 5.0,
+      "note": "Proof and governance cues are consistently present."
+    },
+    {
+      "criteria": "copy",
+      "score": 4.7,
+      "note": "Hero copy is concise; page-level microcopy can still be tightened."
+    },
+    {
+      "criteria": "state",
+      "score": 4.6,
+      "note": "Loading/error/success/empty patterns are covered with reusable components."
+    },
+    {
+      "criteria": "a11y",
+      "score": 4.7,
+      "note": "A11y structure and smoke checks pass in CI."
+    },
+    {
+      "criteria": "reliability",
+      "score": 5.0,
+      "note": "PWA verification and offline support are wired."
+    },
+    {
+      "criteria": "memorable",
+      "score": 4.5,
+      "note": "Visual identity is strong while maintaining calm interaction."
+    }
+  ],
+  "issues": [
+    {
+      "id": "UX-001",
+      "route": "/dashboard",
+      "criteria": "oneCta",
+      "layer": "page",
+      "severity": "P1",
+      "demoImpact": "high",
+      "effort": "S",
+      "symptom": "Primary intent can feel split between hero and secondary action groups under some content states.",
+      "fixHypothesis": "Enforce one prominent primary CTA above the fold for P0 routes and demote any other action to ghost/minor.",
+      "owner": "frontend",
+      "status": "open",
+      "beforeShot": "docs/baselines/screenshots/2026-02-15/dashboard-before.png"
+    },
+    {
+      "id": "UX-002",
+      "route": "/protect",
+      "criteria": "heroDiff",
+      "layer": "shell",
+      "severity": "P1",
+      "demoImpact": "high",
+      "effort": "S",
+      "symptom": "Focused/analytical families are improved but still visually close in dense layouts.",
+      "fixHypothesis": "Increase semantic separation via role-specific spacing and metadata hierarchy in hero blocks.",
+      "owner": "frontend",
+      "status": "open",
+      "beforeShot": "docs/baselines/screenshots/2026-02-15/protect-before.png"
+    },
+    {
+      "id": "UX-003",
+      "route": "/",
+      "criteria": "performance",
+      "layer": "token",
+      "severity": "P1",
+      "demoImpact": "high",
+      "effort": "M",
+      "symptom": "Font definitions are prepared but public/fonts currently lacks hosted font binaries.",
+      "fixHypothesis": "Add self-hosted WOFF2 assets for primary families and preload critical weights.",
+      "owner": "frontend",
+      "status": "open"
+    },
+    {
+      "id": "UX-004",
+      "route": "/govern",
+      "criteria": "calm",
+      "layer": "component",
+      "severity": "P2",
+      "demoImpact": "medium",
+      "effort": "S",
+      "symptom": "Motion allowlist still permits legacy infinite decorative animations.",
+      "fixHypothesis": "Reduce motion-policy allowlist and gate decorative loops behind explicit opt-in classes.",
+      "owner": "frontend",
+      "status": "open"
+    },
+    {
+      "id": "UX-005",
+      "route": "/settings",
+      "criteria": "a11y",
+      "layer": "page",
+      "severity": "P2",
+      "demoImpact": "medium",
+      "effort": "S",
+      "symptom": "Structure checks pass, but route-by-route visual contrast and keyboard walkthrough snapshots are not yet archived.",
+      "fixHypothesis": "Record manual keyboard and contrast verification artifacts for all P0 routes.",
+      "owner": "frontend",
+      "status": "open"
+    }
+  ]
+}

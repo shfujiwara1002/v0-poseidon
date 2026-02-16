@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#0b1220" />
+  <rect x="40" y="40" width="1320" height="820" fill="none" stroke="#3b82f6" stroke-width="2" rx="16" />
+  <rect x="80" y="80" width="1240" height="80" fill="#111827" stroke="#0ea5e9" stroke-width="2" rx="10" />
+  <text x="120" y="130" fill="#e5e7eb" font-family="Arial" font-size="22">Top Bar</text>
+  <rect x="80" y="180" width="240" height="640" fill="#0f172a" stroke="#0ea5e9" stroke-width="2" rx="10" />
+  <text x="120" y="230" fill="#e5e7eb" font-family="Arial" font-size="20">Left Panel</text>
+  <rect x="340" y="180" width="980" height="640" fill="#0b1220" stroke="#38bdf8" stroke-width="2" rx="12" />
+  <text x="380" y="230" fill="#e5e7eb" font-family="Arial" font-size="20">Main Canvas</text>
+</svg>

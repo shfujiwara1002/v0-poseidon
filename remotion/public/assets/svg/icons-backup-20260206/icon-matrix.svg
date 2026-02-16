@@ -1,0 +1,64 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient fills for matrix cells (Soft 3D) -->
+    <linearGradient id="matrix-soft-cyan" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.12)"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.04)"/>
+    </linearGradient>
+    <linearGradient id="matrix-soft-teal" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(20,184,166,0.12)"/>
+      <stop offset="1" stop-color="rgba(20,184,166,0.04)"/>
+    </linearGradient>
+    <linearGradient id="matrix-soft-violet" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(139,92,246,0.12)"/>
+      <stop offset="1" stop-color="rgba(139,92,246,0.04)"/>
+    </linearGradient>
+    <linearGradient id="matrix-soft-amber" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(245,158,11,0.12)"/>
+      <stop offset="1" stop-color="rgba(245,158,11,0.04)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Grid cells with soft fills (tactile depth) -->
+  <!-- Row 1 -->
+  <rect x="4" y="4" width="3" height="3" rx="0.5" fill="url(#matrix-soft-teal)"/>
+  <rect x="9" y="4" width="3" height="3" rx="0.5" fill="url(#matrix-soft-violet)" opacity="0.5"/>
+  <rect x="14" y="4" width="3" height="3" rx="0.5" fill="url(#matrix-soft-amber)"/>
+  <rect x="19" y="4" width="3" height="3" rx="0.5" fill="url(#matrix-soft-cyan)" opacity="0.5"/>
+  <!-- Row 2 -->
+  <rect x="4" y="9" width="3" height="3" rx="0.5" fill="url(#matrix-soft-violet)" opacity="0.5"/>
+  <rect x="9" y="9" width="3" height="3" rx="0.5" fill="url(#matrix-soft-cyan)"/>
+  <rect x="14" y="9" width="3" height="3" rx="0.5" fill="url(#matrix-soft-teal)" opacity="0.5"/>
+  <rect x="19" y="9" width="3" height="3" rx="0.5" fill="url(#matrix-soft-amber)" opacity="0.5"/>
+  <!-- Row 3 -->
+  <rect x="4" y="14" width="3" height="3" rx="0.5" fill="url(#matrix-soft-amber)" opacity="0.5"/>
+  <rect x="9" y="14" width="3" height="3" rx="0.5" fill="url(#matrix-soft-teal)" opacity="0.5"/>
+  <rect x="14" y="14" width="3" height="3" rx="0.5" fill="url(#matrix-soft-violet)"/>
+  <rect x="19" y="14" width="3" height="3" rx="0.5" fill="url(#matrix-soft-cyan)" opacity="0.5"/>
+  <!-- Row 4 -->
+  <rect x="4" y="19" width="3" height="3" rx="0.5" fill="url(#matrix-soft-cyan)" opacity="0.5"/>
+  <rect x="9" y="19" width="3" height="3" rx="0.5" fill="url(#matrix-soft-amber)" opacity="0.5"/>
+  <rect x="14" y="19" width="3" height="3" rx="0.5" fill="url(#matrix-soft-cyan)" opacity="0.5"/>
+  <rect x="19" y="19" width="3" height="3" rx="0.5" fill="url(#matrix-soft-teal)"/>
+
+  <!-- LAYER 1: Outlines for active cells (rounded) -->
+  <rect x="4" y="4" width="3" height="3" rx="0.5" stroke="#14B8A6" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="14" y="4" width="3" height="3" rx="0.5" stroke="#F59E0B" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="9" y="9" width="3" height="3" rx="0.5" stroke="#00F0FF" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="14" y="14" width="3" height="3" rx="0.5" stroke="#8B5CF6" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="19" y="19" width="3" height="3" rx="0.5" stroke="#14B8A6" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="22" height="22" rx="1" stroke="#FFFFFF" stroke-width="0.5" opacity="0.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 2: Connectors (soft curves, reduced) -->
+  <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" stroke="#FFFFFF" stroke-width="0.4" opacity="0.12" stroke-linecap="round"/>
+  <line x1="15.5" y1="5.5" x2="10.5" y2="10.5" stroke="#FFFFFF" stroke-width="0.4" opacity="0.12" stroke-linecap="round"/>
+  <line x1="15.5" y1="15.5" x2="20.5" y2="20.5" stroke="#FFFFFF" stroke-width="0.4" opacity="0.12" stroke-linecap="round"/>
+
+  <!-- LAYER 3: Focal highlights (solid color, NO Gaussian blur) -->
+  <circle cx="5.5" cy="5.5" r="0.8" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="20.5" cy="20.5" r="0.8" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="15.5" cy="5.5" r="0.8" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="10.5" cy="10.5" r="0.8" fill="#00F0FF" opacity="0.8"/>
+</svg>

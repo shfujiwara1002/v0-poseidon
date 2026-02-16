@@ -1,0 +1,51 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tether-grad-stroke" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset="0.5" stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <filter id="tether-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="1" dy="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <filter id="tether-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Shadow Path -->
+  <path d="M2 22 C6 22 8 18 12 12 C16 6 18 2 22 2" stroke="transparent" stroke-width="2" filter="url(#tether-shadow)"/>
+
+  <!-- LAYER 1: Dual Path -->
+  <!-- Primary -->
+  <path d="M2 22 C6 22 8 18 12 12 C16 6 18 2 22 2" stroke="url(#tether-grad-stroke)" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Secondary Offset (Shadow/Echo) -->
+  <path d="M3 23 C7 23 9 19 13 13 C17 7 19 3 23 3" stroke="#3B82F6" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.3"/>
+
+  <!-- LAYER 2: Flow Arrows & Nodes -->
+  <!-- 5 Endpoint Nodes -->
+  <circle cx="2" cy="22" r="1.5" fill="#3B82F6" stroke="#020410" stroke-width="0.5"/>
+  <circle cx="6.5" cy="18.5" r="0.8" fill="#3B82F6"/>
+  <circle cx="12" cy="12" r="0.8" fill="#00F0FF"/> <!-- Mid -->
+  <circle cx="17.5" cy="5.5" r="0.8" fill="#14B8A6"/>
+  <circle cx="22" cy="2" r="1.5" fill="#14B8A6" stroke="#020410" stroke-width="0.5"/>
+
+  <!-- Chevrons -->
+  <path d="M8 17 L9 16 L10 17" stroke="white" stroke-width="0.6" opacity="0.6"/>
+  <path d="M14 10 L15 9 L16 10" stroke="white" stroke-width="0.6" opacity="0.6"/>
+
+  <!-- Pulse Dots (Traveling) -->
+  <circle cx="10" cy="15" r="0.6" fill="white" opacity="0.8"/>
+  <circle cx="14" cy="9" r="0.4" fill="white" opacity="0.5"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="2" cy="22" r="1.5" fill="#3B82F6" filter="url(#tether-glow)" opacity="0.6"/>
+  <circle cx="12" cy="12" r="1.2" fill="#00F0FF" filter="url(#tether-glow)" opacity="0.8"/>
+  <circle cx="22" cy="2" r="1.5" fill="#14B8A6" filter="url(#tether-glow)" opacity="0.6"/>
+</svg>

@@ -1,0 +1,62 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="audit-grad-line" x1="2" y1="18" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="0.5" stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <filter id="audit-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Timeline wash -->
+  <rect x="2" y="18" width="20" height="4" fill="url(#audit-grad-line)" fill-opacity="0.05"/>
+
+  <!-- LAYER 1: Timeline -->
+  <line x1="2" y1="18" x2="22" y2="18" stroke="url(#audit-grad-line)" stroke-width="1.5"/>
+
+  <!-- Nodes -->
+  <!-- Node 1 (Past) -->
+  <circle cx="5" cy="18" r="2.2" stroke="#00F0FF" stroke-width="1.2" fill="#020410"/>
+  <circle cx="5" cy="18" r="1.2" fill="#00F0FF"/>
+  <!-- Node 2 (Present) -->
+  <circle cx="12" cy="18" r="2.2" stroke="#14B8A6" stroke-width="1.2" fill="#020410"/>
+  <circle cx="12" cy="18" r="1.2" fill="#14B8A6"/>
+  <!-- Node 3 (Future) -->
+  <circle cx="19" cy="18" r="2.2" stroke="#8B5CF6" stroke-width="1.2" fill="#020410"/>
+  <circle cx="19" cy="18" r="1.2" fill="#8B5CF6"/>
+
+  <!-- Chain Links -->
+  <path d="M8 18C8 17.5 8.5 17 9 17H10C10.5 17 11 17.5 11 18" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.5"/>
+  <path d="M8 18C8 18.5 8.5 19 9 19H10C10.5 19 11 18.5 11 18" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.5"/>
+  
+  <path d="M14 18C14 17.5 14.5 17 15 17H16C16.5 17 17 17.5 17 18" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.5"/>
+  <path d="M14 18C14 18.5 14.5 19 15 19H16C16.5 19 17 18.5 17 18" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.5"/>
+
+  <!-- LAYER 2: Stems & Data -->
+  <!-- Stems -->
+  <line x1="5" y1="18" x2="5" y2="10" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="1 1"/>
+  <line x1="12" y1="18" x2="12" y2="8" stroke="#14B8A6" stroke-width="0.8" stroke-dasharray="1 1"/>
+  <line x1="19" y1="18" x2="19" y2="6" stroke="#8B5CF6" stroke-width="0.8" stroke-dasharray="1 1"/>
+  
+  <!-- Hash Symbol -->
+  <path d="M3 13H7 M3 11H7 M4 14L6 10 M5 14L7 10" stroke="#00F0FF" stroke-width="0.4" opacity="0.6"/>
+  
+  <!-- Lock Icon -->
+  <rect x="18" y="4" width="2" height="2" stroke="#8B5CF6" stroke-width="0.5"/>
+  <path d="M18.5 4V3C18.5 2.7 18.7 2.5 19 2.5C19.3 2.5 19.5 2.7 19.5 3V4" stroke="#8B5CF6" stroke-width="0.5"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="5" cy="18" r="1.5" fill="#00F0FF" filter="url(#audit-glow)" opacity="0.6"/>
+  <circle cx="12" cy="18" r="1.5" fill="#14B8A6" filter="url(#audit-glow)" opacity="0.6"/>
+  <circle cx="19" cy="18" r="1.5" fill="#8B5CF6" filter="url(#audit-glow)" opacity="0.6"/>
+  
+  <circle cx="5" cy="10" r="0.6" fill="#00F0FF" filter="url(#audit-glow)"/>
+  <circle cx="12" cy="8" r="0.6" fill="#14B8A6" filter="url(#audit-glow)"/>
+  <circle cx="19" cy="6" r="0.6" fill="#8B5CF6" filter="url(#audit-glow)"/>
+</svg>

@@ -1,0 +1,49 @@
+/* ── Tailwind CSS + base reset ── */
+@import './tailwind.css';
+
+/* ── System: tokens, base, utilities ── */
+@import './system/tokens.css';
+@import './system/base.css';
+
+/* ── Design System v2: Effect Presets ── */
+@import '../design-system/css/effect-presets.css';
+
+/* ── Layouts ── */
+@import './layouts/app-shell.css';
+@import './layouts/layout-primitives.css';
+@import './layouts/grid.css';
+
+/* ── Components ── */
+@import './components/navigation.css';
+@import './components/button.css';
+@import './components/glass-card.css';
+@import './components/badges.css';
+@import './components/stat-card.css';
+@import './components/lists.css';
+@import './components/domain-cards.css';
+@import './components/onboarding.css';
+@import './components/misc-components.css';
+@import './components/forms.css';
+@import './components/tabs-table.css';
+@import './components/feedback.css';
+@import './components/overlays.css';
+@import './components/mobile-nav.css';
+@import './components/effects.css';
+@import './components/animations.css';
+@import './components/responsive.css';
+@import './components/boot-splash.css';
+
+/* ── Pages ── */
+@import './pages/entry-screens.css';
+@import './pages/dashboard.css';
+@import './pages/mission.css';
+@import './pages/component-shells.css';
+@import './pages/dashboard-v3.css';
+@import './pages/engine-page.css';
+@import './pages/engine-semantics.css';
+@import './pages/chatbot.css';
+@import './pages/command-palette.css';
+@import './pages/pwa-offline.css';
+@import './pages/disclosure-sheet.css';
+
+/* themes.css and colorblind-palettes.css are imported in App.tsx. */

@@ -1,0 +1,59 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="matrix-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Grid Fills -->
+  <!-- Row 1 -->
+  <rect x="4" y="4" width="3" height="3" rx="0.5" fill="#14B8A6" fill-opacity="0.6"/>
+  <rect x="9" y="4" width="3" height="3" rx="0.5" fill="#8B5CF6" fill-opacity="0.3"/>
+  <rect x="14" y="4" width="3" height="3" rx="0.5" fill="#F59E0B" fill-opacity="0.6"/>
+  <rect x="19" y="4" width="3" height="3" rx="0.5" fill="#00F0FF" fill-opacity="0.3"/>
+  <!-- Row 2 -->
+  <rect x="4" y="9" width="3" height="3" rx="0.5" fill="#8B5CF6" fill-opacity="0.3"/>
+  <rect x="9" y="9" width="3" height="3" rx="0.5" fill="#00F0FF" fill-opacity="0.6"/>
+  <rect x="14" y="9" width="3" height="3" rx="0.5" fill="#14B8A6" fill-opacity="0.3"/>
+  <rect x="19" y="9" width="3" height="3" rx="0.5" fill="#F59E0B" fill-opacity="0.3"/>
+  <!-- Row 3 -->
+  <rect x="4" y="14" width="3" height="3" rx="0.5" fill="#F59E0B" fill-opacity="0.3"/>
+  <rect x="9" y="14" width="3" height="3" rx="0.5" fill="#14B8A6" fill-opacity="0.3"/>
+  <rect x="14" y="14" width="3" height="3" rx="0.5" fill="#8B5CF6" fill-opacity="0.6"/>
+  <rect x="19" y="14" width="3" height="3" rx="0.5" fill="#00F0FF" fill-opacity="0.3"/>
+  <!-- Row 4 -->
+  <rect x="4" y="19" width="3" height="3" rx="0.5" fill="#00F0FF" fill-opacity="0.3"/>
+  <rect x="9" y="19" width="3" height="3" rx="0.5" fill="#F59E0B" fill-opacity="0.3"/>
+  <rect x="14" y="19" width="3" height="3" rx="0.5" fill="#00F0FF" fill-opacity="0.3"/>
+  <rect x="19" y="19" width="3" height="3" rx="0.5" fill="#14B8A6" fill-opacity="0.6"/>
+
+  <!-- LAYER 1: Outlines (just stroke some active ones for definition) -->
+  <rect x="4" y="4" width="3" height="3" rx="0.5" stroke="#14B8A6" stroke-width="0.5"/>
+  <rect x="14" y="4" width="3" height="3" rx="0.5" stroke="#F59E0B" stroke-width="0.5"/>
+  <rect x="9" y="9" width="3" height="3" rx="0.5" stroke="#00F0FF" stroke-width="0.5"/>
+  <rect x="14" y="14" width="3" height="3" rx="0.5" stroke="#8B5CF6" stroke-width="0.5"/>
+  <rect x="19" y="19" width="3" height="3" rx="0.5" stroke="#14B8A6" stroke-width="0.5"/>
+  
+  <!-- Outer Frame -->
+  <rect x="2" y="2" width="22" height="22" rx="1" stroke="white" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- LAYER 2: Connectors & Headers -->
+  <!-- Diagonals -->
+  <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" stroke="white" stroke-width="0.4" opacity="0.12"/>
+  <line x1="15.5" y1="5.5" x2="10.5" y2="10.5" stroke="white" stroke-width="0.4" opacity="0.12"/>
+  <line x1="15.5" y1="15.5" x2="20.5" y2="20.5" stroke="white" stroke-width="0.4" opacity="0.12"/>
+  
+  <!-- Headers -->
+  <line x1="4" y1="2" x2="22" y2="2" stroke="white" stroke-width="0.3" opacity="0.15"/>
+  <line x1="2" y1="4" x2="2" y2="22" stroke="white" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- LAYER 3: Glows -->
+  <circle cx="5.5" cy="5.5" r="1.2" fill="#14B8A6" filter="url(#matrix-glow)" opacity="0.6"/>
+  <circle cx="20.5" cy="20.5" r="1.2" fill="#14B8A6" filter="url(#matrix-glow)" opacity="0.6"/>
+  <circle cx="15.5" cy="5.5" r="1.2" fill="#F59E0B" filter="url(#matrix-glow)" opacity="0.6"/>
+  <circle cx="10.5" cy="10.5" r="1.2" fill="#00F0FF" filter="url(#matrix-glow)" opacity="0.6"/>
+</svg>

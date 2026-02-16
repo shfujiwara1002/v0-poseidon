@@ -1,0 +1,56 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aibrain-grad-primary" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="aibrain-grad-fill" x1="12" y1="4" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(0,240,255,0.06)"/>
+      <stop offset="1" stop-color="rgba(139,92,246,0.05)"/>
+    </linearGradient>
+    <filter id="aibrain-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0 -->
+  <!-- Left Hemisphere -->
+  <path d="M11.5 6C9 6 6 8 6 11V15C6 18 9 19 11.5 19V6Z" fill="url(#aibrain-grad-fill)"/>
+  <!-- Right Hemisphere -->
+  <path d="M12.5 6V19C15 19 18 18 18 15V11C18 8 15 6 12.5 6Z" fill="url(#aibrain-grad-fill)"/>
+
+  <!-- LAYER 1 -->
+  <!-- Main Brain Outline -->
+  <path d="M11.5 5.5C8 5.5 5 7.5 5 11V15C5 18.5 8 20 11.5 20" stroke="url(#aibrain-grad-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.5 5.5C16 5.5 19 7.5 19 11V15C19 18.5 16 20 12.5 20" stroke="url(#aibrain-grad-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Midline Divide -->
+  <path d="M12 5V21" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+
+  <!-- LAYER 2 -->
+  <!-- Circuit Traces Left -->
+  <path d="M8 9H9.5M8 12H9.5M8 15H9.5" stroke="#00F0FF" stroke-width="0.8" stroke-dasharray="1 2" stroke-opacity="0.6"/>
+  <!-- Circuit Traces Right -->
+  <path d="M14.5 9H16M14.5 12H16M14.5 15H16" stroke="#14B8A6" stroke-width="0.8" stroke-dasharray="1 2" stroke-opacity="0.6"/>
+  <!-- Synapse Arcs -->
+  <path d="M10 8C11 7 13 7 14 8" stroke="#8B5CF6" stroke-width="0.6" stroke-opacity="0.5"/>
+  <path d="M10 17C11 18 13 18 14 17" stroke="#8B5CF6" stroke-width="0.6" stroke-opacity="0.5"/>
+  <!-- Radiating Lines -->
+  <path d="M12 11L14 9" stroke="#00F0FF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <path d="M12 13L10 15" stroke="#00F0FF" stroke-width="0.5" stroke-opacity="0.3"/>
+
+  <!-- LAYER 3 -->
+  <circle cx="8" cy="9" r="0.8" fill="#00F0FF" filter="url(#aibrain-glow)"/>
+  <circle cx="8" cy="12" r="0.6" fill="#00F0FF" filter="url(#aibrain-glow)"/>
+  <circle cx="8" cy="15" r="0.6" fill="#00F0FF" filter="url(#aibrain-glow)"/>
+  
+  <circle cx="16" cy="9" r="0.6" fill="#14B8A6" filter="url(#aibrain-glow)"/>
+  <circle cx="16" cy="12" r="0.6" fill="#14B8A6" filter="url(#aibrain-glow)"/>
+  <circle cx="16" cy="15" r="0.8" fill="#14B8A6" filter="url(#aibrain-glow)"/>
+  
+  <circle cx="12" cy="12" r="1.2" fill="#8B5CF6" filter="url(#aibrain-glow)"/>
+</svg>

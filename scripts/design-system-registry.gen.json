@@ -1,0 +1,339 @@
+{
+  "command": {
+    "status": "canonical"
+  },
+  "dialog": {
+    "status": "canonical"
+  },
+  "dropdown-menu": {
+    "status": "canonical"
+  },
+  "popover": {
+    "status": "canonical"
+  },
+  "select": {
+    "status": "canonical"
+  },
+  "slot": {
+    "status": "canonical"
+  },
+  "tabs": {
+    "status": "canonical"
+  },
+  "tooltip": {
+    "status": "canonical"
+  },
+  "ActionOutcomePreview": {
+    "status": "canonical"
+  },
+  "AdaptiveCardGrid": {
+    "status": "canonical"
+  },
+  "AIChatbot": {
+    "status": "canonical"
+  },
+  "ActionQueueCard": {
+    "status": "canonical"
+  },
+  "ActionQueueItem": {
+    "status": "canonical"
+  },
+  "ActivityRail": {
+    "status": "canonical"
+  },
+  "ActivityTimeline": {
+    "status": "canonical"
+  },
+  "AlertsHub": {
+    "status": "canonical"
+  },
+  "AppNav": {
+    "status": "canonical"
+  },
+  "AppShell": {
+    "status": "canonical"
+  },
+  "AriaLiveAnnouncer": {
+    "status": "canonical"
+  },
+  "AuditChip": {
+    "status": "canonical"
+  },
+  "AuditLedgerTable": {
+    "status": "canonical"
+  },
+  "AuditLinkChip": {
+    "status": "canonical"
+  },
+  "AuditLogCard": {
+    "status": "canonical"
+  },
+  "AutoSaveRuleCard": {
+    "status": "canonical"
+  },
+  "BottomNav": {
+    "status": "canonical"
+  },
+  "BottomSheet": {
+    "status": "canonical"
+  },
+  "BootSplash": {
+    "status": "canonical"
+  },
+  "Button": {
+    "status": "canonical"
+  },
+  "Card": {
+    "status": "canonical"
+  },
+  "CashFlowChart": {
+    "status": "canonical"
+  },
+  "CategoryScoreBar": {
+    "status": "canonical"
+  },
+  "ChatInput": {
+    "status": "canonical"
+  },
+  "ChatMessage": {
+    "status": "canonical"
+  },
+  "CommandPalette": {
+    "status": "canonical"
+  },
+  "ConsentScopePanel": {
+    "status": "canonical"
+  },
+  "ContributionChart": {
+    "status": "canonical"
+  },
+  "DashboardInsightsPanel": {
+    "status": "canonical"
+  },
+  "DataRightsPanel": {
+    "status": "canonical"
+  },
+  "DefinitionLine": {
+    "status": "canonical"
+  },
+  "EngineHealthStrip": {
+    "status": "canonical"
+  },
+  "EngineIconBadge": {
+    "status": "canonical"
+  },
+  "EngineTabs": {
+    "status": "canonical"
+  },
+  "ErrorBoundary": {
+    "status": "canonical"
+  },
+  "ExplainableInsightPanel": {
+    "status": "canonical"
+  },
+  "FactorsDropdown": {
+    "status": "canonical"
+  },
+  "FilterPanel": {
+    "status": "canonical"
+  },
+  "ForecastBandChart": {
+    "status": "canonical"
+  },
+  "FreshnessIndicator": {
+    "status": "canonical"
+  },
+  "Grid": {
+    "status": "canonical"
+  },
+  "GovernContractSet": {
+    "status": "canonical"
+  },
+  "GovernFooter": {
+    "status": "canonical"
+  },
+  "GovernVerifiedBadge": {
+    "status": "canonical"
+  },
+  "HumanReviewCTA": {
+    "status": "canonical"
+  },
+  "KPIContractCard": {
+    "status": "canonical"
+  },
+  "LoadingSpinner": {
+    "status": "canonical"
+  },
+  "MilestonesTimeline": {
+    "status": "canonical"
+  },
+  "MissionActionList": {
+    "status": "canonical"
+  },
+  "MissionDataRows": {
+    "status": "canonical"
+  },
+  "MissionEmptyState": {
+    "status": "canonical"
+  },
+  "MissionEvidencePanel": {
+    "status": "canonical"
+  },
+  "MissionMetadataStrip": {
+    "status": "canonical"
+  },
+  "MissionMetricTiles": {
+    "status": "canonical"
+  },
+  "MissionSectionHeader": {
+    "status": "canonical"
+  },
+  "MissionStatusChip": {
+    "status": "canonical"
+  },
+  "MissionToggle": {
+    "status": "canonical"
+  },
+  "MobileDisclosure": {
+    "status": "canonical"
+  },
+  "NetWorthHero": {
+    "status": "canonical"
+  },
+  "NotificationToast": {
+    "status": "canonical"
+  },
+  "OfflineBanner": {
+    "status": "canonical"
+  },
+  "OversightQueueTable": {
+    "status": "canonical"
+  },
+  "PageShell": {
+    "status": "canonical"
+  },
+  "PWAInstallPrompt": {
+    "status": "canonical"
+  },
+  "PolicyModelCards": {
+    "status": "canonical"
+  },
+  "PrivacyControlCard": {
+    "status": "canonical"
+  },
+  "ProofLine": {
+    "status": "canonical"
+  },
+  "RiskScoreDial": {
+    "status": "canonical"
+  },
+  "SavingsGoalCard": {
+    "status": "canonical"
+  },
+  "ScenarioControls": {
+    "status": "canonical"
+  },
+  "ScoreRing": {
+    "status": "canonical"
+  },
+  "ScenarioSimulator": {
+    "status": "canonical"
+  },
+  "ScreenStateHandler": {
+    "status": "canonical"
+  },
+  "Section": {
+    "status": "canonical"
+  },
+  "SearchBar": {
+    "status": "canonical"
+  },
+  "SettingsPanel": {
+    "status": "canonical"
+  },
+  "SignalEvidenceDecisionCard": {
+    "status": "canonical"
+  },
+  "SignalRow": {
+    "status": "canonical"
+  },
+  "Skeleton": {
+    "status": "canonical"
+  },
+  "Sparkline": {
+    "status": "canonical"
+  },
+  "StatCard": {
+    "status": "canonical"
+  },
+  "SubscriptionLeakCard": {
+    "status": "canonical"
+  },
+  "SystemStatus": {
+    "status": "canonical"
+  },
+  "ThreatAlertCard": {
+    "status": "canonical"
+  },
+  "TransactionTable": {
+    "status": "canonical"
+  },
+  "Toast": {
+    "status": "canonical"
+  },
+  "TrustIndexCard": {
+    "status": "canonical"
+  },
+  "TopNav": {
+    "status": "canonical"
+  },
+  "UpdateNotification": {
+    "status": "canonical"
+  },
+  "VoiceInput": {
+    "status": "canonical"
+  },
+  "WellnessCard": {
+    "status": "canonical"
+  },
+  "CommandCenterShell": {
+    "status": "legacy",
+    "replacement": "PageShell",
+    "note": "Deprecated shell wrapper. Use PageShell variants directly."
+  },
+  "EnginePageShell": {
+    "status": "legacy",
+    "replacement": "PageShell",
+    "note": "Deprecated engine shell wrapper. Use PageShell variants directly."
+  },
+  "DashboardStats": {
+    "status": "legacy",
+    "replacement": "MissionMetricTiles",
+    "note": "Legacy dashboard summary card system."
+  },
+  "EngineStatusCard": {
+    "status": "legacy",
+    "replacement": "EngineHealthStrip",
+    "note": "Legacy card-per-engine visual grammar."
+  },
+  "GlassCard": {
+    "status": "legacy",
+    "replacement": "engine-card / dashboard-main-card",
+    "note": "Deprecated visual primitive from pre mission-control era."
+  },
+  "OnboardingStep": {
+    "status": "legacy",
+    "replacement": "Onboarding page shell sections",
+    "note": "Legacy standalone onboarding surface."
+  },
+  "ProtectV2Card": {
+    "status": "forbidden",
+    "replacement": "Protect page canonical components",
+    "note": "Deprecated V2 card archetype."
+  },
+  "LegacyHeroStrip": {
+    "status": "forbidden",
+    "replacement": "CommandCenterShell hero contract",
+    "note": "Deprecated standalone hero implementation."
+  }
+}

@@ -1,0 +1,48 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient for swirl depth (Soft 3D) -->
+    <linearGradient id="swirl-soft-fill" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(139,92,246,0.08)"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.03)"/>
+    </linearGradient>
+    <!-- Gradient stroke -->
+    <linearGradient id="swirl-grad-stroke" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#00F0FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Inner fill volume (soft tactile base) -->
+  <path d="M12 12 C14 12 15 13 15 14 C15 15.5 13.5 17 12 17 C9 17 7 14 7 11 C7 7 10 3 15 3"
+        stroke="url(#swirl-soft-fill)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- LAYER 1: Spirals (rounded, plush curves) -->
+  <!-- Outer spiral -->
+  <path d="M12 22 C6 22 2 17 2 11 C2 6 7 2 12 2 C18 2 22 7 22 12 C22 15 20 18 17 18 C14 18 12 16 12 14"
+        stroke="url(#swirl-grad-stroke)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Inner spiral -->
+  <path d="M12 14 C13.5 14 14.5 13 14.5 12 C14.5 10.5 13.5 9.5 12 9.5 C10.5 9.5 9.5 10.5 9.5 12"
+        stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.7" stroke-linecap="round"/>
+
+  <!-- LAYER 2: Narrative markers (simplified ≤2 metaphors) -->
+  <!-- Milestone dots on path -->
+  <circle cx="2" cy="11" r="0.6" fill="#8B5CF6" opacity="0.8"/>
+  <circle cx="12" cy="2" r="0.5" fill="#8B5CF6" opacity="0.8"/>
+  <circle cx="22" cy="12" r="0.5" fill="#00F0FF" opacity="0.8"/>
+  <circle cx="17" cy="18" r="0.4" fill="#00F0FF" opacity="0.8"/>
+
+  <!-- Chapter markers (soft lines) -->
+  <line x1="2" y1="11" x2="4" y2="11" stroke="#FFFFFF" stroke-width="0.4" opacity="0.5" stroke-linecap="round"/>
+  <line x1="12" y1="2" x2="12" y2="4" stroke="#FFFFFF" stroke-width="0.4" opacity="0.5" stroke-linecap="round"/>
+  <line x1="22" y1="12" x2="20" y2="12" stroke="#FFFFFF" stroke-width="0.4" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Flow arrows (direction indicators) -->
+  <path d="M5 16 L4 17 L5 18" stroke="#8B5CF6" stroke-width="0.4" opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 8 L20 7 L21 8" stroke="#00F0FF" stroke-width="0.4" opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 3: Focal highlights (solid color, NO Gaussian blur) -->
+  <circle cx="12" cy="14" r="1.2" fill="#8B5CF6" opacity="0.6"/>
+  <circle cx="12" cy="22" r="0.6" fill="#8B5CF6" opacity="0.8"/>
+  <circle cx="2" cy="11" r="0.6" fill="#8B5CF6" opacity="0.8"/>
+</svg>

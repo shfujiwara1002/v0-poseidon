@@ -1,0 +1,53 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gentle gradient fill for scale depth (Soft 3D) -->
+    <linearGradient id="scale-soft-fill" x1="12" y1="4" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(20,184,166,0.08)"/>
+      <stop offset="1" stop-color="rgba(0,240,255,0.04)"/>
+    </linearGradient>
+    <!-- Gradient stroke -->
+    <linearGradient id="scale-grad-stroke" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#00F0FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 0: Soft fill for pans -->
+  <path d="M4 9 L3 14 H9 L8 9 Z" fill="url(#scale-soft-fill)"/>
+  <path d="M16 9 L15 14 H21 L20 9 Z" fill="url(#scale-soft-fill)"/>
+
+  <!-- LAYER 1: Scale structure (rounded) -->
+  <!-- Central pillar -->
+  <line x1="12" y1="9" x2="12" y2="20"
+        stroke="url(#scale-grad-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Balance fulcrum triangle (top) -->
+  <path d="M10.5 7 L12 4 L13.5 7 Z"
+        fill="url(#scale-soft-fill)" stroke="url(#scale-grad-stroke)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Scale beam (horizontal bar) -->
+  <line x1="4" y1="9" x2="20" y2="9"
+        stroke="url(#scale-grad-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Base -->
+  <path d="M8 20 H16"
+        stroke="url(#scale-grad-stroke)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- LAYER 2: Pans (rounded corners) -->
+  <!-- Left pan -->
+  <path d="M4 9 L3 14 H9 L8 9"
+        stroke="#14B8A6" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Right pan -->
+  <path d="M16 9 L15 14 H21 L20 9"
+        stroke="#00F0FF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Checkmark inside right pan (fairness verified) -->
+  <path d="M17.5 11 L18.5 12 L20.5 10"
+        stroke="#00F0FF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- LAYER 3: Focal highlights (solid color, NO Gaussian blur) -->
+  <circle cx="12" cy="6" r="0.8" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="6" cy="12" r="0.6" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="18" cy="12" r="0.6" fill="#00F0FF" opacity="0.8"/>
+</svg>

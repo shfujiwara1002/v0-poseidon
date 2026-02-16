@@ -1,0 +1,78 @@
+/* ── LAYOUT: Grid ── */
+.poseidon-grid {
+  display: grid;
+  gap: var(--section-gap, 16px);
+}
+
+.poseidon-grid--1 { grid-template-columns: 1fr; }
+.poseidon-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.poseidon-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.poseidon-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.poseidon-grid--auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.poseidon-grid--gap-none { gap: 0; }
+.poseidon-grid--gap-compact { gap: var(--card-padding); }
+.poseidon-grid--gap-spacious { gap: calc(var(--section-gap) * 1.5); }
+
+.poseidon-grid-item--full { grid-column: 1 / -1; }
+.poseidon-grid-item--span-2 { grid-column: span 2; }
+.poseidon-grid-item--span-3 { grid-column: span 3; }
+.poseidon-grid-item--span-4 { grid-column: span 4; }
+
+/* Responsive: collapse fixed columns to fewer on smaller screens */
+@media (max-width: 639px) {
+  .poseidon-grid--2,
+  .poseidon-grid--3,
+  .poseidon-grid--4 {
+    grid-template-columns: 1fr;
+  }
+  .poseidon-grid-item--span-2,
+  .poseidon-grid-item--span-3,
+  .poseidon-grid-item--span-4 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .poseidon-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .poseidon-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .poseidon-grid-item--span-3 { grid-column: span 2; }
+  .poseidon-grid-item--span-4 { grid-column: span 2; }
+}
+
+/* ── AppNav Responsive ── */
+.app-nav-icon {
+  flex-shrink: 0;
+}
+
+/* Mobile (<640px): icon-only — labels hidden, links shown as icon row */
+.app-nav-label { display: none; }
+
+/* Tablet (640-1023px): icon + active label only */
+@media (min-width: 640px) {
+  .app-nav-label--active { display: inline; }
+}
+
+/* Desktop (>=1024px): all labels visible */
+@media (min-width: 1024px) {
+  .app-nav-label { display: inline; }
+}
+
+/* Override entry-flow hide-all at <=760px: show nav links as icon row */
+@media (max-width: 760px) {
+  .entry-nav-links {
+    display: inline-flex !important;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .entry-nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .entry-nav-links a {
+    padding: 0 8px;
+    min-width: var(--touch-min);
+    justify-content: center;
+  }
+}

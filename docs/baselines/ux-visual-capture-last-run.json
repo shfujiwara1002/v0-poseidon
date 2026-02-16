@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "skipped": true,
+  "reason": "playwright-not-installed",
+  "captures": []
+}

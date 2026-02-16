@@ -1,0 +1,44 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="consent-grad-primary" x1="2" y1="12" x2="16" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#00F0FF"/>
+    </linearGradient>
+    <linearGradient id="consent-grad-check" x1="4" y1="12" x2="10" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#00F0FF"/>
+    </linearGradient>
+    <filter id="consent-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: Toggle Body Fill -->
+  <rect x="2" y="7" width="16" height="10" rx="5" fill="#14B8A6" fill-opacity="0.15"/>
+
+  <!-- LAYER 1: Toggle & Check -->
+  <rect x="2" y="7" width="16" height="10" rx="5" stroke="url(#consent-grad-primary)" stroke-width="1.5"/>
+  <path d="M5.5 12L7.5 14L10.5 10" stroke="url(#consent-grad-check)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Toggle Knob -->
+  <circle cx="14" cy="12" r="3" fill="#14B8A6"/>
+  
+  <!-- Fingerprint Arc Hint -->
+  <path d="M14 10.5C14.8 10.5 15.5 11.2 15.5 12" stroke="#00F0FF" stroke-width="0.5" stroke-opacity="0.5"/>
+  <path d="M13 11C13.5 11 14 11.5 14 12" stroke="#00F0FF" stroke-width="0.5" stroke-opacity="0.5"/>
+
+  <!-- LAYER 2: Approval Stamp -->
+  <circle cx="19" cy="5" r="3.5" stroke="#F59E0B" stroke-width="1" fill="#020410"/>
+  <!-- Micro Shield inside Stamp -->
+  <path d="M19 3.5L17.5 4.5V6C17.5 7.2 18.2 8.2 19 8.5C19.8 8.2 20.5 7.2 20.5 6V4.5L19 3.5Z" stroke="#F59E0B" stroke-width="0.6"/>
+  
+  <!-- LAYER 3: Glows -->
+  <circle cx="14" cy="12" r="1.5" fill="#00F0FF" fill-opacity="0.3" filter="url(#consent-glow)"/>
+  <circle cx="7.5" cy="14" r="0.6" fill="#00F0FF" filter="url(#consent-glow)"/>
+  
+  <circle cx="19" cy="5" r="0.8" fill="#F59E0B" filter="url(#consent-glow)" opacity="0.6"/>
+</svg>

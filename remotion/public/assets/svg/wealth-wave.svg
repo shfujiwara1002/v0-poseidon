@@ -1,0 +1,51 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wealth-grad-area" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F0FF" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="transparent"/>
+    </linearGradient>
+    <filter id="wealth-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Graph Grid -->
+  <line x1="50" y1="350" x2="550" y2="350" stroke="white" stroke-width="1" opacity="0.2"/>
+  <line x1="50" y1="50" x2="50" y2="350" stroke="white" stroke-width="1" opacity="0.2"/>
+  
+  <line x1="50" y1="250" x2="550" y2="250" stroke="white" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.1"/>
+  <line x1="50" y1="150" x2="550" y2="150" stroke="white" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.1"/>
+
+  <!-- Growth Curve Area -->
+  <path d="M50 300 C150 300 200 200 300 200 C400 200 450 100 550 80 V350 H50 Z" fill="url(#wealth-grad-area)"/>
+
+  <!-- Growth Curve Line -->
+  <path d="M50 300 C150 300 200 200 300 200 C400 200 450 100 550 80" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" filter="url(#wealth-glow)"/>
+  
+  <!-- Data Points -->
+  <circle cx="300" cy="200" r="6" fill="#020410" stroke="#8B5CF6" stroke-width="2"/>
+  <circle cx="550" cy="80" r="8" fill="#00F0FF" filter="url(#wealth-glow)"/>
+
+  <!-- Coin Stacks (Abstract) -->
+  <g transform="translate(100, 320)">
+    <rect x="0" y="0" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-12" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-24" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+  </g>
+  
+  <g transform="translate(450, 150)">
+    <rect x="0" y="0" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-12" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-24" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-36" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+    <rect x="0" y="-48" width="30" height="10" rx="2" fill="#F59E0B" fill-opacity="0.8"/>
+  </g>
+
+  <!-- Trend Arrows -->
+  <path d="M560 90 L570 70 L550 70" stroke="#00F0FF" stroke-width="2"/>
+
+</svg>

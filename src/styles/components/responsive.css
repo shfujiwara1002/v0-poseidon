@@ -1,0 +1,314 @@
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS — MOBILE-FIRST (min-width only)
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 640px: Large Phone / Small Tablet ── */
+@media (min-width: 640px) {
+  .goal-gap-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .consent-flow {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .consent-arrow {
+    display: block;
+  }
+
+  .consent-step {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── 768px: Tablet ── */
+@media (min-width: 768px) {
+  .app-shell {
+    padding: 16px var(--page-padding) 56px;
+  }
+
+  .auto-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .glass-card {
+    padding: var(--space-5-5);
+    backdrop-filter: var(--glass-backdrop);
+  }
+
+  .glass-card::before {
+    opacity: 0.6;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glass-shadow), 0 0 32px rgba(0,240,255,0.08);
+  }
+
+  .stat-value {
+    font-size: 30px;
+  }
+
+  .stat-card--lg .stat-value {
+    font-size: 40px;
+  }
+
+  .comparison-header,
+  .comparison-row {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .comparison-row span:nth-child(2)::before,
+  .comparison-row span:nth-child(3)::before {
+    content: none;
+  }
+
+  .comparison-highlight {
+    text-align: center;
+  }
+
+  .context-bar-hint {
+    display: block;
+  }
+
+  .toast {
+    max-width: 420px;
+  }
+
+  .toast-float {
+    bottom: 24px;
+    left: auto;
+    right: 24px;
+    width: auto;
+  }
+
+  .not-found-code {
+    font-size: 80px;
+  }
+
+  .vignette-grain {
+    opacity: 0.65;
+  }
+
+  /* Enable bloom/waveform on tablet+ */
+  .bloom-effect {
+    display: block;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(0, 240, 255, 0.05) 40%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    animation: bloom-pulse 0.22s ease-in-out 200;
+  }
+
+  .waveform-bg {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.12;
+  }
+
+  .waveform-bg svg {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    animation: wave-drift 0.22s linear 200;
+  }
+
+  .waveform-bg svg:nth-child(2) { animation-duration: 0.22s; opacity: 0.6; }
+  .waveform-bg svg:nth-child(3) { animation-duration: 0.22s; opacity: 0.3; }
+}
+
+/* ── 1024px: Desktop ── */
+@media (min-width: 1024px) {
+  .app-shell {
+    padding: 20px var(--page-padding) 56px;
+  }
+
+  .app-shell::before {
+    opacity: 0.7;
+  }
+
+  /* Show desktop nav, hide hamburger */
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-actions {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  /* Hide bottom nav on desktop */
+  .bottom-nav {
+    display: none;
+  }
+
+  /* Remove bottom nav padding from app shell */
+  .app-shell {
+    padding-bottom: 56px;
+  }
+
+  .sidebar-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  }
+
+  .engine-tab {
+    font-size: 16px;
+  }
+
+  .engine-tab.active {
+    box-shadow: var(--neon-cyan);
+  }
+
+  .logo {
+    box-shadow: var(--neon-teal);
+  }
+
+  .top-nav--scrolled {
+    backdrop-filter: var(--glass-backdrop);
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+
+  /* Enable liquid glass + card shine on desktop */
+  .liquid-glass {
+    display: block;
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(120% 120% at 10% 10%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0) 70%),
+      radial-gradient(90% 90% at 80% 15%, rgba(0, 240, 255, 0.45) 0%, rgba(0, 240, 255, 0) 60%),
+      radial-gradient(80% 80% at 30% 80%, rgba(139, 92, 246, 0.38) 0%, rgba(139, 92, 246, 0) 60%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0) 60%);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    backdrop-filter: blur(26px) saturate(1.9) brightness(1.1);
+    pointer-events: none;
+    border-radius: inherit;
+    animation: liquid-drift 0.22s ease-in-out 200;
+  }
+
+  .card-shine {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      600px circle at var(--shine-x, 50%) var(--shine-y, 50%),
+      rgba(255,255,255,0.12) 0%,
+      rgba(255,255,255,0.04) 30%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+  }
+
+  /* Floating particles — enable on desktop */
+  .floating-particles {
+    display: block;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Lens flare — enable on desktop */
+  .lens-flare {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .lens-flare-core {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 60px rgba(0, 240, 255, 0.3);
+  }
+
+  .lens-flare-streak {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    right: -40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 240, 255, 0.4) 30%, rgba(0, 240, 255, 0.6) 50%, rgba(0, 240, 255, 0.4) 70%, transparent 100%);
+    transform: translateY(-50%);
+  }
+
+  /* Modal: centered (not bottom sheet) on desktop */
+  .overlay {
+    place-items: center;
+  }
+
+  .modal {
+    width: min(92vw, 520px);
+    max-width: 520px;
+    max-height: 90vh;
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: var(--glass-backdrop);
+    animation: modal-enter 0.22s var(--motion-easing-standard) both;
+  }
+
+  .modal-handle {
+    display: none;
+  }
+
+  .modal-exit {
+    animation: modal-exit 0.2s var(--motion-easing-standard) forwards;
+  }
+
+  /* Drawer: side panel on desktop */
+  .drawer {
+    width: min(92vw, 380px);
+    padding: 24px;
+  }
+}
+
+/* ── 1280px: Wide Desktop ── */
+@media (min-width: 1280px) {
+  .app-shell {
+    padding: 24px var(--page-padding) 56px;
+  }
+}
+
+@keyframes liquid-drift {
+  0% { transform: translate3d(-1%, -2%, 0) scale(1.02) rotate(0deg); }
+  33% { transform: translate3d(2%, -1%, 0) scale(1.02) rotate(0.5deg); }
+  66% { transform: translate3d(-1.5%, 1.5%, 0) scale(1.02) rotate(-0.3deg); }
+  100% { transform: translate3d(-1%, -2%, 0) scale(1.02) rotate(0deg); }
+}
+
+/* ── Reduced-motion guard — decorative responsive animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .bloom-effect,
+  .waveform-bg svg,
+  .liquid-glass {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
