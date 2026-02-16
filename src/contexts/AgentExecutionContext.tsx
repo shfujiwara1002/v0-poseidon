@@ -9,8 +9,8 @@ export interface AgentTask {
   engine: 'protect' | 'grow' | 'execute' | 'govern';
   state: TaskState;
   progress: number;
-  startedAt: Date;
-  completedAt?: Date;
+  startedAt: string;
+  completedAt?: string;
   error?: string;
 }
 
@@ -43,7 +43,7 @@ export function AgentExecutionProvider({ children }: { children: ReactNode }) {
 
   const startTask = useCallback((intentId: string, description: string, engine: AgentTask['engine']) => {
     const id = `task-${Date.now()}`;
-    const task: AgentTask = { id, intentId, description, engine, state: 'running', progress: 0, startedAt: new Date() };
+    const task: AgentTask = { id, intentId, description, engine, state: 'running', progress: 0, startedAt: new Date().toISOString() };
     setTasks(prev => [...prev, task]);
     return id;
   }, []);
@@ -54,10 +54,10 @@ export function AgentExecutionProvider({ children }: { children: ReactNode }) {
 
   const pauseTask = useCallback((id: string) => updateTaskState(id, { state: 'paused' }), [updateTaskState]);
   const resumeTask = useCallback((id: string) => updateTaskState(id, { state: 'running' }), [updateTaskState]);
-  const cancelTask = useCallback((id: string) => updateTaskState(id, { state: 'cancelled', completedAt: new Date() }), [updateTaskState]);
+  const cancelTask = useCallback((id: string) => updateTaskState(id, { state: 'cancelled', completedAt: new Date().toISOString() }), [updateTaskState]);
   const updateProgress = useCallback((id: string, progress: number) => updateTaskState(id, { progress }), [updateTaskState]);
-  const completeTask = useCallback((id: string) => updateTaskState(id, { state: 'completed', progress: 100, completedAt: new Date() }), [updateTaskState]);
-  const failTask = useCallback((id: string, error: string) => updateTaskState(id, { state: 'error', error, completedAt: new Date() }), [updateTaskState]);
+  const completeTask = useCallback((id: string) => updateTaskState(id, { state: 'completed', progress: 100, completedAt: new Date().toISOString() }), [updateTaskState]);
+  const failTask = useCallback((id: string, error: string) => updateTaskState(id, { state: 'error', error, completedAt: new Date().toISOString() }), [updateTaskState]);
 
   const currentTask = tasks.find(t => t.state === 'running' || t.state === 'paused') || null;
   const taskHistory = tasks.filter(t => ['completed', 'cancelled', 'error'].includes(t.state));
