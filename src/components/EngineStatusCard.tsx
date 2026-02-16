@@ -14,7 +14,7 @@ export interface EngineStatusCardProps {
   name: string;
   status: 'active' | 'inactive' | 'processing';
   metrics: EngineMetrics;
-  lastUpdated: Date;
+  lastUpdated: string;
   color: string;
   icon: React.ReactNode;
   description: string;
@@ -171,7 +171,8 @@ function formatVolume(volume: number): string {
   return volume.toString();
 }
 
-function formatTimestamp(date: Date): string {
+function formatTimestamp(dateString: string): string {
+  const date = new Date(dateString);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
   const diffMins = Math.floor(diffMs / 60000);
