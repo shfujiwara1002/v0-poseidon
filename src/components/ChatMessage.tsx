@@ -11,7 +11,7 @@ export interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
-  timestamp: Date;
+  timestamp: string;
   responseType?: 'text' | 'chart' | 'table' | 'number';
   data?: any;
 }
@@ -201,7 +201,8 @@ function renderChartResponse(data: any): React.ReactNode {
 /**
  * Format timestamp in compact form (HH:MM)
  */
-function formatTime(date: Date): string {
+function formatTime(dateString: string): string {
+  const date = new Date(dateString);
   return date.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',

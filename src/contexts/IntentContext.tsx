@@ -14,7 +14,7 @@ export interface AgentIntent {
   reasoning: string[];
   impact: IntentImpact[];
   confidence: number;
-  createdAt: Date;
+  createdAt: string;
   status: 'pending' | 'approved' | 'rejected' | 'modified' | 'expired';
 }
 
@@ -45,7 +45,7 @@ export function IntentProvider({ children }: { children: ReactNode }) {
     const newIntent: AgentIntent = {
       ...intent,
       id: `intent-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
       status: 'pending',
     };
     setIntents(prev => [...prev, newIntent]);

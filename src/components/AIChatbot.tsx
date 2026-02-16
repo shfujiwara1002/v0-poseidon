@@ -17,7 +17,7 @@ const INITIAL_MESSAGE: Message = {
   id: 'welcome',
   role: 'assistant',
   content: 'Welcome to Poseidon.AI. I can help with your accounts, spending, goals, and more.',
-  timestamp: new Date(),
+  timestamp: new Date().toISOString(),
   responseType: 'text',
 };
 
@@ -54,7 +54,7 @@ export function AIChatbot() {
       id: `user-${Date.now()}`,
       role: 'user',
       content: text,
-      timestamp: new Date(),
+      timestamp: new Date().toISOString(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -68,7 +68,7 @@ export function AIChatbot() {
         id: `assistant-${Date.now()}`,
         role: 'assistant',
         content: response.text,
-        timestamp: new Date(),
+        timestamp: new Date().toISOString(),
         responseType: response.responseType,
         data: response.data,
       };
@@ -82,7 +82,7 @@ export function AIChatbot() {
         id: `error-${Date.now()}`,
         role: 'assistant',
         content: 'Sorry, something went wrong. Please try again.',
-        timestamp: new Date(),
+        timestamp: new Date().toISOString(),
         responseType: 'text',
       };
       setMessages((prev) => [...prev, errorMessage]);
