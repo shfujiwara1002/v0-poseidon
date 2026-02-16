@@ -25,20 +25,24 @@ src/
 └── hooks/            ← use-engine-theme.ts, use-reduced-motion.ts
 ```
 
-## v0 → Production Adaptation Checklist
+## v0 → Production Adaptation (Poseidon化) Rules
 
-When integrating v0 output, follow these steps:
+When integrating v0 output, apply **only** minimal adaptations. Do NOT alter v0's layout or content.
 
-1. **Import fix**: `next/image` → `<img>`, `next/link` → `<a>` or react-router `<Link>`
-2. **Verify Layer 1**: shadcn/ui classes should render correctly (dark theme, colors)
-3. **Glass morphism**: Wrap cards with `<GlassCard>` or add `glass-surface` class
-4. **Engine colors**: Add `engine` prop to `<EngineBadge>`, `<GlassCard>`, `<Section>`
-5. **GovernFooter**: Add `<GovernFooter />` at page bottom (Tier 1-2 pages)
-6. **ProofLine**: Inject `<ProofLine source="..." confidence={85} />` in data cards
-7. **Animations**: Use presets from `@/lib/motion-presets` (fadeUp, staggerContainer)
-8. **Sparkline/ScoreRing**: Replace plain numbers with `<Sparkline>` or `<ScoreRing>`
-9. **Mobile**: Verify 375px layout, touch targets ≥44px
-10. **Accessibility**: Contrast ratio, keyboard nav, aria-labels
+### Required adaptations:
+
+1. **Import fix**: `next/image` → `<img>`, `next/link` → router `<Link>`, remove `"use client"`
+2. **Path fix**: `@/components/ui/*` → verify import paths match project structure
+3. **Verify Layer 1**: shadcn/ui classes should render correctly (dark theme, colors)
+4. **GovernFooter**: Add `<GovernFooter />` at page bottom (Tier 1-2 pages only, if not already present)
+5. **Mobile**: Verify 375px layout, touch targets ≥44px
+
+### Prohibited:
+
+- **Do NOT add old content** — never import or re-create old components (TrustIndexCard, NetWorthHero, RiskScoreDial, ScoreRing, etc.) inside v0-generated pages
+- **Do NOT wrap with PageShell** — v0 pages are self-contained, no old layout wrappers
+- **Do NOT add old context dependencies** — v0 pages should not depend on old context providers
+- **Do NOT add glass/neon/engine decorations** unless v0 output already includes them
 
 ## Key Imports
 
@@ -90,9 +94,10 @@ import { fadeUp, staggerContainer, staggerItem, pageTransition } from '@/lib/mot
 
 - **Never modify** files in `src/design-system/` directly — use `components/poseidon/` facades
 - **Always add GovernFooter** to Tier 1-2 pages (dashboard, protect, execute, govern, grow)
-- **Use PageShell** for consistent page structure: `<PageShell engine="protect" hero={...}>`
-- **Prefer existing DS v2** components via facades over creating new ones
-- v0 output goes into `components/ui/` (primitives) or `components/blocks/` (composites)
+- **v0 output is authoritative** — preserve v0-generated layout/content as-is
+- **Never add old components** to v0 pages (no PageShell, no old context providers, no old data visualizations)
+- v0 pages go into `src/pages/` directly as self-contained components
+- v0 primitives go into `components/ui/`, composites into `components/blocks/`
 
 ## Tech Stack
 

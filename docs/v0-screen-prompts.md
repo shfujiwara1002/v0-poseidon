@@ -2,10 +2,10 @@
 
 > **Architecture B: v0 Foundation + Poseidon Expression Layer**
 >
-> Aligned with `docs/mit-demo-content-strategy.md` and `CLAUDE.md`.
-> Each prompt generates shadcn/ui-native output that can be adapted via the 10-step Poseidon化 workflow.
+> Aligned with `CLAUDE.md`. Each prompt generates shadcn/ui-native output.
+> v0 output is placed directly in `src/pages/` with minimal adaptation only (see Poseidon化 Rules below).
 >
-> **Workflow**: v0.dev → paste prompt → copy output → save to `src/components/blocks/` → Claude Code Poseidon化
+> **Workflow**: v0.dev → paste prompt → v0 PR → merge → minimal adaptation (import fix + GovernFooter) → route connection
 
 ---
 
@@ -26,7 +26,7 @@
 - Text: primary #F1F5F9, secondary #CBD5E1, muted #64748B
 - Status: success #10B981, warning #F59E0B, error #EF4444, info #38BDF8
 
-### Card Component (→ GlassCard in Poseidon)
+### Card Component
 - Use glass-morphism: backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl
 - Padding: p-4 md:p-6. Shadow: 0 4px 16px rgba(0,0,0,0.2).
 - Engine-colored cards: add left border-2 with engine color (border-l-2 border-[#14B8A6])
@@ -56,73 +56,46 @@
 - Add evidence rows ("ProofLine") under key data sections:
   Small muted row: "Claim | Evidence | Source | Basis" format
 
-## Key Domain Components (reference names → post-v0 Poseidon mapping)
-- ScoreRing: Circular progress (score/maxScore, size sm|md|lg, color) → @/components/poseidon/score-ring
-- CategoryScoreBar: Horizontal bar breakdown (categories array) → existing DS v2
-- ContributionChart: Bar chart + target line (data, targetMonthly) → existing DS v2
-- MilestonesTimeline: Vertical timeline (milestones, accentColor) → existing DS v2
-- NetWorthHero: Large stat with glow (total, change, trend) → existing DS v2
-- TransactionTable: Paginated sortable table (columns, data) → existing DS v2
-- ProofLine: Evidence row (claim, evidence, source, basis) → @/components/poseidon/proof-line
-- GovernContractSet: Governance footer (auditId, modelVersion) → @/components/poseidon/govern-footer
-- ForecastBandChart: SVG forecast bands (data, historicalCount) → @/components/poseidon/forecast-band
-- SHAPWaterfallChart: Feature importance waterfall (features, baseValue) → @/components/poseidon/shap-waterfall
-- ActionQueueCard: Approve/decline/defer card (action) → @/components/poseidon/action-queue
-- Sparkline: Compact trend line (data, color) → @/components/poseidon/sparkline
-- NeonText: Heading with gradient glow (engine, as) → @/components/poseidon/neon-text
-- EngineBadge: Engine-colored badge (engine, label) → @/components/poseidon/engine-badge
-- GlassCard: Frosted glass card (engine, variant) → @/components/poseidon/glass-card
-- PageShell: Page layout (engine, hero, children) → @/components/layout/page-shell
-- Section: Content section (engine, title) → @/components/layout/section
+## Key Domain Component Names (for v0 prompt reference)
+- ScoreRing: Circular progress indicator
+- CategoryScoreBar: Horizontal bar breakdown
+- ContributionChart: Bar chart with target line
+- MilestonesTimeline: Vertical timeline
+- ForecastBandChart: SVG forecast with confidence bands
+- SHAPWaterfallChart: Feature importance waterfall
+- ActionQueueCard: Approve/decline/defer card
+- Sparkline: Compact trend line
+- ProofLine: Evidence row (claim, evidence, source, basis)
+- GovernFooter: Governance footer bar (audit ID, model version)
 ```
 
 ---
 
-## Poseidon化 Checklist (v0 → Production — Architecture B)
+## Poseidon化 Rules (v0 → Production)
 
-After generating each screen in v0, Claude Code applies this 10-step adaptation:
+v0 output のレイアウト・コンテンツは変更しない。以下の最小適応のみ行う。
+
+### Required:
 
 ```
-1. IMPORT FIX     next/image → <img>, next/link → <Link to=...> (react-router)
-2. LAYER 1 CHECK  Verify shadcn/ui classes render correctly (dark theme, CSS vars)
-3. GLASS          Wrap cards: <GlassCard engine="protect"> or add class="glass-surface"
-4. ENGINE COLOR   Add engine prop: <EngineBadge engine="protect">, <Section engine="grow">
-5. GOVERN FOOTER  Add <GovernFooter /> at bottom of all Tier 1-2 pages
-6. PROOF LINE     Inject <ProofLine source="..." confidence={85} /> in data sections
-7. ANIMATIONS     Import from @/lib/motion-presets (fadeUp, staggerContainer, staggerItem)
-8. VISUALIZATIONS Replace plain numbers with <Sparkline>, <ScoreRing>, <ShapWaterfall>
-9. MOBILE         Verify 375px layout, touch targets ≥44px, stack columns
-10. ACCESSIBILITY  Contrast ratio ≥4.5:1, keyboard nav, aria-labels
+1. IMPORT FIX     "use client" 削除, next/image → <img>, next/link → router <Link to=...>
+2. PATH FIX       @/components/ui/* のパスがプロジェクト構造と一致するか確認
+3. LAYER 1 CHECK  shadcn/ui クラスが正常動作するか確認 (dark theme, CSS vars)
+4. GOVERN FOOTER  Tier 1-2 ページに <GovernFooter /> を追加 (未存在の場合のみ)
+5. MOBILE         375px レイアウト確認、タッチターゲット ≥44px
 ```
 
-### Key imports for Poseidon化:
+### Prohibited:
 
-```tsx
-// Poseidon facades
-import { GlassCard, EngineBadge, ScoreRing, GovernFooter, ProofLine,
-         NeonText, Sparkline, ShapWaterfall, ForecastBand, ActionQueue,
-         AuditChip } from '@/components/poseidon'
-
-// Layout
-import { PageShell, Section } from '@/components/layout'
-
-// Engine utilities
-import { type EngineName, getEngineToken } from '@/lib/engine-tokens'
-import { useEngineTheme } from '@/hooks/use-engine-theme'
-
-// Motion presets
-import { fadeUp, staggerContainer, staggerItem, pageTransition } from '@/lib/motion-presets'
-
-// shadcn/ui primitives (v0-generated, no changes needed)
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-```
+- **旧コンポーネントの追加禁止** — ScoreRing, NetWorthHero, RiskScoreDial, GlassCard, EngineBadge 等を v0 ページに import しない
+- **PageShell でラップ禁止** — v0 ページは自己完結型
+- **旧コンテキストプロバイダーへの依存追加禁止** — useEngineTheme, getEngineToken 等を使わない
+- **glass/neon/engine デコレーションの追加禁止** — v0 出力に含まれていない場合
 
 ### File placement:
-- **v0 raw output** → `src/components/blocks/{screen-name}-v0.tsx` (keep as reference)
-- **Poseidon-adapted** → `src/components/blocks/{screen-name}.tsx` (production version)
-- **Page integration** → `src/pages/{ScreenName}.tsx` imports from blocks
+
+- **v0 ページ** → `src/pages/{ScreenName}.tsx` (自己完結型コンポーネント)
+- **v0 プリミティブ** → `src/components/ui/` (shadcn/ui)
 
 ---
 
@@ -148,7 +121,7 @@ Layout:
 4. DECISION RAIL (1/3 width): [sidebar content]
 5. GOVERN FOOTER: Shield icon + "Verified" + audit ID + "Request human review"
 
-[DETAILED SECTION DESCRIPTIONS WITH COMPONENT MAPPINGS]
+[DETAILED SECTION DESCRIPTIONS]
 ```
 
 ---
@@ -226,39 +199,39 @@ Create a fintech AI command center dashboard for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards (backdrop-blur-xl bg-white/5 border border-white/10). All four engine accent colors used.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="command"):
+1. HERO SECTION:
    - Kicker badge "Dashboard" in muted text (#A5B4C6) with a LayoutDashboard icon in a teal circle
    - Large headline: "Good morning. System confidence: 0.92 across 4 engines." in white bold text
    - Subline: "One unresolved alert. Three actions queued. Cash buffer at 14 days." in secondary text (#CBD5E1)
-   - AI insight banner (maps to → DashboardInsightsPanel): glass card with Sparkles icon, text "Top recommendation: Consolidate 3 overlapping subscriptions — projected save $140/mo (92% confidence)", with a "Review in Execute" CTA button
-   - Proof line (maps to → ProofLine): small muted row showing "Composite confidence 0.92 | Protect 0.94 | Grow 0.89 | Execute 0.91 | Govern 0.97" with an info tooltip icon
+   - AI insight banner: glass card with Sparkles icon, text "Top recommendation: Consolidate 3 overlapping subscriptions — projected save $140/mo (92% confidence)", with a "Review in Execute" CTA button
+   - Proof line: small muted row showing "Composite confidence 0.92 | Protect 0.94 | Grow 0.89 | Execute 0.91 | Govern 0.97" with an info tooltip icon
 
-2. KPI GRID (maps to → PageShellKPIGrid with 4 StatCards):
-   - Card 1 (maps to → StatCard + Sparkline): "Net position" label, "$847k" value in white, "+8.2%" delta in green (#10B981), tiny sparkline (Recharts AreaChart 60x24px, teal fill)
-   - Card 2 (maps to → StatCard + Sparkline): "Cash flow" label, "+$4.1k" value, "+12%" delta in green, sparkline (cyan #00F0FF fill)
-   - Card 3 (maps to → StatCard + Sparkline): "Risk" label, "Low" value, "Down from Med" delta in green, sparkline (blue #3B82F6 fill)
-   - Card 4 (maps to → StatCard + Sparkline): "Alerts" label, "2" value, "-3 resolved" in green, sparkline (amber #F59E0B fill)
+2. KPI GRID:
+   - Card 1: "Net position" label, "$847k" value in white, "+8.2%" delta in green (#10B981), tiny sparkline (Recharts AreaChart 60x24px, teal fill)
+   - Card 2: "Cash flow" label, "+$4.1k" value, "+12%" delta in green, sparkline (cyan #00F0FF fill)
+   - Card 3: "Risk" label, "Low" value, "Down from Med" delta in green, sparkline (blue #3B82F6 fill)
+   - Card 4: "Alerts" label, "2" value, "-3 resolved" in green, sparkline (amber #F59E0B fill)
 
-3. ENGINE HEALTH STRIP (maps to → EngineHealthStrip):
+3. ENGINE HEALTH STRIP:
    Horizontal row of 4 small engine status chips. Each shows:
    - Colored dot (teal/violet/amber/blue) + engine name + status text + confidence score
    - Example: [teal dot] Protect | 0 threats in 24h | 0.94
    - Clickable, one selected/highlighted with subtle glow ring
 
 4. TWO-COLUMN CONTENT (stacks on mobile):
-   LEFT — PRIMARY FEED (2/3 width, maps to → PageShell primaryFeed):
-   - Trust Pulse section (maps to → ScoreRing size="lg"): Section header "System trust" with message "Composite confidence across all four engines." Below is a circular score ring (92/100) with 4 colored arc segments (teal/violet/amber/blue). Below ring: 4 sub-scores in a row (Protect 94, Grow 89, Execute 91, Govern 97) each with trend arrows. Updated timestamp "2 hours ago".
-   - AI Insight panel (maps to → ExplainableInsightPanel): Glass card titled "Top recommendation rationale". Summary text, then 3 horizontal SHAP factor bars (teal fill): "Cost overlap 0.82", "Usage frequency 0.45", "Contract flexibility 0.71". Confidence ring 92%. Audit link chip "GV-2026-0212-DASH-REC".
-   - Forecast chart (maps to → ForecastBandChart): Section header "Cash flow forecast". Recharts AreaChart (400x260px) with dark grid (#253852), historical data as solid teal line, forecast as dashed line with gradient confidence band (teal/10 fill). X-axis dates, Y-axis dollar values.
-   - Alerts hub (maps to → AlertsHub): Section with badge count "2 active". List of 2 alert cards each with severity badge (Critical/Warning), merchant name, amount, timestamp, and action buttons.
+   LEFT — PRIMARY FEED (2/3 width):
+   - Trust Pulse section: Section header "System trust" with message "Composite confidence across all four engines." Below is a circular score ring (92/100) with 4 colored arc segments (teal/violet/amber/blue). Below ring: 4 sub-scores in a row (Protect 94, Grow 89, Execute 91, Govern 97) each with trend arrows. Updated timestamp "2 hours ago".
+   - AI Insight panel: Glass card titled "Top recommendation rationale". Summary text, then 3 horizontal SHAP factor bars (teal fill): "Cost overlap 0.82", "Usage frequency 0.45", "Contract flexibility 0.71". Confidence ring 92%. Audit link chip "GV-2026-0212-DASH-REC".
+   - Forecast chart: Section header "Cash flow forecast". Recharts AreaChart (400x260px) with dark grid (#253852), historical data as solid teal line, forecast as dashed line with gradient confidence band (teal/10 fill). X-axis dates, Y-axis dollar values.
+   - Alerts hub: Section with badge count "2 active". List of 2 alert cards each with severity badge (Critical/Warning), merchant name, amount, timestamp, and action buttons.
 
-   RIGHT — DECISION RAIL (1/3 width, maps to → PageShell decisionRail):
-   - Net worth hero (maps to → NetWorthHero): Large "$847,200" display with "+$12,400 (+1.5%)" trend in green, upward arrow icon, "vs last month" period label, subtle purple glow effect (glowColor="var(--engine-grow)").
-   - Risk gauge (maps to → RiskScoreDial): Circular dial showing 0.12 score, "Low" band, green zone highlighted. Trend arrow pointing down with "-0.05" delta.
-   - Next best actions (maps to → MissionActionList): 3 action items, each with colored urgency dot (red/amber/green), title, description, and "Execute" ghost button.
-   - Activity timeline (maps to → ActivityTimeline): Vertical timeline with 5 entries, each having a colored engine dot, timestamp, and action description. Most recent at top.
+   RIGHT — DECISION RAIL (1/3 width):
+   - Net worth hero: Large "$847,200" display with "+$12,400 (+1.5%)" trend in green, upward arrow icon, "vs last month" period label, subtle purple glow effect (glowColor="var(--engine-grow)").
+   - Risk gauge: Circular dial showing 0.12 score, "Low" band, green zone highlighted. Trend arrow pointing down with "-0.05" delta.
+   - Next best actions: 3 action items, each with colored urgency dot (red/amber/green), title, description, and "Execute" ghost button.
+   - Activity timeline: Vertical timeline with 5 entries, each having a colored engine dot, timestamp, and action description. Most recent at top.
 
-5. GOVERN FOOTER (maps to → GovernContractSet + GovernVerifiedBadge):
+5. GOVERN FOOTER:
    Full-width bar at bottom with GovernVerifiedBadge (Shield icon + "Verified"), AuditLinkChip linking to /govern/audit, auditId "GV-2026-0215-DASH", and "Request human review" CTA.
 
 Use Recharts for all charts, framer-motion for stagger animations (0.08s delay between cards), lucide-react icons (LayoutDashboard, Shield, TrendingUp, Zap, Scale, AlertTriangle, Activity, Sparkles, ChevronRight, ExternalLink, DollarSign), shadcn/ui Button and Badge. Mobile: hero stacks, KPIs become 2x2, columns stack vertically.
@@ -273,7 +246,7 @@ Create a fintech SaaS landing page for "Poseidon.AI — Trusted Financial Sentie
 Dark navy theme (#0A1628). Glass-morphism cards. Must feel like a real production SaaS product.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="minimal"):
+1. HERO SECTION:
    - Top bar: Poseidon.AI logo (left), nav links "Product | Pricing | Trust" (center), "Sign in" ghost button + "Get started" primary button (right)
    - Large centered headline: "Safer, satisfying money decisions — in one place." in white bold 48px
    - Subline: "Four AI engines. One trusted system. Every decision auditable." in #CBD5E1 20px
@@ -281,7 +254,7 @@ Layout:
    - Secondary CTA: "Watch demo" ghost button with PlayCircle icon
    - Trust signal row: 3 inline badges — "Bank-grade security" with Lock icon, "GDPR compliant" with Shield icon, "100% auditable" with ScrollText icon
 
-2. LIVE TRUST METRICS (maps to → StatCard row with Sparklines):
+2. LIVE TRUST METRICS:
    - Horizontal row of 4 glass metric cards (auto-grid, 1x4 desktop, 2x2 mobile):
    - "System Confidence" 0.92 with micro-sparkline (teal)
    - "Decisions Audited" 1,247 with upward sparkline (blue)
@@ -289,7 +262,7 @@ Layout:
    - "Response Time" <200ms with flat sparkline (green)
    - Each card: label in muted text, large value in white, sparkline beneath
 
-3. FOUR ENGINE CARDS (maps to → AdaptiveCardGrid with 4 GlassCards):
+3. FOUR ENGINE CARDS:
    4 glass cards in a row (stack 2x2 on mobile). Each engine card:
    - Engine icon in colored circle (bg-{color}/10 p-3 rounded-full) — Shield (teal), TrendingUp (violet), Zap (amber), Scale (blue)
    - Engine name: "Protect" / "Grow" / "Execute" / "Govern" in white bold 20px
@@ -304,7 +277,7 @@ Layout:
      - "Explainable" — SHAP icon + "Every AI decision includes feature attribution"
      - "Auditable" — ScrollText icon + "1,247 decisions with full audit trails"
      - "Reversible" — RotateCcw icon + "One-click rollback on any automated action"
-   - ProofLine (maps to → ProofLine): "System uptime 99.97% | Last audit: 4m ago | Model version: v3.2.1"
+   - ProofLine: "System uptime 99.97% | Last audit: 4m ago | Model version: v3.2.1"
 
 5. SOCIAL PROOF FOOTER:
    - MIT CTO Program badge with shield icon
@@ -323,30 +296,30 @@ Create a fintech AI threat protection engine page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Teal (#14B8A6) as primary accent.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="focused"):
+1. HERO SECTION:
    - Kicker badge: "Protect" in teal circle with Shield icon
    - Headline: "3 active signals. Confidence 0.94. No action required." in white bold
    - Subline: "Continuous monitoring across all accounts. Last scan: 4 minutes ago." in #CBD5E1
    - AI insight banner: glass card with Sparkles icon, "Unusual pattern detected at MerchantX — $4,200 charge deviates 3.2x from category average."
-   - ProofLine (maps to → ProofLine): "3 signals detected | Confidence 0.94 | Model: FraudDetectionV3.2 | Basis: 180-day behavioral analysis"
+   - ProofLine: "3 signals detected | Confidence 0.94 | Model: FraudDetectionV3.2 | Basis: 180-day behavioral analysis"
 
-2. KPI GRID (maps to → PageShellKPIGrid):
+2. KPI GRID:
    - "Active signals" = 3 (amber), "Blocked today" = 1 (green), "False positive rate" = 2.1% (green), "Coverage" = 100% (green)
 
 3. TWO-COLUMN CONTENT:
-   LEFT — PRIMARY FEED (maps to → PageShell primaryFeed):
-   - Threat table (maps to → TransactionTable): Full-width table with columns: Severity (badge — Critical red / Warning amber / Info blue), Signal (title + merchant), Amount (dollar), Confidence (inline ScoreRing mini), Time, Actions (View button). 3 rows of signal data. Sortable columns. Mobile: switches to card view.
-   - Per-signal detail (expanded row): SHAP factors panel (maps to → FactorsDropdown) showing 3 horizontal bars: "Merchant history 0.82", "Amount deviation 0.71", "Geographic mismatch 0.65". Model metadata: "FraudDetection v3.2 | Trained on 180d | Accuracy 97.2%"
-   - DefinitionLine (maps to → DefinitionLine): "Risk Score = weighted_sum(signal_confidence × severity_factor) | Unit: 0-1 | Period: rolling 24h | Threshold: >0.7 triggers alert"
-   - Quick actions (maps to → MissionActionList): 3 items — "Freeze card" (urgent, red dot), "Investigate MerchantX" (normal, amber dot), "Update alert rules" (low, green dot)
+   LEFT — PRIMARY FEED:
+   - Threat table: Full-width table with columns: Severity (badge — Critical red / Warning amber / Info blue), Signal (title + merchant), Amount (dollar), Confidence (inline ScoreRing mini), Time, Actions (View button). 3 rows of signal data. Sortable columns. Mobile: switches to card view.
+   - Per-signal detail (expanded row): SHAP factors panel showing 3 horizontal bars: "Merchant history 0.82", "Amount deviation 0.71", "Geographic mismatch 0.65". Model metadata: "FraudDetection v3.2 | Trained on 180d | Accuracy 97.2%"
+   - DefinitionLine: "Risk Score = weighted_sum(signal_confidence × severity_factor) | Unit: 0-1 | Period: rolling 24h | Threshold: >0.7 triggers alert"
+   - Quick actions: 3 items — "Freeze card" (urgent, red dot), "Investigate MerchantX" (normal, amber dot), "Update alert rules" (low, green dot)
 
-   RIGHT — DECISION RAIL (maps to → PageShell decisionRail):
-   - ScoreRing (maps to → ScoreRing size="lg"): Large 94/100 ring in teal with label "Risk Score" and statusText "Low — monitoring"
-   - CategoryScoreBar (maps to → CategoryScoreBar): 4 horizontal bars — "Transaction patterns" 92, "Merchant risk" 87, "Geographic" 95, "Behavioral" 91 — each with teal fill proportional to score
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-teal)"): 4 milestones — "Signal detected" (completed, 14:28), "Analysis complete" (completed, 14:29), "Alert raised" (completed, 14:30), "Resolution pending" (current, pulsing)
-   - Evidence summary (maps to → MissionEvidencePanel): "AI identified 3 correlated signals across 2 accounts in the last 6 hours"
+   RIGHT — DECISION RAIL:
+   - ScoreRing: Large 94/100 ring in teal with label "Risk Score" and statusText "Low — monitoring"
+   - CategoryScoreBar: 4 horizontal bars — "Transaction patterns" 92, "Merchant risk" 87, "Geographic" 95, "Behavioral" 91 — each with teal fill proportional to score
+   - MilestonesTimeline: 4 milestones — "Signal detected" (completed, 14:28), "Analysis complete" (completed, 14:29), "Alert raised" (completed, 14:30), "Resolution pending" (current, pulsing)
+   - Evidence summary: "AI identified 3 correlated signals across 2 accounts in the last 6 hours"
 
-4. GOVERN FOOTER (maps to → GovernContractSet):
+4. GOVERN FOOTER:
    auditId "GV-2026-0215-PRT-SIG", modelVersion "FraudDetection v3.2", explanationVersion "SHAP v2.1"
 
 Use Recharts for inline score rings, framer-motion stagger 0.08s. Icons: Shield, AlertTriangle, AlertCircle, Eye, Sparkles, Brain, Lock, CreditCard, MapPin, Clock, ChevronDown, ExternalLink. Mobile: columns stack, table becomes card list.
@@ -361,38 +334,38 @@ Create a fintech AI execution engine page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Gold (#F59E0B) as primary accent.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="analytical"):
+1. HERO SECTION:
    - Kicker badge: "Execute" in gold circle with Zap icon
    - Headline: "5 actions queued. $847 in projected savings this month." in white bold
    - Subline: "Human approval required before every action. All actions reversible within 24h." in #CBD5E1
    - AI insight: glass card with Sparkles icon, "Approving the top 3 actions would save an estimated $412/mo with 91% confidence."
-   - ProofLine (maps to → ProofLine): "5 pending | 128 completed | 0 failed | Rollback coverage: 100% | Basis: Execute engine v2.4"
+   - ProofLine: "5 pending | 128 completed | 0 failed | Rollback coverage: 100% | Basis: Execute engine v2.4"
 
-2. KPI GRID (maps to → PageShellKPIGrid):
+2. KPI GRID:
    - "Queued actions" = 5 (gold), "Monthly savings" = $847 (green), "Success rate" = 98.4% (green), "Avg confidence" = 0.91 (green)
 
 3. TWO-COLUMN CONTENT:
-   LEFT — PRIMARY FEED (maps to → PageShell primaryFeed):
-   - Action queue (maps to → 3 ActionQueueCards stacked): Each card shows:
+   LEFT — PRIMARY FEED:
+   - Action queue: Each card shows:
      - Priority stripe (left border: red for urgent, amber for normal)
      - Header: action type badge + urgency badge + timestamp
      - Title: "Negotiate Comcast bill — projected save $45/mo" in white bold
      - Description: 2 lines explaining the action in #CBD5E1
      - Impact preview: "If approved: -$45/mo on internet bill" (green), "Reversible within 24h" with RotateCcw icon
-     - Inline ScoreRing (maps to → ScoreRing size="sm"): confidence 0.93 in gold
+     - Inline ScoreRing: confidence 0.93 in gold
      - Action buttons: "Approve" (green bg), "Decline" (red ghost), "Defer 24h" (ghost)
-     - ProofLine (maps to → ProofLine): "Source: BillNegotiator v2.1 | Evidence: 3 comparable plan offers | Audit: GV-2026-0215-EXE-001"
-   - Auto-save rules section (maps to → AutoSaveRuleCard with MissionToggle): 2 toggle rules:
+     - ProofLine: "Source: BillNegotiator v2.1 | Evidence: 3 comparable plan offers | Audit: GV-2026-0215-EXE-001"
+   - Auto-save rules section: 2 toggle rules:
      - "Round-up spare change to savings" — toggle ON, cap $50/mo
      - "Auto-pay minimum balances" — toggle ON, cap $500/mo
-   - ActionOutcomePreview (maps to → ActionOutcomePreview): "Projected monthly impact" chart showing cumulative savings
+   - ActionOutcomePreview: "Projected monthly impact" chart showing cumulative savings
 
-   RIGHT — DECISION RAIL (maps to → PageShell decisionRail):
-   - ScoreRing (maps to → ScoreRing size="lg"): 98/100 "Success rate" in gold with statusText "Excellent"
-   - ContributionChart (maps to → ContributionChart accentColor="var(--engine-execute)"): Bar chart showing monthly savings by action type over 6 months. targetMonthly=$500 reference line.
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-gold)"): 5 milestones — "Q4 savings target set" (completed), "First auto-save" (completed), "$500/mo milestone" (completed), "$847/mo current" (current), "$1,000/mo target" (upcoming)
+   RIGHT — DECISION RAIL:
+   - ScoreRing: 98/100 "Success rate" in gold with statusText "Excellent"
+   - ContributionChart: Bar chart showing monthly savings by action type over 6 months. targetMonthly=$500 reference line.
+   - MilestonesTimeline: 5 milestones — "Q4 savings target set" (completed), "First auto-save" (completed), "$500/mo milestone" (completed), "$847/mo current" (current), "$1,000/mo target" (upcoming)
 
-4. GOVERN FOOTER (maps to → GovernContractSet):
+4. GOVERN FOOTER:
    auditId "GV-2026-0215-EXE", modelVersion "Execute v2.4", explanationVersion "SHAP v2.1"
 
 Use Recharts for ContributionChart, framer-motion for card stagger. Icons: Zap, CheckCircle, XCircle, RotateCcw, Clock, DollarSign, Sparkles, BarChart3, ArrowUpRight, Shield, ExternalLink. Mobile: columns stack, action buttons become full-width row.
@@ -407,43 +380,43 @@ Create a fintech AI governance engine page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) as primary accent.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="analytical"):
+1. HERO SECTION:
    - Kicker badge: "Govern" in blue circle with Scale icon
    - Headline: "1,247 decisions audited. Compliance score: 96/100." in white bold
    - Subline: "Every AI decision explainable, auditable, and reversible. Zero compliance violations." in #CBD5E1
    - AI insight: glass card with Brain icon, "All 4 engines within compliance bounds. Data Privacy score improved +2 points this week."
-   - ProofLine (maps to → ProofLine): "1,247 audited | 0 violations | Last audit: 4m ago | Model: GovernanceEngine v1.8 | Basis: GDPR + Fair Lending Act"
+   - ProofLine: "1,247 audited | 0 violations | Last audit: 4m ago | Model: GovernanceEngine v1.8 | Basis: GDPR + Fair Lending Act"
 
-2. KPI GRID (maps to → PageShellKPIGrid):
+2. KPI GRID:
    - "Compliance" = 96/100 (green), "Decisions audited" = 1,247 (blue), "Override rate" = 3.2% (green), "Response time" = <200ms (green)
 
 3. TWO-COLUMN CONTENT:
-   LEFT — PRIMARY FEED (maps to → PageShell primaryFeed):
-   - Compliance ScoreRing (maps to → ScoreRing size="lg"): Large 96/100 ring in blue with label "Compliance Score" and statusText "Excellent — no violations"
-   - CategoryScoreBar (maps to → CategoryScoreBar): 4 horizontal bars with blue fill:
+   LEFT — PRIMARY FEED:
+   - Compliance ScoreRing: Large 96/100 ring in blue with label "Compliance Score" and statusText "Excellent — no violations"
+   - CategoryScoreBar: 4 horizontal bars with blue fill:
      - "Data Privacy" 98/100
      - "Fair Lending" 94/100
      - "AML / KYC" 92/100
      - "Consumer Protection" 100/100
      Each bar shows the score label on left, filled bar proportional to score, number on right.
-   - Audit log preview (maps to → TransactionTable): Table with 5 recent audit entries. Columns: Audit ID (monospace blue link, e.g. "GV-2026-0215-001"), Decision ("Blocked transaction"), Engine (colored badge "Protect"), Confidence (0.94 inline ring), Reviewer ("AI" or "Human" badge), Time ("4m ago"). "View full audit ledger" link below.
-   - Privacy controls (maps to → MissionToggle rows): 3 toggle rows:
+   - Audit log preview: Table with 5 recent audit entries. Columns: Audit ID (monospace blue link, e.g. "GV-2026-0215-001"), Decision ("Blocked transaction"), Engine (colored badge "Protect"), Confidence (0.94 inline ring), Reviewer ("AI" or "Human" badge), Time ("4m ago"). "View full audit ledger" link below.
+   - Privacy controls: 3 toggle rows:
      - "Share anonymized data for model improvement" — ON
      - "Allow cross-engine data sharing" — ON
      - "Third-party data enrichment" — OFF
-   - DefinitionLine (maps to → DefinitionLine): "Compliance Score = mean(category_scores) weighted by regulatory priority | Unit: 0-100 | Period: rolling 30d | Threshold: <80 triggers review"
+   - DefinitionLine: "Compliance Score = mean(category_scores) weighted by regulatory priority | Unit: 0-100 | Period: rolling 30d | Threshold: <80 triggers review"
 
-   RIGHT — DECISION RAIL (maps to → PageShell decisionRail):
-   - GovernVerifiedBadge (maps to → GovernVerifiedBadge): Large shield icon with "All Systems Verified" text, auditId, modelVersion
+   RIGHT — DECISION RAIL:
+   - GovernVerifiedBadge: Large shield icon with "All Systems Verified" text, auditId, modelVersion
    - Audit summary card: "1,247 decisions" large number, "100% with audit trail" green badge, "4m ago" last entry timestamp, "View ledger →" link to /govern/audit
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-blue)"): 4 milestones:
+   - MilestonesTimeline: 4 milestones:
      - "Governance engine deployed" (completed, Jan 15)
      - "1,000 decisions audited" (completed, Feb 1)
      - "Zero-violation streak: 30d" (current, Feb 15)
      - "SOC 2 audit target" (upcoming, Mar 15)
-   - Human review CTA (maps to → HumanReviewCTA): "Request human review of any AI decision" button
+   - Human review CTA: "Request human review of any AI decision" button
 
-4. GOVERN FOOTER (maps to → GovernContractSet):
+4. GOVERN FOOTER:
    auditId "GV-2026-0215-GOV", modelVersion "Governance v1.8", explanationVersion "SHAP v2.1"
 
 Use Recharts for inline rings, framer-motion stagger. Icons: Scale, Shield, ShieldCheck, ScrollText, Eye, Lock, UserCheck, Bot, AlertTriangle, BarChart3, ExternalLink. Mobile: columns stack, category bars full-width.
@@ -462,7 +435,7 @@ Create a fintech AI growth engine page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Violet (#8B5CF6) as primary accent.
 
 Layout:
-1. HERO SECTION (maps to → PageShell heroVariant="focused"):
+1. HERO SECTION:
    - Kicker: "Grow" with TrendingUp icon in violet circle
    - Headline: "Net worth trajectory: +8.2% this quarter. 3 goals on track." in white bold
    - Subline: "Monte Carlo forecast with 10,000 simulations. Updated every 6 hours." in #CBD5E1
@@ -472,17 +445,17 @@ Layout:
 2. KPI GRID: "Net worth" = $847k (+8.2%), "Monthly savings" = $2.1k (+12%), "Goals on track" = 3/4 (green), "Forecast confidence" = 0.89
 
 3. PRIMARY FEED:
-   - NetWorthHero (maps to → NetWorthHero): Large "$847,200" with "+$12,400 (+1.5%)" trend, violet glow
-   - Forecast chart (maps to → ForecastBandChart): 30-day forecast with historical data, confidence bands in violet
-   - Goal cards (maps to → 3 GlassCards in AdaptiveCardGrid): Each shows goal name, ScoreRing progress, target amount, projected completion date
-   - ContributionChart (maps to → ContributionChart accentColor="var(--engine-grow)"): Monthly contribution bars with $200 target line
+   - NetWorthHero: Large "$847,200" with "+$12,400 (+1.5%)" trend, violet glow
+   - Forecast chart: 30-day forecast with historical data, confidence bands in violet
+   - Goal cards: Each shows goal name, ScoreRing progress, target amount, projected completion date
+   - ContributionChart: Monthly contribution bars with $200 target line
 
 4. DECISION RAIL:
-   - ScoreRing (maps to → ScoreRing): Financial health 78/100 in violet
-   - CategoryScoreBar (maps to → CategoryScoreBar): "Savings" 85, "Debt ratio" 72, "Income growth" 81, "Investment" 74
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-violet)"): Goal milestones with completion dates
+   - ScoreRing: Financial health 78/100 in violet
+   - CategoryScoreBar: "Savings" 85, "Debt ratio" 72, "Income growth" 81, "Investment" 74
+   - MilestonesTimeline: Goal milestones with completion dates
 
-5. GOVERN FOOTER (maps to → GovernContractSet): auditId, modelVersion "GrowthForecast v3.2"
+5. GOVERN FOOTER: auditId, modelVersion "GrowthForecast v3.2"
 
 Icons: TrendingUp, DollarSign, Target, Sparkles, BarChart3. Mobile: columns stack.
 ```
@@ -496,7 +469,7 @@ Create a fintech AI alert detail page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Teal (#14B8A6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="focused"):
+1. HERO:
    - BackButton → /protect
    - Kicker: "Protect / Alert Detail" with AlertTriangle icon
    - Headline: "Suspicious transaction — MerchantX $4,200" in white bold
@@ -505,22 +478,22 @@ Layout:
 
 2. TRANSACTION DETAIL CARD:
    - Glass card with teal left border showing: Merchant, Amount, Date, Card ending, Category, Status badge
-   - ScoreRing (maps to → ScoreRing): Large 94/100 "Threat confidence" in teal
+   - ScoreRing: Large 94/100 "Threat confidence" in teal
 
-3. SHAP EXPLANATION (maps to → SHAPWaterfallChart):
+3. SHAP EXPLANATION:
    - Full-width waterfall chart: "Merchant history" +0.82, "Amount deviation" +0.71, "Geographic mismatch" +0.65, "Time pattern" -0.12, "Account age" -0.08
    - Base value 0.50 → Prediction 0.94
    - Each bar labeled with natural language explanation
 
-4. CATEGORY BREAKDOWN (maps to → CategoryScoreBar):
+4. CATEGORY BREAKDOWN:
    - "Transaction patterns" 92, "Merchant risk" 87, "Geographic signals" 95, "Behavioral match" 91
 
-5. DECISION TIMELINE (maps to → MilestonesTimeline accentColor="var(--accent-teal)"):
+5. DECISION TIMELINE:
    - "Signal detected" (completed, 14:28), "Analysis complete" (completed, 14:29), "Alert raised" (completed, 14:30), "User notified" (completed, 14:31), "Resolution" (pending)
 
 6. ACTIONS: "Block card" (primary teal), "Dispute transaction →" link to /protect/dispute, "Mark as safe" (ghost)
 
-7. GOVERN FOOTER (maps to → GovernContractSet)
+7. GOVERN FOOTER
 
 Icons: AlertTriangle, Shield, CreditCard, MapPin, Clock, Brain, Eye, ChevronLeft. Mobile: single column.
 ```
@@ -534,7 +507,7 @@ Create a fintech execution history page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Gold (#F59E0B) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="analytical"):
+1. HERO:
    - Kicker: "Execute / History" with History icon
    - Headline: "142 actions executed. $4,280 saved this quarter." in white bold
    - Stats: "128 completed" (green), "8 failed" (red), "6 rolled back" (amber)
@@ -542,7 +515,7 @@ Layout:
 
 2. FILTER BAR: Search input, status tabs (All/Completed/Failed/Rolled back), engine filter pills, date range selector, "Export CSV" button
 
-3. HISTORY TABLE (maps to → TransactionTable):
+3. HISTORY TABLE:
    - Columns: Action (title, sortable), Status (badge — Completed green / Failed red / Rolled back amber, sortable), Savings (dollar amount), When (relative timestamp, sortable)
    - 12 rows of execution data including: "Negotiated Comcast bill" ($45/mo saved, Completed), "Cancelled unused Hulu" ($15/mo, Completed), "Auto-saved round-ups" ($127, Completed), "Blocked suspicious charge" ($4,200, Completed), "Investment rebalance" (Failed — market closed)
    - Expandable rows showing: execution timeline, impact breakdown, SHAP evidence link, audit trail link
@@ -550,11 +523,11 @@ Layout:
    - Mobile: switches to card layout automatically
 
 4. DECISION RAIL:
-   - ScoreRing (maps to → ScoreRing): 98/100 "Success rate" in gold
-   - ContributionChart (maps to → ContributionChart accentColor="var(--engine-execute)"): Monthly savings contribution bars
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-gold)"): Key execution milestones — "First action", "100 actions", "$1k saved", "$4.2k saved" (current)
+   - ScoreRing: 98/100 "Success rate" in gold
+   - ContributionChart: Monthly savings contribution bars
+   - MilestonesTimeline: Key execution milestones — "First action", "100 actions", "$1k saved", "$4.2k saved" (current)
 
-5. GOVERN FOOTER (maps to → GovernContractSet)
+5. GOVERN FOOTER
 
 Icons: History, CheckCircle, XCircle, RotateCcw, Search, Download, Eye, ExternalLink. Mobile: table → card list.
 ```
@@ -568,7 +541,7 @@ Create a fintech audit ledger page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="analytical"):
+1. HERO:
    - Kicker: "Govern / Audit Ledger" with ScrollText icon
    - Headline: "1,247 decisions audited. 100% coverage." in white bold
    - Stats: "1,247 entries" (blue), "100% audited" (green), "Last entry: 4m ago" (muted)
@@ -576,18 +549,18 @@ Layout:
 
 2. FILTER BAR: Date range selector, engine filter with counts (Protect 520, Grow 310, Execute 285, Govern 132), decision type dropdown, confidence range slider, search, "Export" + "Print" buttons
 
-3. AUDIT TABLE (maps to → TransactionTable):
+3. AUDIT TABLE:
    - Columns: Audit ID (monospace blue link, sortable), Engine (colored badge, sortable), Decision (title text), Confidence (inline ScoreRing mini, sortable), Reviewer ("AI" / "Human" badge), Time (relative, sortable)
    - 25 rows of audit data. Expandable rows showing SHAP waterfall preview + full explanation text.
    - Pagination: "Showing 1-25 of 1,247"
 
 4. DECISION RAIL:
-   - ScoreRing (maps to → ScoreRing): 96/100 "Compliance" in blue
-   - CategoryScoreBar (maps to → CategoryScoreBar): "Protect decisions" 520, "Grow decisions" 310, "Execute decisions" 285, "Govern decisions" 132
+   - ScoreRing: 96/100 "Compliance" in blue
+   - CategoryScoreBar: "Protect decisions" 520, "Grow decisions" 310, "Execute decisions" 285, "Govern decisions" 132
    - Decision distribution (Recharts PieChart): 4 engine segments with counts
    - "Average confidence" stat card: 0.92
 
-5. GOVERN FOOTER (maps to → GovernContractSet)
+5. GOVERN FOOTER
 
 Icons: ScrollText, Search, Download, Printer, Filter, Eye, ExternalLink. Mobile: table → card list.
 ```
@@ -601,12 +574,12 @@ Create a fintech settings page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Mixed engine accents.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Kicker: "Settings" with Settings icon
    - Headline: "Account & preferences" in white bold
    - Subline: "Manage notifications, security, and AI behavior." in #CBD5E1
 
-2. SETTINGS SECTIONS (maps to → Section compound component):
+2. SETTINGS SECTIONS:
    - Profile section: Name, email, avatar, "Edit profile" button
    - Notification preferences: Per-engine toggle rows (Protect alerts ON, Grow insights ON, Execute actions ON, Govern reviews ON), email digest frequency dropdown
    - Security: Two-factor authentication toggle, session management, password change link
@@ -614,7 +587,7 @@ Layout:
 
 3. ProofLine: "Account created Jan 15, 2026 | 2FA enabled | Last login: 2h ago"
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: Settings, Bell, Lock, User, Shield, ChevronRight. Mobile: full-width sections.
 ```
@@ -628,7 +601,7 @@ Create a fintech goal detail page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Violet (#8B5CF6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="focused"):
+1. HERO:
    - BackButton → /grow
    - Kicker: "Grow / Goal" with Target icon
    - Headline: "Emergency Fund — $12,000 target" in white bold
@@ -636,17 +609,17 @@ Layout:
    - ProofLine: "Projected completion: May 2026 | Confidence 0.87 | Model: GoalTracker v2.1"
 
 2. PRIMARY FEED:
-   - ScoreRing (maps to → ScoreRing size="lg"): 68/100 "Progress" in violet with statusText "$8,160 of $12,000"
-   - ContributionChart (maps to → ContributionChart accentColor="var(--engine-grow)"): 12-month bar chart showing monthly contributions. targetMonthly=$500 reference line. Bars show actual contribution amounts. Recent months filled, future months projected (lighter fill).
-   - Forecast section (maps to → ForecastBandChart): Projected savings trajectory with confidence band. Crossing the $12,000 line in May 2026.
+   - ScoreRing: 68/100 "Progress" in violet with statusText "$8,160 of $12,000"
+   - ContributionChart: 12-month bar chart showing monthly contributions. targetMonthly=$500 reference line. Bars show actual contribution amounts. Recent months filled, future months projected (lighter fill).
+   - Forecast section: Projected savings trajectory with confidence band. Crossing the $12,000 line in May 2026.
    - DefinitionLine: "Progress = sum(contributions) / target | Unit: % | Period: cumulative | Threshold: 100% = goal met"
 
 3. DECISION RAIL:
-   - CategoryScoreBar (maps to → CategoryScoreBar): "Savings rate" 85, "Consistency" 78, "Growth rate" 72
-   - MilestonesTimeline (maps to → MilestonesTimeline accentColor="var(--accent-violet)"): "Goal created" (completed, Jan), "$2k saved" (completed, Jan), "$5k saved" (completed, Feb), "$8k saved" (current), "$12k target" (upcoming, May)
+   - CategoryScoreBar: "Savings rate" 85, "Consistency" 78, "Growth rate" 72
+   - MilestonesTimeline: "Goal created" (completed, Jan), "$2k saved" (completed, Jan), "$5k saved" (completed, Feb), "$8k saved" (current), "$12k target" (upcoming, May)
    - AI recommendation card: "Increasing monthly contribution by $100 would accelerate completion by 3 weeks."
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: Target, TrendingUp, DollarSign, Calendar, Sparkles, ChevronLeft. Mobile: single column.
 ```
@@ -660,7 +633,7 @@ Create a what-if scenario simulator page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Violet (#8B5CF6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="focused"):
+1. HERO:
    - Kicker: "Grow / Scenarios" with FlaskConical icon
    - Headline: "Model financial outcomes under different assumptions." in white bold
    - AI insight: "Based on your patterns, a +$500/mo savings scenario extends your runway by 4.2 days."
@@ -671,19 +644,19 @@ Layout:
    - "Run Scenario" primary button (violet), "Reset" ghost button
    - Saved scenarios list: 3 scenario cards with name, parameters, projected outcome
 
-3. FORECAST CHART (maps to → ForecastBandChart):
+3. FORECAST CHART:
    - Large chart: baseline (white line), Scenario A overlay (violet dashed + band), historical/forecast split
    - Recharts AreaChart, dark grid, tooltip with values
 
 4. RESULTS COMPARISON:
    - Side-by-side cards: "Baseline" vs "Scenario A" showing projected balance, delta, runway change, confidence
-   - ContributionChart (maps to → ContributionChart): Monthly impact projection with target line
+   - ContributionChart: Monthly impact projection with target line
 
 5. AI RECOMMENDATION:
    - "Scenario A is achievable with 82% probability." + "Send to Execute" button
    - ProofLine: "Evidence: historical spending patterns | Source: ScenarioEngine v1.4"
 
-6. GOVERN FOOTER (maps to → GovernContractSet)
+6. GOVERN FOOTER
 
 Icons: FlaskConical, Sliders, TrendingUp, Brain, Sparkles, Save, Play, Download. Mobile: controls above chart.
 ```
@@ -701,19 +674,19 @@ Create an alerts management hub page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Multi-engine colors.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "Alerts Hub" with Bell icon
    - AI insight: "3 alerts share a common root cause: vendor payment anomaly."
    - ProofLine: "12 active | 35 resolved this week | Avg resolution: 2.4h"
 
 2. FILTER BAR: Engine filter (4 toggle chips with counts), severity filter (Critical/Warning/Info), date range, search
 
-3. ALERT LIST (maps to → TransactionTable or AlertsHub expanded):
+3. ALERT LIST:
    - Each row: severity badge, engine badge, title, confidence pill, timestamp, status dot (unread/resolved/in-progress), action buttons (View/Dismiss)
    - Expandable: SHAP factors + evidence inline
    - Batch actions bar when checkboxes selected
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: Bell, AlertTriangle, Shield, TrendingUp, Zap, Scale, Search, Filter, Check, X. Mobile: cards full-width.
 ```
@@ -727,22 +700,22 @@ Create an action approval queue page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Gold (#F59E0B) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="analytical"):
+1. HERO:
    - Headline: "Approval Queue" with ClipboardCheck icon
    - Urgency banner: "2 actions expire within 24 hours."
    - Stats: "5 pending" (amber), "3 approved today" (green), "1 deferred" (blue)
    - ProofLine: "Consent-first: no action executes without explicit approval"
 
-2. QUEUE (maps to → ActionQueueCard list):
+2. QUEUE:
    - Each card: urgency stripe, engine badge, title, description, evidence panel (expandable with ScoreRing + SHAP factors), impact preview ("If approved" green / "If declined" amber), reversibility indicator, action buttons (Approve/Decline/Defer/More info)
    - ProofLine per card
 
 3. DECISION RAIL:
-   - ScoreRing (maps to → ScoreRing): "Queue health" composite
-   - MilestonesTimeline (maps to → MilestonesTimeline): Approval activity milestones
+   - ScoreRing: "Queue health" composite
+   - MilestonesTimeline: Approval activity milestones
    - Completed actions section (collapsed)
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: ClipboardCheck, AlertTriangle, Check, X, Clock, RotateCcw, HelpCircle. Mobile: full-width cards.
 ```
@@ -756,18 +729,18 @@ Create a trust controls dashboard for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="analytical"):
+1. HERO:
    - Headline: "Trust Dashboard" with ShieldCheck icon
    - Description: "Per-engine trust scores, threshold configuration, and auto-approval settings."
 
-2. GLOBAL TRUST (maps to → ScoreRing size="lg"): "System Trust Score" 92/100 with 4 colored segments
-   - CategoryScoreBar (maps to → CategoryScoreBar): Per-engine trust — Protect 94, Grow 89, Execute 91, Govern 97
+2. GLOBAL TRUST: "System Trust Score" 92/100 with 4 colored segments
+   - CategoryScoreBar: Per-engine trust — Protect 94, Grow 89, Execute 91, Govern 97
 
 3. PER-ENGINE CARDS: 4 glass cards (2x2). Each with engine-colored accent, trust score ScoreRing, risk tolerance slider, auto-approval threshold slider, toggles
 
 4. ACTION BAR: "Save changes" (primary), "Reset to defaults" (ghost)
 
-5. GOVERN FOOTER (maps to → GovernContractSet)
+5. GOVERN FOOTER
 
 Icons: ShieldCheck, Shield, TrendingUp, Zap, Scale, Settings, Save. Mobile: cards stack.
 ```
@@ -781,7 +754,7 @@ Create an AI configuration settings page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Mixed engine accents.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "AI Configuration" with Brain icon
    - Description: "Control autonomy levels, explanation preferences, and model behavior."
 
@@ -793,7 +766,7 @@ Layout:
 
 5. SAVE BAR: Save/Discard/Reset
 
-6. GOVERN FOOTER (maps to → GovernContractSet)
+6. GOVERN FOOTER
 
 Icons: Brain, Sliders, Bot, Shield, TrendingUp, Zap, Scale, Lock. Mobile: cards stack.
 ```
@@ -807,7 +780,7 @@ Create a help center page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Large centered search bar with SearchIcon
    - Headline: "Help Center" in white bold
 
@@ -815,11 +788,11 @@ Layout:
 
 3. FAQ ACCORDION: 8 questions with expandable answers + "Was this helpful?" feedback
 
-4. DOCUMENTATION LINKS (maps to → AdaptiveCardGrid): 6 link cards — API Reference, Engine Docs, Governance Policies, Security Whitepaper, Data Dictionary, Release Notes
+4. DOCUMENTATION LINKS: 6 link cards — API Reference, Engine Docs, Governance Policies, Security Whitepaper, Data Dictionary, Release Notes
 
 5. CONTACT FORM: Subject, category dropdown, priority radio, description textarea, "Submit ticket" button
 
-6. GOVERN FOOTER (maps to → GovernContractSet)
+6. GOVERN FOOTER
 
 Icons: HelpCircle, Search, Rocket, Cpu, Brain, Shield, BookOpen, Code2, Headphones. Mobile: single column.
 ```
@@ -861,15 +834,15 @@ Create an AI insights feed page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Violet (#8B5CF6) AI accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "AI Insights" with Brain icon. Stats: "12 insights today | 4 actionable | Avg confidence 0.89"
 
 2. FILTERS: Tab group (All/Actionable/Informational/Warnings), engine filter pills, sort dropdown
 
-3. INSIGHT CARDS (maps to → DashboardInsightsPanel style): Each card with engine-colored top border, engine badge, category badge, timestamp, title, body, confidence bar, impact estimate, action buttons ("Send to Execute", "Dismiss"), ProofLine
+3. INSIGHT CARDS: Each card with engine-colored top border, engine badge, category badge, timestamp, title, body, confidence bar, impact estimate, action buttons ("Send to Execute", "Dismiss"), ProofLine
    - Expanded: SHAPWaterfallChart + evidence + model metadata + audit link
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: Brain, Sparkles, Lightbulb, TrendingUp, ArrowRight, ThumbsUp, ThumbsDown, BarChart3. Mobile: single column.
 ```
@@ -883,19 +856,19 @@ Create an activity timeline page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Multi-engine accents.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "Activity Timeline" with Activity icon. Live indicator: green pulsing dot + "Live"
 
 2. FILTERS: Date range, engine checkboxes, event type pills, search
 
-3. VERTICAL TIMELINE (maps to → MilestonesTimeline extended or ActivityTimeline):
+3. VERTICAL TIMELINE:
    - Central vertical line with engine-colored event dots
    - Each event: timestamp, glass card with engine badge, event type badge, title, description, confidence pill, audit link
    - Day separators: "Today", "Yesterday", etc.
 
 4. SIDEBAR: Today's summary (event counts by engine), most active engine, audit coverage progress bar
 
-5. GOVERN FOOTER (maps to → GovernContractSet)
+5. GOVERN FOOTER
 
 Icons: Activity, Clock, CheckCircle, AlertTriangle, Zap, Shield, TrendingUp, Scale, Search, Calendar. Mobile: single column.
 ```
@@ -909,7 +882,7 @@ Create a notification center for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "Notifications" with Bell icon. "7 unread" badge. "Mark all read" button.
 
 2. CATEGORY TABS: All (23), Security (5, teal), Growth (8, violet), Actions (6, gold), System (4, gray)
@@ -918,7 +891,7 @@ Layout:
 
 4. PREFERENCES SECTION: Per-category toggles (push + email), frequency selector
 
-5. GOVERN FOOTER (maps to → GovernContractSet)
+5. GOVERN FOOTER
 
 Icons: Bell, BellOff, Shield, TrendingUp, Zap, Settings, MoreHorizontal, Check. Mobile: full-width list.
 ```
@@ -932,20 +905,20 @@ Create a multi-step dispute wizard for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Teal (#14B8A6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="focused"):
+1. HERO:
    - Headline: "Dispute Transaction" with ShieldAlert icon. Breadcrumb: Protect / Dispute.
 
 2. PROGRESS STEPPER: 4 steps — Review Transaction, Evidence & Documents, AI Dispute Letter, Submit & Track
 
-3. STEP 1 — REVIEW: Transaction detail card + AI analysis with ScoreRing (maps to → ScoreRing) confidence 0.94 + SHAP factor bars (maps to → SHAPWaterfallChart or FactorsDropdown)
+3. STEP 1 — REVIEW: Transaction detail card + AI analysis with ScoreRing confidence 0.94 + SHAP factor bars
 
 4. STEP 2 — EVIDENCE: Upload zone, uploaded files list, AI-suggested evidence card
 
 5. STEP 3 — AI LETTER: Generated dispute letter preview, "Regenerate" + "Edit manually" controls
 
-6. STEP 4 — SUBMIT: Review summary, submit button, success state with MilestonesTimeline (maps to → MilestonesTimeline) tracking
+6. STEP 4 — SUBMIT: Review summary, submit button, success state with MilestonesTimeline tracking
 
-7. GOVERN FOOTER (maps to → GovernContractSet)
+7. GOVERN FOOTER
 
 Icons: ShieldAlert, CheckCircle, FileText, Sparkles, Send, Upload, Brain, RefreshCw, Download. Mobile: stepper vertical.
 ```
@@ -959,16 +932,16 @@ Create an AI growth recommendations page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Violet (#8B5CF6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="focused"):
+1. HERO:
    - Headline: "Growth Recommendations" with Lightbulb icon. Stats: "8 recommendations | 3 high-impact | Est. total: +$840/mo"
 
 2. FILTERS: Sort pills (Highest impact / Highest confidence / Easiest), category pills (All/Savings/Income/Debt/Investment)
 
 3. RECOMMENDATION CARDS: Each card with rank number, category badge, difficulty badge, title, description, 3 impact metrics (Monthly +$140, Annual +$1,680, Confidence ScoreRing 92%), expandable SHAP factors, action row ("Implement now", "Send to Execute")
-   - ContributionChart (maps to → ContributionChart accentColor="var(--engine-grow)"): Cumulative monthly impact visualization
+   - ContributionChart: Cumulative monthly impact visualization
    - ProofLine per card
 
-4. GOVERN FOOTER (maps to → GovernContractSet)
+4. GOVERN FOOTER
 
 Icons: Lightbulb, Sparkles, TrendingUp, DollarSign, Brain, BarChart3, Send. Mobile: single column.
 ```
@@ -982,22 +955,22 @@ Create a single audit decision detail page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="analytical"):
+1. HERO:
    - BackButton → /govern/audit. Audit ID badge (monospace). Status badge. Timestamp.
 
-2. DECISION SUMMARY: Glass card with blue left border. Metadata (decision type, engine, trigger, confidence, reviewer, processing time, reversibility). ScoreRing (maps to → ScoreRing) confidence ring.
+2. DECISION SUMMARY: Glass card with blue left border. Metadata (decision type, engine, trigger, confidence, reviewer, processing time, reversibility). ScoreRing confidence ring.
 
-3. SHAP EXPLANATION (maps to → SHAPWaterfallChart): Full waterfall chart — positive factors blue right, negative red left. Natural language per factor.
+3. SHAP EXPLANATION: Full waterfall chart — positive factors blue right, negative red left. Natural language per factor.
 
 4. MODEL METADATA: Version, training data, last retrained, accuracy, FP rate
 
-5. DECISION TIMELINE (maps to → MilestonesTimeline accentColor="var(--accent-blue)"): 5 steps from "Signal detected" to "Audit logged"
+5. DECISION TIMELINE: 5 steps from "Signal detected" to "Audit logged"
 
 6. HUMAN FEEDBACK: "Was this decision correct?" — Correct/Incorrect/Uncertain buttons + comment textarea
 
-7. RELATED DECISIONS (maps to → TransactionTable compact): 3 related audit entries
+7. RELATED DECISIONS: 3 related audit entries
 
-8. GOVERN FOOTER (maps to → GovernContractSet)
+8. GOVERN FOOTER
 
 Icons: ArrowLeft, ScrollText, Shield, Bot, User, RotateCcw, ThumbsUp, ThumbsDown. Mobile: single column.
 ```
@@ -1011,18 +984,18 @@ Create a data rights and privacy page for "Poseidon.AI".
 Dark navy theme (#0A1628). Glass-morphism cards. Blue (#3B82F6) accent.
 
 Layout:
-1. HERO (maps to → PageShell heroVariant="editorial"):
+1. HERO:
    - Headline: "Your Data Rights" with Shield icon. GDPR + CCPA compliance badges.
 
 2. DATA RIGHTS ACTIONS: 3 glass cards — Export (Download icon), Restrict Processing (PauseCircle), Delete Data (Trash2, red). Each with description + action button.
 
-3. ACTIVE REQUESTS (maps to → TransactionTable): Pending/completed data rights requests with status badges
+3. ACTIVE REQUESTS: Pending/completed data rights requests with status badges
 
 4. DATA INVENTORY: Accordion with stored data categories, record counts, retention periods
 
 5. CONSENT MANAGEMENT: Toggle rows for data processing, AI improvement, cross-engine sharing
 
-6. GOVERN FOOTER (maps to → GovernContractSet)
+6. GOVERN FOOTER
 
 Icons: Shield, Download, PauseCircle, Trash2, Lock, FileText, Database, Eye. Mobile: cards stack.
 ```
@@ -1031,34 +1004,19 @@ Icons: Shield, Download, PauseCircle, Trash2, Lock, FileText, Database, Eye. Mob
 
 ## Appendix A: Architecture B Component Map
 
-### Poseidon Facade Components (`@/components/poseidon/`)
+### Poseidon Facade Components (`@/components/poseidon/`) — REFERENCE ONLY
 
-These are the **primary** components for v0 → Poseidon adaptation. Import from `@/components/poseidon`.
+> **WARNING**: Do NOT import these into v0-generated pages during Poseidon化.
+> v0 pages are self-contained. These facades exist in the codebase for legacy pages only.
 
-| Facade | Wraps (DS v2) | Key Props | Usage |
-|--------|---------------|-----------|-------|
-| `GlassCard` | `GlassPanel` | `engine`, `variant`, `shine`, `className` | Every glass card |
-| `EngineBadge` | `Badge` | `engine`, `label`, `variant` | Engine identification |
-| `ScoreRing` | `ConfidenceRing` | `score`, `maxScore`, `label`, `size`, `color` | Circular progress |
-| `TrustPulse` | `PulsingOrb` | `engine`, `size`, `className` | Ambient trust glow |
-| `GovernFooter` | `GovernContractSet` | `auditId?`, `modelVersion?` | Audit footer (auto-defaults) |
-| `ProofLine` | (new) | `source`, `confidence`, `evidence` | Evidence anchoring |
-| `NeonText` | (new) | `engine`, `as`, `children` | Heading with gradient glow |
-| `Sparkline` | `SparkLine` | `data`, `width`, `height`, `color` | Inline trend |
-| `ShapWaterfall` | (new) | `factors`, `baseValue`, `prediction` | SHAP attribution chart |
-| `ForecastBand` | (new) | `data`, `historicalCount`, `width`, `height` | Monte Carlo bands |
-| `ActionQueue` | `ActionQueueCard` | `actions`, `onApprove`, `onDecline` | Approval queue |
-| `AuditChip` | `AuditLinkChip` | `auditId` | Audit trail link |
-
-### Layout Components (`@/components/layout/`)
-
-| Component | Purpose | Key Props |
-|-----------|---------|-----------|
-| `PageShell` | Page wrapper with hero + GovernFooter | `engine`, `hero`, `children` |
-| `Section` | Content section | `engine`, `title`, `children` |
-| `AppShell` | Re-export: app frame with nav | `children` |
-| `TopNav` | Re-export: desktop navigation | — |
-| `BottomNav` | Re-export: mobile navigation | — |
+| Facade | Key Props | Usage |
+|--------|-----------|-------|
+| `GovernFooter` | `auditId?`, `modelVersion?` | Audit footer — the ONLY facade permitted in v0 pages (Tier 1-2) |
+| `GlassCard` | `engine`, `variant` | Glass card (legacy) |
+| `EngineBadge` | `engine`, `label` | Engine identification (legacy) |
+| `ScoreRing` | `score`, `maxScore`, `label`, `size` | Circular progress (legacy) |
+| `ProofLine` | `source`, `confidence` | Evidence anchoring (legacy) |
+| `Sparkline` | `data`, `color` | Inline trend (legacy) |
 
 ### shadcn/ui Primitives (`@/components/ui/`) — v0 drop-in zone
 
@@ -1071,27 +1029,6 @@ These are the **primary** components for v0 → Poseidon adaptation. Import from
 | `Separator` | `separator.tsx` | Horizontal/vertical divider |
 | `Table` family | `table.tsx` | Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption |
 | `ScrollArea` | `scroll-area.tsx` | Scrollable container |
-
-### Existing DS v2 Components (use via facades, not directly)
-
-| Component | Purpose | Key Props |
-|-----------|---------|-----------|
-| `CategoryScoreBar` | Horizontal bar breakdown | `categories`, `iconAccent` |
-| `ContributionChart` | Bar chart + target line | `data`, `targetMonthly`, `accentColor` |
-| `MilestonesTimeline` | Vertical timeline | `milestones`, `accentColor` |
-| `NetWorthHero` | Large stat with glow | `total`, `change`, `trend`, `glowColor` |
-| `TransactionTable` | Paginated sortable table | `columns`, `data`, `pageSize` |
-| `RiskScoreDial` | Arc gauge | `score`, `band`, `trend` |
-| `DashboardInsightsPanel` | AI briefing panel | `variant` (morning/evening) |
-| `EngineHealthStrip` | Engine status row | (contextual) |
-| `AlertsHub` | Alert list with severity | (contextual) |
-| `ActivityTimeline` | Cross-engine timeline | (contextual) |
-| `ActionOutcomePreview` | Projected outcome | (contextual) |
-| `ExplainableInsightPanel` | SHAP explanation | (contextual) |
-| `StatCard` | Stat + sparkline | `label`, `value`, `meta`, `accent` |
-| `DefinitionLine` | Metric definition | `metric`, `formula`, `unit`, `period` |
-| `GovernVerifiedBadge` | Verified badge | `auditId`, `modelVersion` |
-| `HumanReviewCTA` | Request review | `onClick` |
 
 ---
 
@@ -1129,16 +1066,9 @@ These are the **primary** components for v0 → Poseidon adaptation. Import from
 .neon-text-blue         .neon-text-red
 ```
 
-### Stagger Animation Pattern (Framer Motion)
+### Animation Note
 
-```tsx
-import { staggerContainer, staggerItem, fadeUp } from '@/lib/motion-presets'
-
-<motion.div variants={staggerContainer} initial="hidden" animate="visible">
-  <motion.div variants={staggerItem}>Card 1</motion.div>
-  <motion.div variants={staggerItem}>Card 2</motion.div>
-</motion.div>
-```
+v0 generates framer-motion animations inline. Do NOT import from `@/lib/motion-presets` during Poseidon化.
 
 ---
 
@@ -1152,28 +1082,7 @@ import { staggerContainer, staggerItem, fadeUp } from '@/lib/motion-presets'
 | Execute | `#EAB308` | `var(--engine-execute)` | `.neon-glow-execute` | `.neon-text-amber` | `bg-[#EAB308]/10` |
 | Govern | `#3B82F6` | `var(--engine-govern)` | `.neon-glow-govern` | `.neon-text-blue` | `bg-[#3B82F6]/10` |
 
-## Appendix D: Hero Variant Mapping
-
-| Variant | Used by | Character |
-|---------|---------|-----------|
-| `command` | Dashboard | Wide, authoritative overview |
-| `focused` | Protect, Grow, Goal Detail, Dispute, Scenarios, Recommendations | Action-oriented, single mission |
-| `analytical` | Execute, Govern, Audit pages, Approval, History, Trust | Data-heavy, evidence-driven |
-| `editorial` | Settings, Help, Notifications, Insights, Timeline, AI Settings, Rights | Configuration, informational |
-| `minimal` | Landing, Auth, Pricing | Clean, uncluttered |
-
-## Appendix E: PageShell Slot Reference
-
-| Prop | Purpose |
-|------|---------|
-| `engine` | Engine name for color theming |
-| `hero` | Hero section ReactNode |
-| `primaryFeed` | Main content column (left/full) |
-| `decisionRail` | Side panel for context/actions (right) |
-| `layout="engine"` | Two-column engine layout |
-| `fullWidth` | Single-column full-width layout |
-
-## Appendix F: Mock Data Conventions
+## Appendix D: Mock Data Conventions
 
 | Field | Format | Example |
 |-------|--------|---------|

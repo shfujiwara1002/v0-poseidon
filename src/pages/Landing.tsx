@@ -1,440 +1,408 @@
-import React from 'react';
-import { Link } from '../router';
-import {
-  Shield, TrendingUp, Zap, Scale, Lock, ScrollText,
-  PlayCircle, RotateCcw, ChevronRight, Activity,
-} from 'lucide-react';
+/**
+ * Landing — Standalone greenfield landing page.
+ *
+ * Self-contained: no design-system imports. Only React, framer-motion,
+ * lucide-react, recharts, and the project router Link.
+ *
+ * Visual style: Linear.app / Vercel-inspired — premium dark glass-morphism,
+ * generous spacing, teal accent palette, frosted-glass cards.
+ */
 import { motion } from 'framer-motion';
-import { ProofLine } from '../components/ProofLine';
-import { StatCard } from '../components/StatCard';
-import { PageShell } from '../components/PageShell';
-import { MissionSectionHeader } from '../components/MissionSectionHeader';
-import { MissionMetadataStrip } from '../components/MissionMetadataStrip';
-import { getRouteScreenContract } from '../contracts/route-screen-contracts';
+import {
+  Shield,
+  TrendingUp,
+  Zap,
+  Scale,
+  Lock,
+  ScrollText,
+  PlayCircle,
+  RotateCcw,
+  Brain,
+  Waves,
+} from 'lucide-react';
+import { AreaChart, Area, ResponsiveContainer } from 'recharts';
+import { Link } from '../router';
 
-// ── Animation variants ───────────────────────────────────────
+/* ─── Mock data ────────────────────────────────────────────────────────────── */
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
-};
-
-// ── Static data ──────────────────────────────────────────────
+const metricsData = [
+  {
+    label: 'System Confidence',
+    value: '0.92',
+    color: '#0DD9B4',
+    spark: [4, 6, 5, 7, 8, 7, 9, 8, 9, 9.2],
+  },
+  {
+    label: 'Decisions Audited',
+    value: '1,247',
+    color: '#4E94FF',
+    spark: [2, 4, 5, 7, 8, 9, 10, 11, 12, 12.5],
+  },
+  {
+    label: 'Threats Blocked',
+    value: '23',
+    color: '#FFB020',
+    spark: [8, 7, 5, 6, 4, 3, 3, 2, 2, 2.3],
+  },
+  {
+    label: 'Response Time',
+    value: '<200ms',
+    color: '#34D399',
+    spark: [5, 4, 5, 4, 3, 4, 3, 3, 2, 2],
+  },
+];
 
 const engines = [
   {
-    key: 'protect',
-    name: 'Protect',
     icon: Shield,
-    color: '#14B8A6',
-    confidence: '0.94',
-    description: 'Real-time threat detection with explainable AI',
-    route: '/protect',
+    name: 'Protect',
+    color: '#0DD9B4',
+    desc: 'Real-time threat detection with explainable AI.',
+    confidence: 0.94,
   },
   {
-    key: 'grow',
-    name: 'Grow',
     icon: TrendingUp,
-    color: '#8B5CF6',
-    confidence: '0.89',
-    description: 'Forecast-driven growth with Monte Carlo bands',
-    route: '/grow',
+    name: 'Grow',
+    color: '#9B6DFF',
+    desc: 'Forecast-driven growth with Monte Carlo simulations.',
+    confidence: 0.89,
   },
   {
-    key: 'execute',
-    name: 'Execute',
     icon: Zap,
-    color: '#F59E0B',
-    confidence: '0.91',
-    description: 'Consent-first automation with reversible actions',
-    route: '/execute',
+    name: 'Execute',
+    color: '#FFB020',
+    desc: 'Consent-first automation with reversible actions.',
+    confidence: 0.91,
   },
   {
-    key: 'govern',
-    name: 'Govern',
     icon: Scale,
-    color: '#3B82F6',
-    confidence: '0.97',
-    description: 'Full audit trail for every decision',
-    route: '/govern',
+    name: 'Govern',
+    color: '#4E94FF',
+    desc: 'Full audit trail for every AI decision.',
+    confidence: 0.97,
   },
 ];
 
-const trustMetrics = [
-  { label: 'System Confidence', value: '0.92', sparklineData: [{ value: 0.88 }, { value: 0.89 }, { value: 0.9 }, { value: 0.91 }, { value: 0.92 }, { value: 0.92 }], sparklineColor: 'var(--accent-teal)' },
-  { label: 'Decisions Audited', value: '1,247', sparklineData: [{ value: 900 }, { value: 980 }, { value: 1040 }, { value: 1100 }, { value: 1180 }, { value: 1247 }], sparklineColor: 'var(--accent-blue)' },
-  { label: 'Threats Blocked', value: '23', sparklineData: [{ value: 12 }, { value: 14 }, { value: 16 }, { value: 18 }, { value: 20 }, { value: 23 }], sparklineColor: 'var(--state-warning)' },
-  { label: 'Response Time', value: '<200ms', sparklineData: [{ value: 210 }, { value: 208 }, { value: 205 }, { value: 202 }, { value: 200 }, { value: 198 }], sparklineColor: 'var(--state-healthy)' },
-];
-
-const proofColumns = [
+const governancePillars = [
   {
-    icon: Activity,
+    icon: Brain,
     title: 'Explainable',
-    description: 'Every AI decision includes feature attribution',
+    desc: 'Every AI decision includes SHAP feature attribution.',
+    color: '#4E94FF',
   },
   {
     icon: ScrollText,
     title: 'Auditable',
-    description: '1,247 decisions with full audit trails',
+    desc: '1,247 decisions with full audit trails.',
+    color: '#4E94FF',
   },
   {
     icon: RotateCcw,
     title: 'Reversible',
-    description: 'One-click rollback on any automated action',
+    desc: 'One-click rollback on any automated action.',
+    color: '#4E94FF',
   },
 ];
 
-const kpiSparklines = {
-  confidence: [{ value: 0.88 }, { value: 0.89 }, { value: 0.9 }, { value: 0.91 }, { value: 0.92 }, { value: 0.92 }],
-  coverage: [{ value: 93 }, { value: 94 }, { value: 95 }, { value: 96 }, { value: 97 }, { value: 98 }],
-  latency: [{ value: 18 }, { value: 16 }, { value: 15 }, { value: 14 }, { value: 13 }, { value: 12 }],
-  readiness: [{ value: 82 }, { value: 84 }, { value: 86 }, { value: 88 }, { value: 90 }, { value: 91 }],
+/* ─── Animation helpers ────────────────────────────────────────────────────── */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
 };
 
-// ── Component ────────────────────────────────────────────────
+const stagger = {
+  visible: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
 
-export const Landing: React.FC = () => {
-  const contract = getRouteScreenContract('landing');
+/* ─── Sparkline component ──────────────────────────────────────────────────── */
 
-  const primaryFeed = (
-    <>
-      {/* Live Trust Metrics */}
-      <motion.section
-        className="engine-card"
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-40px' }}
-      >
-        <MissionSectionHeader
-          title="Live Trust Metrics"
-          message="Real-time system health across all engines."
-        />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {trustMetrics.map((metric) => (
-            <motion.div key={metric.label} variants={fadeUp}>
-              <StatCard
-                label={metric.label}
-                value={metric.value}
-                sparkline={metric.sparklineData}
-                accent={metric.sparklineColor as 'teal' | 'cyan' | 'blue' | 'amber'}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* Four Engine Cards */}
-      <motion.section
-        className="engine-card"
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-40px' }}
-      >
-        <MissionSectionHeader
-          title="Four engines, one trusted system"
-          message="Each engine provides explainable, auditable AI assistance."
-        />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {engines.map((engine) => {
-            const Icon = engine.icon;
-            return (
-              <motion.div key={engine.key} variants={fadeUp}>
-                <Link
-                  to={engine.route}
-                  className="group flex flex-col gap-4 rounded-2xl border p-5 transition-all hover:shadow-lg md:p-6"
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    borderColor: 'rgba(255,255,255,0.08)',
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="flex h-11 w-11 items-center justify-center rounded-full transition-shadow group-hover:shadow-md"
-                      style={{
-                        background: `color-mix(in srgb, ${engine.color} 12%, transparent)`,
-                      }}
-                    >
-                      <Icon className="h-5 w-5" style={{ color: engine.color }} />
-                    </div>
-                    <div className="flex flex-1 items-center justify-between">
-                      <h3 className="text-lg font-bold" style={{ color: 'var(--text)' }}>
-                        {engine.name}
-                      </h3>
-                      <span
-                        className="rounded-full px-2.5 py-0.5 text-xs font-semibold font-mono"
-                        style={{
-                          background: `color-mix(in srgb, ${engine.color} 12%, transparent)`,
-                          color: engine.color,
-                        }}
-                      >
-                        {engine.confidence}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-                    {engine.description}
-                  </p>
-                  <span
-                    className="inline-flex items-center gap-1 text-sm font-medium transition-colors"
-                    style={{ color: engine.color }}
-                  >
-                    {'Open '}
-                    {engine.name}
-                    <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </div>
-        <ProofLine
-          claim="4 engines integrated"
-          evidence="Cross-engine trust composite | Evidence-backed decisions"
-          source="Mission control"
-          basis="real-time"
-          sourceType="system"
-        />
-      </motion.section>
-
-      {/* Governance Proof Section */}
-      <motion.section
-        className="engine-card"
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-40px' }}
-      >
-        <MissionSectionHeader
-          title="Governance by design, not by checkbox"
-          message="Trust built into every layer of the system."
-        />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {proofColumns.map((col) => {
-            const Icon = col.icon;
-            return (
-              <motion.div
-                key={col.title}
-                variants={fadeUp}
-                className="flex flex-col items-center gap-3 rounded-xl p-5 text-center"
-                style={{ background: 'rgba(255,255,255,0.03)' }}
-              >
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-full"
-                  style={{ background: 'rgba(59,130,246,0.1)' }}
-                >
-                  <Icon className="h-5 w-5" style={{ color: '#3B82F6' }} />
-                </div>
-                <h4 className="text-base font-bold" style={{ color: 'var(--text)' }}>
-                  {col.title}
-                </h4>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-                  {col.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-        <ProofLine
-          claim="System uptime 99.97%"
-          evidence="Last audit: 4m ago | Model version: v3.2.1"
-          source="Governance engine"
-          sourceType="system"
-        />
-      </motion.section>
-
-      {/* Social Proof Footer */}
-      <motion.section
-        className="engine-card"
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-40px' }}
-      >
-        <div className="flex flex-col items-center gap-4 py-4 text-center">
-          <div className="flex items-center gap-2">
-            <Shield className="h-5 w-5" style={{ color: '#3B82F6' }} />
-            <span className="text-sm font-semibold" style={{ color: 'var(--text)' }}>
-              MIT CTO Program
-            </span>
-          </div>
-          <p className="text-sm" style={{ color: 'var(--muted-2)' }}>
-            Built by Group 7 | MIT Sloan CTO Program 2026
-          </p>
-          <div className="flex gap-4 text-xs" style={{ color: 'var(--muted-2)' }}>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-          </div>
-        </div>
-      </motion.section>
-    </>
-  );
-
-  const decisionRail = (
-    <>
-      {/* Trust badges */}
-      <article className="engine-card">
-        <MissionSectionHeader
-          title="Trust signals"
-          message="Security and compliance at a glance."
-        />
-        <div className="flex flex-col gap-3">
-          {[
-            { icon: Lock, label: 'Bank-grade security' },
-            { icon: Shield, label: 'GDPR compliant' },
-            { icon: ScrollText, label: '100% auditable' },
-          ].map((badge) => {
-            const Icon = badge.icon;
-            return (
-              <div
-                key={badge.label}
-                className="flex items-center gap-3 rounded-xl p-3"
-                style={{ background: 'rgba(255,255,255,0.03)' }}
-              >
-                <div
-                  className="flex h-9 w-9 items-center justify-center rounded-full"
-                  style={{ background: 'rgba(20,184,166,0.1)' }}
-                >
-                  <Icon className="h-4 w-4" style={{ color: '#14B8A6' }} />
-                </div>
-                <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>
-                  {badge.label}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </article>
-
-      {/* CTA section */}
-      <article className="engine-card">
-        <MissionSectionHeader
-          title="Get started"
-          message="Three steps to full command center access."
-        />
-        <div className="flex flex-col gap-3">
-          <Link
-            className="entry-btn entry-btn--primary"
-            to="/dashboard"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-          >
-            Open Dashboard
-            <ChevronRight className="h-4 w-4" />
-          </Link>
-          <Link
-            className="entry-btn entry-btn--ghost"
-            to="/dashboard"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
-          >
-            <PlayCircle className="h-4 w-4" />
-            Watch demo
-          </Link>
-        </div>
-      </article>
-
-      {/* Activation flow */}
-      <article className="engine-card">
-        <MissionSectionHeader title="Activation flow" />
-        <div className="flex flex-col gap-3">
-          {['Signup', 'Onboarding', 'Activate Studio'].map((step, i) => (
-            <div
-              key={step}
-              className="flex items-center gap-3 rounded-xl p-3"
-              style={{ background: 'rgba(255,255,255,0.03)' }}
-            >
-              <span
-                className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold font-mono"
-                style={{ background: 'rgba(20,184,166,0.15)', color: '#14B8A6' }}
-              >
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>
-                {step}
-              </span>
-            </div>
-          ))}
-        </div>
-      </article>
-    </>
-  );
-
-  const rail = (
-    <article className="engine-card mission-rail-card">
-      <MissionMetadataStrip
-        compact
-        items={['Audit-ready defaults', 'Model + policy visible', 'Human review always available']}
-      />
-    </article>
-  );
-
+function Sparkline({ data, color }: { data: number[]; color: string }) {
+  const chartData = data.map((v, i) => ({ v, i }));
   return (
-    <PageShell
-      slug="landing"
-      contract={contract}
-      layout="dashboard"
-      heroVariant="minimal"
-      hero={{
-        kicker: 'Poseidon.AI',
-        headline: 'Safer, satisfying money decisions -- in one place.',
-        subline: 'Four AI engines. One trusted system. Every decision auditable.',
-        proofLine: {
-          claim: 'Confidence 0.92',
-          evidence: 'Cross-engine trust composite | 98% coverage',
-          source: 'Mission control snapshot',
-        },
-        heroAction: {
-          label: 'Recommended:',
-          text: 'Create your account and complete onboarding to unlock full command center controls.',
-          cta: { label: 'Open Dashboard', to: '/dashboard' },
-        },
-        freshness: new Date(Date.now() - 2 * 60 * 60 * 1000),
-        kpis: [
-          {
-            label: 'Trust confidence',
-            value: '0.92',
-            definition: 'Composite confidence across Protect, Grow, Execute, and Govern',
-            accent: 'teal',
-            sparklineData: kpiSparklines.confidence,
-            sparklineColor: 'var(--state-healthy)',
-          },
-          {
-            label: 'Coverage',
-            value: '98%',
-            definition: 'Percent of critical financial workflows with traceable evidence',
-            accent: 'cyan',
-            sparklineData: kpiSparklines.coverage,
-            sparklineColor: '#00F0FF',
-          },
-          {
-            label: 'Decision latency',
-            value: '12m',
-            definition: 'Median time from signal to reviewed recommendation',
-            accent: 'blue',
-            sparklineData: kpiSparklines.latency,
-            sparklineColor: 'var(--state-primary)',
-          },
-          {
-            label: 'Activation readiness',
-            value: '91%',
-            definition: 'Likelihood of completing setup in one guided session',
-            accent: 'amber',
-            sparklineData: kpiSparklines.readiness,
-            sparklineColor: 'var(--state-warning)',
-          },
-        ],
-      }}
-      rail={rail}
-      primaryFeed={primaryFeed}
-      decisionRail={decisionRail}
-    />
+    <ResponsiveContainer width={60} height={24}>
+      <AreaChart data={chartData} margin={{ top: 2, right: 0, bottom: 0, left: 0 }}>
+        <defs>
+          <linearGradient id={`spark-${color.replace('#', '')}`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.4} />
+            <stop offset="100%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <Area
+          type="monotone"
+          dataKey="v"
+          stroke={color}
+          strokeWidth={1.5}
+          fill={`url(#spark-${color.replace('#', '')})`}
+          isAnimationActive={false}
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
-};
+}
 
-export default Landing;
+/* ─── Main component ───────────────────────────────────────────────────────── */
+
+export default function Landing() {
+  return (
+    <div className="min-h-screen bg-[#070d1a] text-white overflow-hidden">
+      {/* ── 1. Navigation ─────────────────────────────────────────────── */}
+      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/[0.03] border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Left: logo */}
+          <Link to="/" className="flex items-center gap-2 font-bold text-lg text-white" aria-label="Poseidon.AI home">
+            <Waves className="h-5 w-5 text-teal-400" />
+            Poseidon.AI
+          </Link>
+          {/* Center: links */}
+          <div className="hidden md:flex items-center gap-8 text-sm text-slate-400">
+            <a href="#product" className="hover:text-white cursor-pointer transition-colors">Product</a>
+            <a href="#trust" className="hover:text-white cursor-pointer transition-colors">Trust</a>
+            <a href="#pricing" className="hover:text-white cursor-pointer transition-colors">Pricing</a>
+          </div>
+          {/* Right: buttons */}
+          <div className="flex items-center gap-3">
+            <Link to="/login" className="text-sm text-slate-400 hover:text-white transition-colors hidden md:inline-block">
+              Sign in
+            </Link>
+            <Link
+              to="/dashboard"
+              className="text-sm font-medium px-5 py-2 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-400 text-slate-950 hover:brightness-110 transition-all"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── 2. Hero ───────────────────────────────────────────────────── */}
+      <section className="relative pt-24 md:pt-32 pb-16">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-teal-500/[0.07] blur-[120px]" />
+        </div>
+
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-6 text-center"
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+        >
+          <motion.h1
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight text-balance"
+          >
+            Safer satisfying money decisions in one place.
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mt-6 text-pretty"
+          >
+            Four AI engines working together. Every decision explainable, auditable, and reversible.
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center justify-center gap-4 mt-8"
+          >
+            <Link
+              to="/dashboard"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-400 text-slate-950 font-semibold text-lg shadow-[0_0_30px_rgba(13,217,180,0.3)] hover:shadow-[0_0_40px_rgba(13,217,180,0.4)] transition-all"
+            >
+              Open Dashboard
+            </Link>
+            <button
+              type="button"
+              className="px-8 py-4 rounded-xl border border-white/[0.1] text-white hover:bg-white/[0.05] transition-all flex items-center gap-2"
+            >
+              <PlayCircle className="h-5 w-5" />
+              Watch Demo
+            </button>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center justify-center gap-8 mt-6 text-xs text-slate-500"
+          >
+            <span className="flex items-center gap-1.5">
+              <Lock className="h-3.5 w-3.5" />
+              Bank-grade encryption
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Shield className="h-3.5 w-3.5" />
+              GDPR compliant
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ScrollText className="h-3.5 w-3.5" />
+              100% auditable
+            </span>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ── Sections wrapper with generous spacing ────────────────────── */}
+      <div className="space-y-20 md:space-y-28">
+        {/* ── 3. Live metrics strip ─────────────────────────────────────── */}
+        <section id="product">
+          <motion.div
+            className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={stagger}
+          >
+            {metricsData.map((m) => (
+              <motion.div
+                key={m.label}
+                variants={fadeUp}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="backdrop-blur-xl bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-widest text-slate-500">
+                      {m.label}
+                    </p>
+                    <p className="mt-1 text-2xl font-bold text-white">{m.value}</p>
+                  </div>
+                  <Sparkline data={m.spark} color={m.color} />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
+
+        {/* ── 4. Four Engine showcase ───────────────────────────────────── */}
+        <section>
+          <motion.div
+            className="max-w-7xl mx-auto px-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+          >
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+            >
+              Four engines. One trusted system.
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {engines.map((eng) => {
+                const Icon = eng.icon;
+                return (
+                  <motion.div
+                    key={eng.name}
+                    variants={fadeUp}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="group backdrop-blur-xl bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.12] hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
+                        style={{ backgroundColor: `${eng.color}18` }}
+                      >
+                        <Icon className="h-5 w-5" style={{ color: eng.color }} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-lg font-bold text-white">{eng.name}</h3>
+                          <span
+                            className="text-xs font-mono px-2.5 py-1 rounded-full"
+                            style={{
+                              backgroundColor: `${eng.color}18`,
+                              color: eng.color,
+                            }}
+                          >
+                            {eng.confidence.toFixed(2)}
+                          </span>
+                        </div>
+                        <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{eng.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── 5. Governance proof ───────────────────────────────────────── */}
+        <section id="trust">
+          <motion.div
+            className="max-w-7xl mx-auto px-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          >
+            <motion.h2
+              variants={fadeUp}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+            >
+              Governance by design, not by checkbox.
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {governancePillars.map((g) => {
+                const Icon = g.icon;
+                return (
+                  <motion.div
+                    key={g.title}
+                    variants={fadeUp}
+                    transition={{ duration: 0.6 }}
+                    className="backdrop-blur-xl bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 text-center shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+                  >
+                    <div
+                      className="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: `${g.color}18` }}
+                    >
+                      <Icon className="h-5 w-5" style={{ color: g.color }} />
+                    </div>
+                    <h3 className="text-base font-bold text-white">{g.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{g.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Proof bar */}
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.6 }}
+              className="backdrop-blur-xl bg-white/[0.03] border border-white/[0.06] rounded-xl px-6 py-3 mt-8 max-w-4xl mx-auto"
+            >
+              <p className="text-xs font-mono text-slate-500 text-center">
+                System uptime 99.97% &middot; Last audit: 4m ago &middot; Model version: v3.2.1 &middot; Decisions today: 47
+              </p>
+            </motion.div>
+          </motion.div>
+        </section>
+      </div>
+
+      {/* ── 6. Footer ─────────────────────────────────────────────────── */}
+      <footer className="border-t border-white/[0.06] py-12 mt-20">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <div className="flex items-center gap-2 text-slate-400">
+            <Shield className="h-4 w-4" />
+            <span className="text-sm font-medium">MIT Sloan CTO Program &middot; Group 7 &middot; March 2026</span>
+          </div>
+          <div className="flex gap-6 text-xs text-slate-600">
+            <a href="#" className="hover:text-slate-400 cursor-pointer transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-400 cursor-pointer transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

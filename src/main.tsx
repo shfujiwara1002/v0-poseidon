@@ -41,8 +41,8 @@ function MinimalApp() {
 
   const LazyComponent = routes[currentPath as RoutePath];
 
-  // Fallback: if path is unknown, show /v3/landing as default
-  const FallbackComponent = routes['/v3/landing'];
+  // Fallback: if path is unknown, show landing as default
+  const FallbackComponent = routes['/'];
   const PageComponent = LazyComponent || FallbackComponent;
 
   return (
