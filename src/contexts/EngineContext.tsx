@@ -13,7 +13,7 @@ export interface EngineData {
   name: string;
   status: 'active' | 'inactive' | 'processing';
   metrics: EngineMetrics;
-  lastUpdated: Date;
+  lastUpdated: string;
 }
 
 interface EngineContextValue {
@@ -36,7 +36,7 @@ const initialEngines: Record<string, EngineData> = {
       speed: 92,
       volume: 1200000
     },
-    lastUpdated: new Date()
+    lastUpdated: new Date().toISOString()
   },
   grow: {
     id: 'grow',
@@ -48,7 +48,7 @@ const initialEngines: Record<string, EngineData> = {
       speed: 88,
       volume: 850000
     },
-    lastUpdated: new Date()
+    lastUpdated: new Date().toISOString()
   },
   execute: {
     id: 'execute',
@@ -60,7 +60,7 @@ const initialEngines: Record<string, EngineData> = {
       speed: 95,
       volume: 2100000
     },
-    lastUpdated: new Date()
+    lastUpdated: new Date().toISOString()
   },
   govern: {
     id: 'govern',
@@ -72,7 +72,7 @@ const initialEngines: Record<string, EngineData> = {
       speed: 79,
       volume: 450000
     },
-    lastUpdated: new Date()
+    lastUpdated: new Date().toISOString()
   }
 };
 
@@ -96,7 +96,7 @@ export function EngineProvider({ children }: { children: ReactNode }) {
       if (!prev[id]) return prev;
       return {
         ...prev,
-        [id]: { ...prev[id], ...data, lastUpdated: new Date() }
+        [id]: { ...prev[id], ...data, lastUpdated: new Date().toISOString() }
       };
     });
   }, []);
@@ -109,7 +109,7 @@ export function EngineProvider({ children }: { children: ReactNode }) {
         [id]: {
           ...prev[id],
           metrics: { ...prev[id].metrics, ...metrics },
-          lastUpdated: new Date()
+          lastUpdated: new Date().toISOString()
         }
       };
     });
@@ -125,7 +125,7 @@ export function EngineProvider({ children }: { children: ReactNode }) {
       setEngines(prev => {
         const updated = { ...prev };
         Object.keys(updated).forEach(key => {
-          updated[key] = { ...updated[key], lastUpdated: new Date() };
+          updated[key] = { ...updated[key], lastUpdated: new Date().toISOString() };
         });
         return updated;
       });
