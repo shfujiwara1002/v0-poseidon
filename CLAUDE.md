@@ -44,6 +44,15 @@ When integrating v0 output, apply **only** minimal adaptations. Do NOT alter v0'
 - **Do NOT add old context dependencies** — v0 pages should not depend on old context providers
 - **Do NOT add glass/neon/engine decorations** unless v0 output already includes them
 
+### v0 Merge Safety
+
+v0 は単体アプリとして出力するため、PR マージ時に以下が上書きされていないことを確認:
+- `src/main.tsx` — ルーター (MinimalApp + RouterProvider) が残っていること
+- `src/styles/tailwind.css` — `@import 'tailwindcss'` + `@theme inline` が残っていること
+- `src/router/lazyRoutes.ts` — 全 Tier 1 ルートが残っていること
+
+CI テスト `src/__tests__/infra-integrity.test.ts` が自動検証する。
+
 ## Key Imports
 
 ```tsx

@@ -91,6 +91,7 @@ v0 output のレイアウト・コンテンツは変更しない。以下の最�
 - **PageShell でラップ禁止** — v0 ページは自己完結型
 - **旧コンテキストプロバイダーへの依存追加禁止** — useEngineTheme, getEngineToken 等を使わない
 - **glass/neon/engine デコレーションの追加禁止** — v0 出力に含まれていない場合
+- **main.tsx / tailwind.css の上書き禁止** — v0 は自前の main.tsx と CSS を生成するが、既存ファイルを上書きしないこと
 
 ### File placement:
 

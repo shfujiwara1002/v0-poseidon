@@ -30,6 +30,30 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: local('Space Grotesk'), local('SpaceGrotesk');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: local('Inter'), local('Inter Regular');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), local('JetBrainsMono-Regular');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     color-scheme: dark;
   }
