@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from '../router';
 import {
   Shield,
   ShieldCheck,
@@ -253,6 +254,7 @@ function HeroSection() {
                 minHeight: '44px',
               }}
               aria-label="Review growth scenarios"
+              onClick={() => navigate('/grow/scenarios')}
             >
               <Target size={16} />
               Review scenarios
@@ -260,6 +262,7 @@ function HeroSection() {
             <button
               className="inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-medium transition-all hover:bg-white/[0.04] active:scale-[0.98] cursor-pointer"
               style={{ borderColor: 'rgba(255,255,255,0.1)', color: '#CBD5E1', background: 'transparent', minHeight: '44px' }}
+              onClick={() => navigate('/grow/goal')}
             >
               Adjust goal
             </button>
@@ -468,6 +471,11 @@ function GoalCard({ goal }: { goal: Goal }) {
                     }
               }
               aria-label={`${action} for ${goal.name}`}
+              onClick={() => {
+                if (action === 'View scenarios') navigate('/grow/scenarios');
+                else if (action === 'Recommendations') navigate('/grow/recommendations');
+                else navigate('/grow/goal');
+              }}
             >
               {action}
             </button>
@@ -680,6 +688,7 @@ function GovernFooter() {
    ═══════════════════════════════════════════ */
 
 export function Grow() {
+  const { navigate } = useRouter();
   return (
     <div className="min-h-screen w-full" style={{ background: '#0B1221' }}>
       {/* Skip link */}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from '../router';
 import {
   Shield,
   AlertCircle,
@@ -103,9 +104,9 @@ const milestones = [
 ];
 
 const quickActions = [
-  { title: 'Freeze card', priority: 'urgent' as const, color: '#EF4444' },
-  { title: 'Investigate MerchantX', priority: 'normal' as const, color: '#F59E0B' },
-  { title: 'Update alert rules', priority: 'low' as const, color: '#10B981' },
+  { title: 'Freeze card', priority: 'urgent' as const, color: '#EF4444', route: '/protect/dispute' as const },
+  { title: 'Investigate MerchantX', priority: 'normal' as const, color: '#F59E0B', route: '/protect/alert-detail' as const },
+  { title: 'Update alert rules', priority: 'low' as const, color: '#10B981', route: null },
 ];
 
 /* ─── Severity Badge ──────────────────────────────────────── */
@@ -371,6 +372,7 @@ function GlassCard({
 
 export const Protect: React.FC = () => {
   const [expandedSignal, setExpandedSignal] = useState<string | null>(null);
+  const { navigate } = useRouter();
 
   return (
     <div
@@ -550,7 +552,7 @@ export const Protect: React.FC = () => {
                                 border: '1px solid rgba(20,184,166,0.3)',
                                 color: '#14B8A6',
                               }}
-                              onClick={(e) => { e.stopPropagation(); setExpandedSignal(s.id); }}
+                              onClick={(e) => { e.stopPropagation(); navigate('/protect/alert-detail'); }}
                             >
                               <Eye className="h-3.5 w-3.5" />
                               View
@@ -611,7 +613,7 @@ export const Protect: React.FC = () => {
                         <button
                           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold"
                           style={{ background: 'rgba(20,184,166,0.1)', border: '1px solid rgba(20,184,166,0.3)', color: '#14B8A6' }}
-                          onClick={(e) => { e.stopPropagation(); setExpandedSignal(s.id); }}
+                          onClick={(e) => { e.stopPropagation(); navigate('/protect/alert-detail'); }}
                         >
                           <Eye className="h-3.5 w-3.5" />
                           View
@@ -668,6 +670,8 @@ export const Protect: React.FC = () => {
                     }}
                     role="button"
                     tabIndex={0}
+                    onClick={() => { if (a.route) navigate(a.route); }}
+                    onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && a.route) navigate(a.route); }}
                   >
                     <div
                       className="h-2.5 w-2.5 shrink-0 rounded-full"

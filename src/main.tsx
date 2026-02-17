@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from './router';
+import { RouterProvider, useRouter } from './router';
 import { routes, type RoutePath } from './router/lazyRoutes';
 import './styles/tailwind.css';
 import './styles/app.css';
@@ -25,31 +25,18 @@ function RouteLoadingFallback() {
   );
 }
 
+function RouterOutlet() {
+  const { path } = useRouter();
+  const LazyComponent = routes[path as RoutePath];
+  const PageComponent = LazyComponent || routes['/'];
+  return PageComponent ? <PageComponent /> : <RouteLoadingFallback />;
+}
+
 function MinimalApp() {
-  const [currentPath, setPath] = React.useState(() => {
-    const p = window.location.pathname;
-    return p.length > 1 && p.endsWith('/') ? p.replace(/\/+$/, '') : p || '/';
-  });
-
-  React.useEffect(() => {
-    const onPop = () => {
-      const p = window.location.pathname;
-      setPath(p.length > 1 && p.endsWith('/') ? p.replace(/\/+$/, '') : p || '/');
-    };
-    window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
-  }, []);
-
-  const LazyComponent = routes[currentPath as RoutePath];
-
-  // Fallback: if path is unknown, show landing as default
-  const FallbackComponent = routes['/'];
-  const PageComponent = LazyComponent || FallbackComponent;
-
   return (
     <RouterProvider>
       <Suspense fallback={<RouteLoadingFallback />}>
-        {PageComponent ? <PageComponent /> : <RouteLoadingFallback />}
+        <RouterOutlet />
       </Suspense>
     </RouterProvider>
   );

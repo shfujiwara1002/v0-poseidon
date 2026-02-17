@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from '../router';
 import {
   Shield,
   ShieldCheck,
@@ -324,6 +325,7 @@ function HeroSection() {
             <button
               className="inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-medium transition-all hover:bg-white/[0.04] active:scale-[0.98] cursor-pointer"
               style={{ borderColor: 'rgba(255,255,255,0.1)', color: '#CBD5E1', background: 'transparent' }}
+              onClick={() => navigate('/execute/approval')}
             >
               Review details
             </button>
@@ -840,6 +842,7 @@ function GovernFooter() {
 
 export function Execute() {
   const [actions, setActions] = useState<ActionItem[]>(initialActions);
+  const { navigate } = useRouter();
 
   const handleApprove = (id: string) => {
     setActions((prev) =>

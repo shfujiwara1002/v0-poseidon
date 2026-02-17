@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from '../router';
 import {
   Shield,
   ShieldCheck,
@@ -299,6 +300,7 @@ function HeroSection() {
                 minHeight: '44px',
               }}
               aria-label="View audit trail for decision GV-2026-0214-42"
+              onClick={() => navigate('/govern/audit-detail')}
             >
               <Eye size={16} />
               View audit trail
@@ -458,6 +460,7 @@ function DecisionAuditTrail() {
                         className="text-sm font-mono font-medium transition-colors hover:underline cursor-pointer"
                         style={{ color: '#3B82F6', background: 'transparent', border: 'none' }}
                         aria-label={`View details for decision ${d.id}`}
+                        onClick={() => navigate('/govern/audit-detail')}
                       >
                         {d.id}
                       </button>
@@ -489,6 +492,7 @@ function DecisionAuditTrail() {
                           minHeight: '36px',
                         }}
                         aria-label={`View audit trail for decision ${d.id}`}
+                        onClick={() => navigate('/govern/audit-detail')}
                       >
                         <Eye size={13} />
                         View trail
@@ -516,6 +520,7 @@ function DecisionAuditTrail() {
                 className="text-sm font-mono font-medium text-left transition-colors hover:underline cursor-pointer"
                 style={{ color: '#3B82F6', background: 'transparent', border: 'none', padding: 0 }}
                 aria-label={`View details for decision ${d.id}`}
+                onClick={() => navigate('/govern/audit-detail')}
               >
                 {d.id}
               </button>
@@ -534,6 +539,7 @@ function DecisionAuditTrail() {
                   minHeight: '44px',
                 }}
                 aria-label={`View audit trail for decision ${d.id}`}
+                onClick={() => navigate('/govern/audit-detail')}
               >
                 <Eye size={16} />
                 View trail
@@ -695,6 +701,7 @@ function GovernFooter() {
    ═══════════════════════════════════════════ */
 
 export function Govern() {
+  const { navigate } = useRouter();
   return (
     <div
       className="min-h-screen w-full"

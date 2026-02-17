@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useRouter } from '../../router';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid,
   ResponsiveContainer, Tooltip,
@@ -217,6 +218,7 @@ function ForecastChart() {
 /* ═══════════════════════ Alerts Hub ═══════════════════════ */
 
 function AlertsHub() {
+  const { navigate } = useRouter();
   const alerts = [
     {
       id: 1,
@@ -258,7 +260,7 @@ function AlertsHub() {
               <span className="alerts-hub__amount">{alert.amount}</span>
             </div>
             <div className="alerts-hub__actions">
-              <button className="alerts-hub__btn alerts-hub__btn--primary" type="button">
+              <button className="alerts-hub__btn alerts-hub__btn--primary" type="button" onClick={() => navigate('/protect/alert-detail')}>
                 Investigate
                 <ChevronRight size={14} />
               </button>
