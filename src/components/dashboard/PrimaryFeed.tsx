@@ -148,7 +148,7 @@ function InsightPanel() {
         </div>
         <span className="insight-panel__audit-link" aria-label="Audit reference">
           <ExternalLink size={12} />
-          GV-2026-0212-DASH-REC
+          GV-2026-0216-DASH-REC
         </span>
       </div>
     </motion.div>

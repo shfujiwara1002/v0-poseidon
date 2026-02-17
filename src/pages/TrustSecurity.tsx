@@ -140,13 +140,13 @@ export function TrustSecurity() {
             <span className="text-xs text-white/30 uppercase tracking-wider">Sample Audit Record</span>
           </div>
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-xs font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(59,130,246,0.15)', color: '#3B82F6' }}>GV-2026-0215-001</span>
+            <span className="text-xs font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(59,130,246,0.15)', color: '#3B82F6' }}>GV-2026-0216-001</span>
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400">Protect</span>
           </div>
           <p className="text-sm text-white font-medium mb-2">Blocked suspicious transaction $4,200</p>
           <div className="flex flex-wrap gap-4 text-xs text-white/40 mb-3">
             <span>Confidence: <span className="text-white/70 font-semibold">0.94</span></span>
-            <span>Feb 15, 2026 14:28</span>
+            <span>Feb 16, 2026 14:28</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {shapFactors.map((f) => (

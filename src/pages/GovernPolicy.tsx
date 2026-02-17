@@ -72,7 +72,7 @@ export function GovernPolicy() {
             <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#3B82F6' }}>Govern · Policy</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">Policy & Rules</h1>
-          <p className="text-sm text-slate-400">12 active policies · 0 violations · Last reviewed Feb 15, 2026.</p>
+          <p className="text-sm text-slate-400">12 active policies · 0 violations · Last reviewed Feb 16, 2026.</p>
         </motion.div>
 
         {/* KPI bar */}

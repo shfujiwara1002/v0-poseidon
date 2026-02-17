@@ -23,7 +23,7 @@ export function GovernFooter() {
 
       <span className="govern-footer__audit-link" aria-label="Audit reference">
         <ExternalLink size={12} />
-        GV-2026-0215-DASH
+        GV-2026-0216-DASH
       </span>
 
       <button className="govern-footer__cta" type="button">

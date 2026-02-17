@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion';
 import { Construction, ArrowLeft, Waves } from 'lucide-react';
-import { Link, useRouter } from '../router';
+import { Link } from '../router';
 
 export default function ComingSoon() {
-  const { path } = useRouter();
-
   return (
     <div className="min-h-screen bg-[#070d1a] text-white flex flex-col">
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/[0.03] border-b border-white/[0.06]">
@@ -37,10 +35,9 @@ export default function ComingSoon() {
             <Construction className="h-7 w-7 text-teal-400" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-3">Coming Soon</h1>
-          <p className="text-slate-400 mb-2">
-            This page is being redesigned with our new experience.
+          <p className="text-slate-400 mb-8">
+            This feature is currently in development and will be available soon.
           </p>
-          <p className="font-mono text-xs text-slate-600 mb-8">{path}</p>
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors"
